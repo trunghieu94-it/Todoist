@@ -1,3 +1,6 @@
 # Ignore Visual Studio & VS Code folders
 .vs/
 .vscode/
+# Build results
+bin/
+obj/
