@@ -1,0 +1,3 @@
+# Ignore Visual Studio & VS Code folders
+.vs/
+.vscode/

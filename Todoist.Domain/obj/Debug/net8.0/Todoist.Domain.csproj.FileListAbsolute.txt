@@ -1,0 +1,11 @@
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\bin\Debug\net8.0\Todoist.Domain.deps.json
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\bin\Debug\net8.0\Todoist.Domain.dll
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\bin\Debug\net8.0\Todoist.Domain.pdb
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\obj\Debug\net8.0\Todoist.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\obj\Debug\net8.0\Todoist.Domain.AssemblyInfoInputs.cache
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\obj\Debug\net8.0\Todoist.Domain.AssemblyInfo.cs
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\obj\Debug\net8.0\Todoist.Domain.csproj.CoreCompileInputs.cache
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\obj\Debug\net8.0\Todoist.Domain.dll
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\obj\Debug\net8.0\refint\Todoist.Domain.dll
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\obj\Debug\net8.0\Todoist.Domain.pdb
+D:\TRUNGHIEU\Workspace\personal\todoist\Todoist\Todoist.Domain\obj\Debug\net8.0\ref\Todoist.Domain.dll
