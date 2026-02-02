@@ -1,7 +1,7 @@
 namespace Todoist.Domain.Dtos.Work
 {
-    internal class WorkDto : WorkBaseDto
+    public class WorkDto : WorkBaseDto
     {
-        public decimal Progress { get; set; }
+        public int Id { get; set; }
     }
 }

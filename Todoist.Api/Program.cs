@@ -2,6 +2,7 @@ using System.Data;
 
 using Microsoft.Data.SqlClient;
 
+using Todoist.Infrastructure.Repositories;
 using Todoist.Infrastructure.Repositories.Task;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ builder.Services.AddScoped<IDbConnection>(
 
 // Other services
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<IWorkRepository, WorkRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

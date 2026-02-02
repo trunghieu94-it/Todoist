@@ -1,6 +1,6 @@
 namespace Todoist.Domain.Enums
 {
-    public enum TaskState
+    public enum State
     {
         New,
         InProgress,

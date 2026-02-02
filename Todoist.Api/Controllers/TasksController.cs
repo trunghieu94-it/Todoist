@@ -9,12 +9,12 @@ public class TasksController : ControllerBase
 {
     private readonly ITaskRepository _taskRepository;
 
-    public TasksController(ITaskRepository userRepository)
+    public TasksController(ITaskRepository taskRepository)
     {
-        _taskRepository = userRepository;
+        _taskRepository = taskRepository;
     }
 
-    // GET api/Tasks
+    // GET api/tasks
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
@@ -31,7 +31,7 @@ public class TasksController : ControllerBase
         return Ok(result);
     }
 
-    // GET api/Tasks/5
+    // GET api/tasks/5
     [HttpGet("{id}")]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
@@ -42,7 +42,7 @@ public class TasksController : ControllerBase
         return Ok(task);
     }
 
-    // POST api/Tasks
+    // POST api/tasks
     [HttpPost]
     public async Task<IActionResult> CreateAsync(CreateTaskDto taskDto)
     {
@@ -65,7 +65,7 @@ public class TasksController : ControllerBase
             });
     }
 
-    // PUT api/Tasks/5
+    // PUT api/tasks/5
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateAsync(int id, UpdateTaskDto taskDto)
     {
@@ -86,7 +86,7 @@ public class TasksController : ControllerBase
         return NoContent();
     }
 
-    // DELETE api/Tasks/5
+    // DELETE api/tasks/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
