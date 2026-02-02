@@ -15,35 +15,34 @@ namespace Todoist.Infrastructure.Repositories.Task
 
         public async Task<IEnumerable<DomainTask>> GetAllAsync()
         {
-            var sql = "select Id, WorkId, TaskName, [Status] from Tasks";
+            var sql = "SELECT Id, WorkId, TaskName, [Status] FROM Tasks";
             return await _connection.QueryAsync<DomainTask>(sql);
         }
 
         public async Task<DomainTask?> GetByIdAsync(int id)
         {
-            var sql = "SELECT Id, Name, Email FROM Users WHERE Id = @Id";
+            var sql = "SELECT Id, WorkId, TaskName, [Status] FROM Tasks WHERE Id = @Id";
             return await _connection.QueryFirstOrDefaultAsync<DomainTask>(sql, new { Id = id });
         }
 
         public async Task<int> CreateAsync(DomainTask task)
         {
             var sql = @"
-            INSERT INTO Users (Name, Email)
-            VALUES (@Name, @Email);
+            INSERT INTO dbo.Tasks (WorkId, TaskName, Status)
+            VALUES (@WorkId, @TaskName, @Status);
             SELECT CAST(SCOPE_IDENTITY() as int);
-        ";
-
+            ";
             return await _connection.ExecuteScalarAsync<int>(sql, task);
         }
 
         public async Task<bool> UpdateAsync(DomainTask task)
         {
             var sql = @"
-            UPDATE Users
-            SET Name = @Name,
-                Email = @Email
+            UPDATE Tasks
+            SET TaskName = @TaskName,
+                Status = @Status
             WHERE Id = @Id
-        ";
+            ";
 
             var rows = await _connection.ExecuteAsync(sql, task);
             return rows > 0;
@@ -51,7 +50,7 @@ namespace Todoist.Infrastructure.Repositories.Task
 
         public async Task<bool> DeleteAsync(int id)
         {
-            var sql = "DELETE FROM Users WHERE Id = @Id";
+            var sql = "DELETE FROM Tasks WHERE Id = @Id";
             var rows = await _connection.ExecuteAsync(sql, new { Id = id });
             return rows > 0;
         }

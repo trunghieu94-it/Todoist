@@ -4,17 +4,17 @@ using Todoist.Domain.Dtos.Task;
 using Todoist.Infrastructure.Repositories.Task;
 
 [ApiController]
-[Route("api/[controller]")] // controller = Tasks
+[Route("api/tasks")]
 public class TasksController : ControllerBase
 {
     private readonly ITaskRepository _taskRepository;
-    
+
     public TasksController(ITaskRepository userRepository)
     {
         _taskRepository = userRepository;
     }
 
-    // GET api/users
+    // GET api/Tasks
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
@@ -31,7 +31,7 @@ public class TasksController : ControllerBase
         return Ok(result);
     }
 
-    // GET api/users/5
+    // GET api/Tasks/5
     [HttpGet("{id}")]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
@@ -42,22 +42,42 @@ public class TasksController : ControllerBase
         return Ok(task);
     }
 
-    // POST api/users
+    // POST api/Tasks
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(DomainTask task)
+    public async Task<IActionResult> CreateAsync(CreateTaskDto taskDto)
     {
-        var id = await _taskRepository.CreateAsync(task);
-        task.Id = id;
+        var task = new DomainTask
+        {
+            WorkId = taskDto.WorkId,
+            TaskName = taskDto.TaskName,
+            Status = taskDto.Status
+        };
 
-        return CreatedAtAction(nameof(GetByIdAsync), new { id }, task);
+        var id = await _taskRepository.CreateAsync(task);
+
+        return StatusCode(201,
+            new TaskDto
+            {
+                Id = id,
+                WorkId = taskDto.WorkId,
+                TaskName = taskDto.TaskName,
+                Status = taskDto.Status
+            });
     }
 
-    // PUT api/users/5
+    // PUT api/Tasks/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAsync(int id, DomainTask task)
+    public async Task<IActionResult> UpdateAsync(int id, UpdateTaskDto taskDto)
     {
+        var task = new DomainTask
+        {
+            Id = id,
+            TaskName = taskDto.TaskName,
+            Status = taskDto.Status
+        };
+
         if (id != task.Id)
-            return BadRequest();
+            return BadRequest("Route id and body id do not match.");
 
         var success = await _taskRepository.UpdateAsync(task);
         if (!success)
@@ -66,7 +86,7 @@ public class TasksController : ControllerBase
         return NoContent();
     }
 
-    // DELETE api/users/5
+    // DELETE api/Tasks/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
