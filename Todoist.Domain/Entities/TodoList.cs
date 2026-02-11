@@ -1,0 +1,19 @@
+using Todoist.Domain.Enums;
+
+namespace Todoist.Domain.Entities
+{
+    public class TodoList
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+
+        public string ListName { get; set; } = null!;
+        public DateTime? Deadline { get; set; }
+
+        public TodoListPriority ListPriority { get; set; }
+        public TodoListStatus ListStatus { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+    }
+}
