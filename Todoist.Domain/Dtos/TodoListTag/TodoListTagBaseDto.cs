@@ -2,7 +2,7 @@ namespace Todoist.Domain.Dtos.TodoListTag
 {
     public class TodoListTagBaseDto
     {
-       
-        public DateTime CreatedAt { get; set; }
+        public int TodoListId { get; set; }
+        public int TagId { get; set; }
     }
 }
