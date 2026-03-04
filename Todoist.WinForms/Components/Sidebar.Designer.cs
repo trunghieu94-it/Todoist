@@ -1,13 +1,13 @@
-namespace Todoist.WinForms.Views
+namespace Todoist.WinForms.Components
 {
-    partial class MainForm
+    partial class Sidebar
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,37 +20,34 @@ namespace Todoist.WinForms.Views
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Label1 = new System.Windows.Forms.Label();
-            this.picAddTag = new System.Windows.Forms.PictureBox();
+            this.lblTodoList1 = new System.Windows.Forms.Label();
+            this.picAddTodoList = new System.Windows.Forms.PictureBox();
             this.divider = new System.Windows.Forms.Panel();
-            this.txtAddTag = new System.Windows.Forms.TextBox();
+            this.txtAddTodoList = new System.Windows.Forms.TextBox();
             this.btnNotes = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnPlanned = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnPriority = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnHome = new Todoist.WinForms.Views.Components.CustomButton();
-            this.WorkDetails1 = new Todoist.WinForms.Views.Components.WorkDetails();
-            this.addTaskPanel1 = new Todoist.WinForms.Views.Components.AddTaskPanel();
-            this.header = new Todoist.WinForms.Views.Components.Header();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAddTag)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.Label1);
-            this.panel1.Controls.Add(this.picAddTag);
+            this.panel1.Controls.Add(this.lblTodoList1);
+            this.panel1.Controls.Add(this.picAddTodoList);
             this.panel1.Controls.Add(this.divider);
-            this.panel1.Controls.Add(this.txtAddTag);
+            this.panel1.Controls.Add(this.txtAddTodoList);
             this.panel1.Controls.Add(this.btnNotes);
             this.panel1.Controls.Add(this.btnPlanned);
             this.panel1.Controls.Add(this.btnPriority);
@@ -60,46 +57,47 @@ namespace Todoist.WinForms.Views
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 601);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
-            // Label1
+            // lblTodoList1
             // 
-            this.Label1.AutoSize = true;
-            this.Label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(12, 318);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(103, 21);
-            this.Label1.TabIndex = 7;
-            this.Label1.Text = "Learn English";
+            this.lblTodoList1.AutoSize = true;
+            this.lblTodoList1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblTodoList1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTodoList1.Location = new System.Drawing.Point(12, 329);
+            this.lblTodoList1.Name = "lblTodoList1";
+            this.lblTodoList1.Size = new System.Drawing.Size(103, 21);
+            this.lblTodoList1.TabIndex = 7;
+            this.lblTodoList1.Text = "Learn English";
             // 
-            // picAddTag
+            // picAddTodoList
             // 
-            this.picAddTag.BackColor = System.Drawing.Color.White;
-            this.picAddTag.Image = global::Todoist.WinForms.Properties.Resources.add_file;
-            this.picAddTag.Location = new System.Drawing.Point(166, 278);
-            this.picAddTag.Name = "picAddTag";
-            this.picAddTag.Size = new System.Drawing.Size(24, 24);
-            this.picAddTag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAddTag.TabIndex = 6;
-            this.picAddTag.TabStop = false;
+            this.picAddTodoList.BackColor = System.Drawing.Color.White;
+            this.picAddTodoList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAddTodoList.Image = global::Todoist.WinForms.Properties.Resources.add_file;
+            this.picAddTodoList.Location = new System.Drawing.Point(166, 289);
+            this.picAddTodoList.Name = "picAddTodoList";
+            this.picAddTodoList.Size = new System.Drawing.Size(24, 24);
+            this.picAddTodoList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAddTodoList.TabIndex = 6;
+            this.picAddTodoList.TabStop = false;
             // 
             // divider
             // 
             this.divider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(223)))), ((int)(((byte)(221)))));
-            this.divider.Location = new System.Drawing.Point(10, 258);
+            this.divider.Location = new System.Drawing.Point(10, 269);
             this.divider.Name = "divider";
             this.divider.Size = new System.Drawing.Size(180, 1);
             this.divider.TabIndex = 1;
             // 
-            // txtAddTag
+            // txtAddTodoList
             // 
-            this.txtAddTag.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddTag.Location = new System.Drawing.Point(10, 275);
-            this.txtAddTag.Name = "txtAddTag";
-            this.txtAddTag.Size = new System.Drawing.Size(150, 29);
-            this.txtAddTag.TabIndex = 4;
-            this.txtAddTag.Text = "New tag";
+            this.txtAddTodoList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddTodoList.Location = new System.Drawing.Point(10, 286);
+            this.txtAddTodoList.Name = "txtAddTodoList";
+            this.txtAddTodoList.Size = new System.Drawing.Size(150, 29);
+            this.txtAddTodoList.TabIndex = 4;
+            this.txtAddTodoList.Text = "New todolist";
             // 
             // btnNotes
             // 
@@ -126,6 +124,7 @@ namespace Todoist.WinForms.Views
             this.btnNotes.Text = "Notes";
             this.btnNotes.TextColor = System.Drawing.Color.Black;
             this.btnNotes.UseVisualStyleBackColor = false;
+            this.btnNotes.Click += new System.EventHandler(this.BtnNotes_Click);
             // 
             // btnPlanned
             // 
@@ -152,6 +151,7 @@ namespace Todoist.WinForms.Views
             this.btnPlanned.Text = "Planned";
             this.btnPlanned.TextColor = System.Drawing.Color.Black;
             this.btnPlanned.UseVisualStyleBackColor = false;
+            this.btnPlanned.Click += new System.EventHandler(this.BtnPlanned_Click);
             // 
             // btnPriority
             // 
@@ -178,6 +178,7 @@ namespace Todoist.WinForms.Views
             this.btnPriority.Text = "Priority";
             this.btnPriority.TextColor = System.Drawing.Color.Black;
             this.btnPriority.UseVisualStyleBackColor = false;
+            this.btnPriority.Click += new System.EventHandler(this.BtnPriority_Click);
             // 
             // btnHome
             // 
@@ -204,61 +205,32 @@ namespace Todoist.WinForms.Views
             this.btnHome.Text = "Home";
             this.btnHome.TextColor = System.Drawing.Color.Black;
             this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.BtnHome_Click);
             // 
-            // WorkDetails1
-            // 
-            this.WorkDetails1.Location = new System.Drawing.Point(231, 95);
-            this.WorkDetails1.Name = "WorkDetails1";
-            this.WorkDetails1.Size = new System.Drawing.Size(684, 490);
-            this.WorkDetails1.TabIndex = 3;
-            // 
-            // addTaskPanel1
-            // 
-            this.addTaskPanel1.Location = new System.Drawing.Point(231, 95);
-            this.addTaskPanel1.Name = "addTaskPanel1";
-            this.addTaskPanel1.Size = new System.Drawing.Size(684, 100);
-            this.addTaskPanel1.TabIndex = 2;
-            // 
-            // header
-            // 
-            this.header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header.Location = new System.Drawing.Point(200, 0);
-            this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(744, 75);
-            this.header.TabIndex = 1;
-            // 
-            // MainForm
+            // Sidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 601);
-            this.Controls.Add(this.header);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.WorkDetails1);
-            this.Controls.Add(this.addTaskPanel1);
-            this.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Name = "Sidebar";
+            this.Size = new System.Drawing.Size(200, 601);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAddTag)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private Todoist.WinForms.Views.Components.CustomButton btnHome;
-        private Components.CustomButton btnNotes;
-        private Components.CustomButton btnPlanned;
-        private Components.CustomButton btnPriority;
-        private Components.Header header;
-        private Components.AddTaskPanel addTaskPanel1;
-        private System.Windows.Forms.TextBox txtAddTag;
+        private System.Windows.Forms.Label lblTodoList1;
+        private System.Windows.Forms.PictureBox picAddTodoList;
         private System.Windows.Forms.Panel divider;
-        private System.Windows.Forms.PictureBox picAddTag;
-        private Components.WorkDetails WorkDetails1;
-        private System.Windows.Forms.Label Label1;
+        private System.Windows.Forms.TextBox txtAddTodoList;
+        private Views.Components.CustomButton btnNotes;
+        private Views.Components.CustomButton btnPlanned;
+        private Views.Components.CustomButton btnPriority;
+        private Views.Components.CustomButton btnHome;
     }
 }

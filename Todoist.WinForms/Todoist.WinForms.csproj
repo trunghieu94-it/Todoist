@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Sidebar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Sidebar.Designer.cs">
+      <DependentUpon>Sidebar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TodoLists.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\TodoLists.Designer.cs">
+      <DependentUpon>TodoLists.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -53,76 +65,118 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Components\AddTaskPanel.cs">
+    <Compile Include="Components\AddTodoList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Components\AddTaskPanel.Designer.cs">
-      <DependentUpon>AddTaskPanel.cs</DependentUpon>
+    <Compile Include="Components\AddTodoList.Designer.cs">
+      <DependentUpon>AddTodoList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Components\BorderPanel.cs">
+    <Compile Include="Components\Panels\BorderPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\Components\CustomButton.cs">
+    <Compile Include="Components\Buttons\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\Components\Header.cs">
+    <Compile Include="Components\Headers\HeaderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Components\Header.Designer.cs">
-      <DependentUpon>Header.cs</DependentUpon>
+    <Compile Include="Components\Headers\HeaderControl.Designer.cs">
+      <DependentUpon>HeaderControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Components\IconLabel.cs">
+    <Compile Include="Components\IconLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\Components\Task.cs">
+    <Compile Include="Components\TodoList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Components\Task.Designer.cs">
-      <DependentUpon>Task.cs</DependentUpon>
+    <Compile Include="Components\TodoList.Designer.cs">
+      <DependentUpon>TodoList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Components\TaskHeader.cs">
+    <Compile Include="Components\Headers\TodoListHeader.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Components\TaskHeader.Designer.cs">
-      <DependentUpon>TaskHeader.cs</DependentUpon>
+    <Compile Include="Components\Headers\TodoListHeader.Designer.cs">
+      <DependentUpon>TodoListHeader.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Components\ToggleButton.cs">
+    <Compile Include="Components\Buttons\ToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\Components\WorkDetails.cs">
+    <Compile Include="Components\TodoListDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Components\WorkDetails.Designer.cs">
-      <DependentUpon>WorkDetails.cs</DependentUpon>
+    <Compile Include="Components\TodoListDetails.Designer.cs">
+      <DependentUpon>TodoListDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainForm.cs">
+    <Compile Include="Views\HomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\HomeView.Designer.cs">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MainForm.Designer.cs">
+    <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\NotesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\NotesView.Designer.cs">
+      <DependentUpon>NotesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlannedView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\PlannedView.Designer.cs">
+      <DependentUpon>PlannedView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PriorityView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\PriorityView.Designer.cs">
+      <DependentUpon>PriorityView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Components\Sidebar.resx">
+      <DependentUpon>Sidebar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TodoLists.resx">
+      <DependentUpon>TodoLists.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Components\AddTaskPanel.resx">
-      <DependentUpon>AddTaskPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Components\AddTodoList.resx">
+      <DependentUpon>AddTodoList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Components\Header.resx">
-      <DependentUpon>Header.cs</DependentUpon>
+    <EmbeddedResource Include="Components\Headers\HeaderControl.resx">
+      <DependentUpon>HeaderControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Components\Task.resx">
-      <DependentUpon>Task.cs</DependentUpon>
+    <EmbeddedResource Include="Components\TodoList.resx">
+      <DependentUpon>TodoList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Components\TaskHeader.resx">
-      <DependentUpon>TaskHeader.cs</DependentUpon>
+    <EmbeddedResource Include="Components\Headers\TodoListHeader.resx">
+      <DependentUpon>TodoListHeader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Components\WorkDetails.resx">
-      <DependentUpon>WorkDetails.cs</DependentUpon>
+    <EmbeddedResource Include="Components\TodoListDetails.resx">
+      <DependentUpon>TodoListDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainForm.resx">
+    <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HomeView.resx">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NotesView.resx">
+      <DependentUpon>NotesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PlannedView.resx">
+      <DependentUpon>PlannedView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PriorityView.resx">
+      <DependentUpon>PriorityView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -143,6 +197,7 @@
     <Content Include="Assets\Icons\bell.png" />
     <Content Include="Assets\Icons\calendar.png" />
     <Content Include="Assets\Icons\clipboard.png" />
+    <None Include="Assets\Icons\close.png" />
     <Content Include="Assets\Icons\folder.png" />
     <Content Include="Assets\Icons\grid.png" />
     <Content Include="Assets\Icons\group.png" />

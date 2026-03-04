@@ -1,6 +1,6 @@
 namespace Todoist.WinForms.Views.Components
 {
-    partial class TaskHeader
+    partial class TodoListHeader
     {
         /// <summary> 
         /// Required designer variable.
@@ -48,14 +48,15 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.borderPanel1.Location = new System.Drawing.Point(0, 0);
             this.borderPanel1.Name = "borderPanel1";
-            this.borderPanel1.Size = new System.Drawing.Size(639, 35);
+            this.borderPanel1.Size = new System.Drawing.Size(700, 35);
             this.borderPanel1.TabIndex = 0;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(501, 6);
+            this.label3.Location = new System.Drawing.Point(550, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 21);
             this.label3.TabIndex = 2;
@@ -63,9 +64,10 @@ namespace Todoist.WinForms.Views.Components
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(353, 6);
+            this.label2.Location = new System.Drawing.Point(340, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 21);
             this.label2.TabIndex = 1;
@@ -75,19 +77,19 @@ namespace Todoist.WinForms.Views.Components
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(28, 6);
+            this.label1.Location = new System.Drawing.Point(31, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
-            // TaskHeader
+            // TodoListHeader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.borderPanel1);
-            this.Name = "TaskHeader";
-            this.Size = new System.Drawing.Size(639, 35);
+            this.Name = "TodoListHeader";
+            this.Size = new System.Drawing.Size(700, 35);
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             this.ResumeLayout(false);

@@ -1,6 +1,6 @@
 namespace Todoist.WinForms.Views.Components
 {
-    partial class Header
+    partial class HeaderControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Todoist.WinForms.Views.Components
         private void InitializeComponent()
         {
             this.pnlHeader = new BorderPanel();
-            this.lblHome = new Todoist.WinForms.Views.Components.IconLabel();
+            this.lblTitle = new Todoist.WinForms.Views.Components.IconLabel();
             this.btnSort = new Todoist.WinForms.Views.Components.CustomButton();
             this.lblDate = new Todoist.WinForms.Views.Components.IconLabel();
             this.btnGroup = new Todoist.WinForms.Views.Components.CustomButton();
@@ -45,7 +45,7 @@ namespace Todoist.WinForms.Views.Components
             this.pnlHeader.BorderThickness = 0;
             this.pnlHeader.BottomLeftRadius = 0;
             this.pnlHeader.BottomRightRadius = 0;
-            this.pnlHeader.Controls.Add(this.lblHome);
+            this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Controls.Add(this.btnSort);
             this.pnlHeader.Controls.Add(this.lblDate);
             this.pnlHeader.Controls.Add(this.btnGroup);
@@ -58,19 +58,19 @@ namespace Todoist.WinForms.Views.Components
             this.pnlHeader.TopLeftRadius = 0;
             this.pnlHeader.TopRightRadius = 0;
             // 
-            // lblHome
+            // lblTitle
             // 
-            this.lblHome.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHome.Icon = global::Todoist.WinForms.Properties.Resources.home_2;
-            this.lblHome.IconPadding = 4;
-            this.lblHome.IconSize = new System.Drawing.Size(24, 24);
-            this.lblHome.IconTextSpacing = 6;
-            this.lblHome.Location = new System.Drawing.Point(22, 10);
-            this.lblHome.Name = "lblHome";
-            this.lblHome.Size = new System.Drawing.Size(120, 57);
-            this.lblHome.TabIndex = 3;
-            this.lblHome.Text = "Home";
-            this.lblHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Icon = global::Todoist.WinForms.Properties.Resources.home_2;
+            this.lblTitle.IconPadding = 4;
+            this.lblTitle.IconSize = new System.Drawing.Size(24, 24);
+            this.lblTitle.IconTextSpacing = 6;
+            this.lblTitle.Location = new System.Drawing.Point(22, 10);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(150, 57);
+            this.lblTitle.TabIndex = 3;
+            this.lblTitle.Text = "Home";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnSort
             // 
@@ -89,7 +89,7 @@ namespace Todoist.WinForms.Views.Components
             this.btnSort.IconPadding = 10;
             this.btnSort.IconSize = new System.Drawing.Size(24, 24);
             this.btnSort.IconTextSpacing = 30;
-            this.btnSort.Location = new System.Drawing.Point(531, 20);
+            this.btnSort.Location = new System.Drawing.Point(518, 20);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(85, 40);
             this.btnSort.TabIndex = 5;
@@ -105,7 +105,7 @@ namespace Todoist.WinForms.Views.Components
             this.lblDate.IconPadding = 4;
             this.lblDate.IconSize = new System.Drawing.Size(16, 16);
             this.lblDate.IconTextSpacing = 6;
-            this.lblDate.Location = new System.Drawing.Point(148, 33);
+            this.lblDate.Location = new System.Drawing.Point(178, 33);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(119, 17);
             this.lblDate.TabIndex = 4;
@@ -129,7 +129,7 @@ namespace Todoist.WinForms.Views.Components
             this.btnGroup.IconPadding = 6;
             this.btnGroup.IconSize = new System.Drawing.Size(24, 24);
             this.btnGroup.IconTextSpacing = 30;
-            this.btnGroup.Location = new System.Drawing.Point(642, 20);
+            this.btnGroup.Location = new System.Drawing.Point(609, 20);
             this.btnGroup.Name = "btnGroup";
             this.btnGroup.Size = new System.Drawing.Size(85, 40);
             this.btnGroup.TabIndex = 6;
@@ -154,7 +154,7 @@ namespace Todoist.WinForms.Views.Components
             this.btnGrid.IconPadding = 10;
             this.btnGrid.IconSize = new System.Drawing.Size(24, 24);
             this.btnGrid.IconTextSpacing = 30;
-            this.btnGrid.Location = new System.Drawing.Point(290, 20);
+            this.btnGrid.Location = new System.Drawing.Point(336, 20);
             this.btnGrid.Name = "btnGrid";
             this.btnGrid.Size = new System.Drawing.Size(85, 40);
             this.btnGrid.TabIndex = 8;
@@ -179,7 +179,7 @@ namespace Todoist.WinForms.Views.Components
             this.btnList.IconPadding = 10;
             this.btnList.IconSize = new System.Drawing.Size(24, 24);
             this.btnList.IconTextSpacing = 30;
-            this.btnList.Location = new System.Drawing.Point(396, 20);
+            this.btnList.Location = new System.Drawing.Point(427, 20);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(85, 40);
             this.btnList.TabIndex = 7;
@@ -187,12 +187,12 @@ namespace Todoist.WinForms.Views.Components
             this.btnList.TextColor = System.Drawing.Color.Black;
             this.btnList.UseVisualStyleBackColor = false;
             // 
-            // Header
+            // HeaderControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlHeader);
-            this.Name = "Header";
+            this.Name = "HeaderControl";
             this.Size = new System.Drawing.Size(744, 75);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
@@ -207,7 +207,7 @@ namespace Todoist.WinForms.Views.Components
         private CustomButton btnList;
         private CustomButton btnGrid;
         private IconLabel lblDate;
-        private IconLabel lblHome;
+        private IconLabel lblTitle;
         private BorderPanel pnlHeader;
     }
 }

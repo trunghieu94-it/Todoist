@@ -1,6 +1,6 @@
 namespace Todoist.WinForms.Views.Components
 {
-    partial class WorkDetails
+    partial class TodoListDetails
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,8 +29,8 @@ namespace Todoist.WinForms.Views.Components
         private void InitializeComponent()
         {
             this.borderPanel1 = new BorderPanel();
-            this.task1 = new Todoist.WinForms.Views.Components.Task();
-            this.columnHeader1 = new Todoist.WinForms.Views.Components.TaskHeader();
+            this.task1 = new Todoist.WinForms.Views.Components.TodoList();
+            this.columnHeader1 = new Todoist.WinForms.Views.Components.TodoListHeader();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.customButton2 = new Todoist.WinForms.Views.Components.CustomButton();
@@ -64,21 +64,25 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.Location = new System.Drawing.Point(0, 0);
             this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.borderPanel1.Name = "borderPanel1";
-            this.borderPanel1.Size = new System.Drawing.Size(684, 490);
+            this.borderPanel1.Size = new System.Drawing.Size(700, 490);
             this.borderPanel1.TabIndex = 0;
             // 
             // task1
             // 
+            this.task1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.task1.Location = new System.Drawing.Point(22, 282);
             this.task1.Name = "task1";
-            this.task1.Size = new System.Drawing.Size(639, 35);
+            this.task1.Size = new System.Drawing.Size(655, 35);
             this.task1.TabIndex = 8;
             // 
             // columnHeader1
             // 
+            this.columnHeader1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.columnHeader1.Location = new System.Drawing.Point(22, 241);
             this.columnHeader1.Name = "columnHeader1";
-            this.columnHeader1.Size = new System.Drawing.Size(639, 35);
+            this.columnHeader1.Size = new System.Drawing.Size(655, 35);
             this.columnHeader1.TabIndex = 7;
             // 
             // label2
@@ -87,9 +91,9 @@ namespace Todoist.WinForms.Views.Components
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(18, 217);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 21);
+            this.label2.Size = new System.Drawing.Size(34, 21);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Tasks";
+            this.label2.Text = "List";
             // 
             // label1
             // 
@@ -153,24 +157,30 @@ namespace Todoist.WinForms.Views.Components
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(22, 170);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(639, 29);
+            this.textBox2.Size = new System.Drawing.Size(655, 29);
             this.textBox2.TabIndex = 3;
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(22, 53);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(639, 35);
+            this.textBox1.Size = new System.Drawing.Size(655, 35);
             this.textBox1.TabIndex = 3;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Todoist.WinForms.Properties.Resources.archieve;
-            this.pictureBox1.Location = new System.Drawing.Point(637, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(653, 14);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -179,9 +189,10 @@ namespace Todoist.WinForms.Views.Components
             // 
             // lblComplete
             // 
+            this.lblComplete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblComplete.AutoSize = true;
             this.lblComplete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComplete.Location = new System.Drawing.Point(516, 14);
+            this.lblComplete.Location = new System.Drawing.Point(532, 17);
             this.lblComplete.Name = "lblComplete";
             this.lblComplete.Size = new System.Drawing.Size(113, 17);
             this.lblComplete.TabIndex = 1;
@@ -198,13 +209,13 @@ namespace Todoist.WinForms.Views.Components
             this.lblBreadcrumbs.TabIndex = 0;
             this.lblBreadcrumbs.Text = "Learn English -> Work 1";
             // 
-            // WorkDetails
+            // TodoListDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.borderPanel1);
-            this.Name = "WorkDetails";
-            this.Size = new System.Drawing.Size(684, 490);
+            this.Name = "TodoListDetails";
+            this.Size = new System.Drawing.Size(700, 490);
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -224,7 +235,7 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private TaskHeader columnHeader1;
-        private Task task1;
+        private TodoListHeader columnHeader1;
+        private TodoList task1;
     }
 }

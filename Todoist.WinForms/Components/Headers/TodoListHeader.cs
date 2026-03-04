@@ -2,9 +2,9 @@ using System.Windows.Forms;
 
 namespace Todoist.WinForms.Views.Components
 {
-    public partial class Header : UserControl
+    public partial class TodoListHeader : UserControl
     {
-        public Header()
+        public TodoListHeader()
         {
             InitializeComponent();
         }
