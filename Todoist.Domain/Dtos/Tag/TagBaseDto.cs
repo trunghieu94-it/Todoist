@@ -4,5 +4,6 @@ namespace Todoist.Domain.Dtos.Tag
     {
         public int UserId { get; set; }
         public string TagName { get; set; } = null!;
+        public DateTime CreatedAt { get; set; }
     }
 }
