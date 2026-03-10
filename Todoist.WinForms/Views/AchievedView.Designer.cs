@@ -1,6 +1,6 @@
 namespace Todoist.WinForms.Views
 {
-    partial class PriorityView
+    partial class AchievedView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@ namespace Todoist.WinForms.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PriorityView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AchievedView));
             this.header = new Todoist.WinForms.Views.Components.HeaderControl();
             this.addTodoList1 = new Todoist.WinForms.Views.Components.AddTodoList();
             this.btnDelete = new Todoist.WinForms.Views.Components.CustomButton();

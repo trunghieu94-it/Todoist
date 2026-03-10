@@ -2,14 +2,14 @@ using System.Windows.Forms;
 
 namespace Todoist.WinForms.Views
 {
-    public partial class PriorityView : UserControl
+    public partial class AchievedView : UserControl
     {
-        public PriorityView()
+        public AchievedView()
         {
             InitializeComponent();
 
             // Initial values
-            header.LblTitle = "Priority";
+            header.LblTitle = "Achieved";
             header.TitleIcon = Properties.Resources.star;
         }
     }

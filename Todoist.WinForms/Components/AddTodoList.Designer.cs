@@ -33,7 +33,8 @@ namespace Todoist.WinForms.Views.Components
             this.picAddTodoItem = new System.Windows.Forms.PictureBox();
             this.borderPanel2 = new BorderPanel();
             this.picDeadline = new System.Windows.Forms.PictureBox();
-            this.dtpDeadline = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.borderPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddTodoItem)).BeginInit();
             this.borderPanel2.SuspendLayout();
@@ -83,8 +84,9 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.borderPanel2.BorderColor = System.Drawing.Color.Black;
             this.borderPanel2.BorderThickness = 0;
+            this.borderPanel2.Controls.Add(this.dateTimePicker2);
+            this.borderPanel2.Controls.Add(this.dateTimePicker1);
             this.borderPanel2.Controls.Add(this.picDeadline);
-            this.borderPanel2.Controls.Add(this.dtpDeadline);
             this.borderPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.borderPanel2.Location = new System.Drawing.Point(0, 50);
             this.borderPanel2.Name = "borderPanel2";
@@ -105,21 +107,34 @@ namespace Todoist.WinForms.Views.Components
             this.picDeadline.TabIndex = 10;
             this.picDeadline.TabStop = false;
             // 
-            // dtpDeadline
+            // dateTimePicker2
             // 
-            this.dtpDeadline.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDeadline.Location = new System.Drawing.Point(46, 11);
-            this.dtpDeadline.Name = "dtpDeadline";
-            this.dtpDeadline.Size = new System.Drawing.Size(265, 29);
-            this.dtpDeadline.TabIndex = 9;
+            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker2.Location = new System.Drawing.Point(294, 10);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowCheckBox = true;
+            this.dateTimePicker2.ShowUpDown = true;
+            this.dateTimePicker2.Size = new System.Drawing.Size(139, 29);
+            this.dateTimePicker2.TabIndex = 15;
             // 
-            // AddTodoItemPanel
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(46, 10);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimePicker1.ShowCheckBox = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(242, 29);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
+            // AddTodoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.borderPanel1);
             this.Controls.Add(this.borderPanel2);
-            this.Name = "AddTodoItemPanel";
+            this.Name = "AddTodoList";
             this.Size = new System.Drawing.Size(700, 100);
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
@@ -137,6 +152,7 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.TextBox txtNewTodoItem;
         private System.Windows.Forms.PictureBox picAddTodoItem;
         private System.Windows.Forms.PictureBox picDeadline;
-        private System.Windows.Forms.DateTimePicker dtpDeadline;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

@@ -24,7 +24,7 @@ namespace Todoist.WinForms.Components
         }
         private void BtnPriority_Click(object sender, EventArgs e)
         {
-            OnMenuClick?.Invoke("Priority");
+            OnMenuClick?.Invoke("Achieved");
         }
         private void BtnNotes_Click(object sender, EventArgs e)
         {

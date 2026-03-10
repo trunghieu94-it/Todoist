@@ -8,7 +8,7 @@ namespace Todoist.WinForms.Views
         {
             InitializeComponent();
 
-            sidebarPanel.OnMenuClick += Sidebar_OnMenuClick;
+            sidebar1.OnMenuClick += Sidebar_OnMenuClick;
         }
 
         #region Methods
@@ -31,8 +31,8 @@ namespace Todoist.WinForms.Views
                 case "Planned":
                     LoadView(new PlannedView());
                     break;
-                case "Priority":
-                    LoadView(new PriorityView());
+                case "Achieved":
+                    LoadView(new AchievedView());
                     break;
                 case "Notes":
                     LoadView(new NotesView());

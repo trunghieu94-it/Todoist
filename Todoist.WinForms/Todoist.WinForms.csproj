@@ -131,11 +131,11 @@
     <Compile Include="Views\PlannedView.Designer.cs">
       <DependentUpon>PlannedView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\PriorityView.cs">
+    <Compile Include="Views\AchievedView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\PriorityView.Designer.cs">
-      <DependentUpon>PriorityView.cs</DependentUpon>
+    <Compile Include="Views\AchievedView.Designer.cs">
+      <DependentUpon>AchievedView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Components\Sidebar.resx">
       <DependentUpon>Sidebar.cs</DependentUpon>
@@ -175,8 +175,8 @@
     <EmbeddedResource Include="Views\PlannedView.resx">
       <DependentUpon>PlannedView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PriorityView.resx">
-      <DependentUpon>PriorityView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\AchievedView.resx">
+      <DependentUpon>AchievedView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
