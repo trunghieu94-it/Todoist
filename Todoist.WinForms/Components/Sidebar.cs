@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
+
+using Todoist.WinForms.Models;
 
 namespace Todoist.WinForms.Components
 {
@@ -12,6 +16,27 @@ namespace Todoist.WinForms.Components
         {
             InitializeComponent();
         }
+
+        #region Methods
+        public void RenderSidebar(List<TodoList> lists)
+        {
+            flowListNames.Controls.Clear();
+
+            foreach (var list in lists)
+            {
+                Label lbl = new Label();
+                lbl.Text = list.ListName;
+                lbl.Width = flowListNames.Width - 5;
+                lbl.Height = 35;
+                lbl.TextAlign = ContentAlignment.MiddleLeft;
+                lbl.Padding = new Padding(10, 0, 0, 0);
+
+                lbl.Font = new Font("Segoe UI", 12);
+
+                flowListNames.Controls.Add(lbl);
+            }
+        }
+        #endregion
 
         #region Events
         private void BtnHome_Click(object sender, EventArgs e)

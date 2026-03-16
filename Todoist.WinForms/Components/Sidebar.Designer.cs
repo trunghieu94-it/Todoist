@@ -29,10 +29,10 @@ namespace Todoist.WinForms.Components
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTodoList1 = new System.Windows.Forms.Label();
             this.picAddTodoList = new System.Windows.Forms.PictureBox();
             this.divider = new System.Windows.Forms.Panel();
             this.txtAddTodoList = new System.Windows.Forms.TextBox();
+            this.flowListNames = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNotes = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnPlanned = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnAchieved = new Todoist.WinForms.Views.Components.CustomButton();
@@ -44,7 +44,7 @@ namespace Todoist.WinForms.Components
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lblTodoList1);
+            this.panel1.Controls.Add(this.flowListNames);
             this.panel1.Controls.Add(this.picAddTodoList);
             this.panel1.Controls.Add(this.divider);
             this.panel1.Controls.Add(this.txtAddTodoList);
@@ -58,17 +58,6 @@ namespace Todoist.WinForms.Components
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 601);
             this.panel1.TabIndex = 1;
-            // 
-            // lblTodoList1
-            // 
-            this.lblTodoList1.AutoSize = true;
-            this.lblTodoList1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblTodoList1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTodoList1.Location = new System.Drawing.Point(12, 329);
-            this.lblTodoList1.Name = "lblTodoList1";
-            this.lblTodoList1.Size = new System.Drawing.Size(103, 21);
-            this.lblTodoList1.TabIndex = 7;
-            this.lblTodoList1.Text = "Learn English";
             // 
             // picAddTodoList
             // 
@@ -98,6 +87,16 @@ namespace Todoist.WinForms.Components
             this.txtAddTodoList.Size = new System.Drawing.Size(150, 29);
             this.txtAddTodoList.TabIndex = 4;
             this.txtAddTodoList.Text = "New todolist";
+            // 
+            // flowListNames
+            // 
+            this.flowListNames.AutoScroll = true;
+            this.flowListNames.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowListNames.Location = new System.Drawing.Point(10, 321);
+            this.flowListNames.Name = "flowListNames";
+            this.flowListNames.Size = new System.Drawing.Size(180, 277);
+            this.flowListNames.TabIndex = 8;
+            this.flowListNames.WrapContents = false;
             // 
             // btnNotes
             // 
@@ -224,7 +223,6 @@ namespace Todoist.WinForms.Components
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblTodoList1;
         private System.Windows.Forms.PictureBox picAddTodoList;
         private System.Windows.Forms.Panel divider;
         private System.Windows.Forms.TextBox txtAddTodoList;
@@ -232,5 +230,6 @@ namespace Todoist.WinForms.Components
         private Views.Components.CustomButton btnPlanned;
         private Views.Components.CustomButton btnAchieved;
         private Views.Components.CustomButton btnHome;
+        private System.Windows.Forms.FlowLayoutPanel flowListNames;
     }
 }

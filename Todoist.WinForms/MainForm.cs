@@ -1,17 +1,32 @@
+using System;
 using System.Windows.Forms;
+
+using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views
 {
     public partial class MainForm : Form
     {
+        private readonly TodoListsService _todoListsService;
+
         public MainForm()
         {
             InitializeComponent();
+
+            //Services
+            _todoListsService = new TodoListsService();
 
             sidebar1.OnMenuClick += Sidebar_OnMenuClick;
         }
 
         #region Methods
+
+        private async void MainForm_Load(object sender, EventArgs e)
+        {
+            var todoLists = await _todoListsService.GetTodoListsAsync();
+
+            sidebar1.RenderSidebar(todoLists);
+        }
         public void LoadView(UserControl view)
         {
             contentPanel.Controls.Clear();

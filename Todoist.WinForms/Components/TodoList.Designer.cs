@@ -67,7 +67,7 @@ namespace Todoist.WinForms.Views.Components
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(279, 38);
+            this.dateTimePicker2.Location = new System.Drawing.Point(328, 38);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.ShowCheckBox = true;
             this.dateTimePicker2.ShowUpDown = true;
@@ -81,7 +81,7 @@ namespace Todoist.WinForms.Views.Components
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePicker1.ShowCheckBox = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(242, 29);
+            this.dateTimePicker1.Size = new System.Drawing.Size(291, 29);
             this.dateTimePicker1.TabIndex = 12;
             // 
             // btnDetail

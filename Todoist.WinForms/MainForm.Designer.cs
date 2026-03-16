@@ -29,8 +29,8 @@ namespace Todoist.WinForms.Views
         private void InitializeComponent()
         {
             this.contentPanel = new BorderPanel();
-            this.sidebar1 = new Todoist.WinForms.Components.Sidebar();
             this.homeView1 = new Todoist.WinForms.Views.HomeView();
+            this.sidebar1 = new Todoist.WinForms.Components.Sidebar();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,14 +50,6 @@ namespace Todoist.WinForms.Views
             this.contentPanel.TopLeftRadius = 0;
             this.contentPanel.TopRightRadius = 0;
             // 
-            // sidebar1
-            // 
-            this.sidebar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar1.Location = new System.Drawing.Point(0, 0);
-            this.sidebar1.Name = "sidebar1";
-            this.sidebar1.Size = new System.Drawing.Size(200, 601);
-            this.sidebar1.TabIndex = 0;
-            // 
             // homeView1
             // 
             this.homeView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -66,6 +58,14 @@ namespace Todoist.WinForms.Views
             this.homeView1.Name = "homeView1";
             this.homeView1.Size = new System.Drawing.Size(784, 601);
             this.homeView1.TabIndex = 0;
+            // 
+            // sidebar1
+            // 
+            this.sidebar1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidebar1.Location = new System.Drawing.Point(0, 0);
+            this.sidebar1.Name = "sidebar1";
+            this.sidebar1.Size = new System.Drawing.Size(200, 601);
+            this.sidebar1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -79,6 +79,7 @@ namespace Todoist.WinForms.Views
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.contentPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
