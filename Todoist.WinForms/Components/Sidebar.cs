@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
+using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Components
 {
@@ -15,26 +16,34 @@ namespace Todoist.WinForms.Components
         public Sidebar()
         {
             InitializeComponent();
+
+            TodoListsService.Instance.OnListsChanged += RenderListNames;
         }
 
         #region Methods
-        public void RenderSidebar(List<TodoList> lists)
+        public void RenderListNames(List<TodoList> lists)
         {
             flowListNames.Controls.Clear();
 
             foreach (var list in lists)
             {
-                Label lbl = new Label();
-                lbl.Text = list.ListName;
-                lbl.Width = flowListNames.Width - 5;
-                lbl.Height = 35;
-                lbl.TextAlign = ContentAlignment.MiddleLeft;
-                lbl.Padding = new Padding(10, 0, 0, 0);
-
-                lbl.Font = new Font("Segoe UI", 12);
-
-                flowListNames.Controls.Add(lbl);
+                flowListNames.Controls.Add(LblListName(list));
             }
+        }
+
+        private Label LblListName(TodoList list)
+        {
+            Label lbl = new Label();
+            lbl.Text = list.ListName;
+            lbl.TextAlign = ContentAlignment.MiddleLeft;
+
+            lbl.AutoSize = true;
+            lbl.MaximumSize = new Size(flowListNames.Width - 30, 0);
+            lbl.Margin = new Padding(0, 10, 0, 10);
+
+            lbl.Font = new Font("Segoe UI", 12);
+            lbl.Cursor = Cursors.Hand;
+            return lbl;
         }
         #endregion
 
@@ -56,7 +65,5 @@ namespace Todoist.WinForms.Components
             OnMenuClick?.Invoke("Notes");
         }
         #endregion
-
-
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,16 +10,36 @@ namespace Todoist.WinForms.Services
     {
         private readonly ApiClient _apiClient;
 
-        public TodoListsService()
+        public static TodoListsService Instance { get; } = new TodoListsService();
+
+        private List<TodoList> _lists = new List<TodoList>();
+
+        public event Action<List<TodoList>> OnListsChanged;
+        public event Action<TodoList> OnListSelected;
+
+        private TodoListsService()
         {
             _apiClient = new ApiClient();
         }
 
-        public async Task<List<TodoList>> GetTodoListsAsync()
+        #region Events
+        public async Task GetTodoListsAsync()
         {
-            var todoLists = await _apiClient.GetAsync<List<TodoList>>("todolists");
-
-            return todoLists ?? new List<TodoList>();
+            var todoLists = await _apiClient.GetAsync<List<TodoList>>("todolists")
+                ?? new List<TodoList>();
+            SetLists(todoLists);
         }
+
+        public void SetLists(List<TodoList> lists)
+        {
+            _lists = lists;
+            OnListsChanged?.Invoke(_lists);
+        }
+
+        public void SelectList(TodoList list)
+        {
+            OnListSelected?.Invoke(list);
+        }
+        #endregion
     }
 }

@@ -29,7 +29,7 @@ namespace Todoist.WinForms.Views.Components
         private void InitializeComponent()
         {
             this.borderPanel1 = new BorderPanel();
-            this.task1 = new Todoist.WinForms.Views.Components.TodoList();
+            this.task1 = new Todoist.WinForms.Views.Components.TodoListItem();
             this.columnHeader1 = new Todoist.WinForms.Views.Components.TodoListHeader();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -236,6 +236,6 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private TodoListHeader columnHeader1;
-        private TodoList task1;
+        private TodoListItem task1;
     }
 }

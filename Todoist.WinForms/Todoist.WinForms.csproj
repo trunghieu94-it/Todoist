@@ -82,11 +82,11 @@
     <Compile Include="Components\Sidebar.Designer.cs">
       <DependentUpon>Sidebar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\TodoLists.cs">
+    <Compile Include="Components\TodoListItems.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\TodoLists.Designer.cs">
-      <DependentUpon>TodoLists.cs</DependentUpon>
+    <Compile Include="Components\TodoListItems.Designer.cs">
+      <DependentUpon>TodoListItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Enums\TodoItemStatus.cs" />
     <Compile Include="Models\Enums\TodoListPriority.cs" />
@@ -121,11 +121,11 @@
     <Compile Include="Components\IconLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\TodoList.cs">
+    <Compile Include="Components\TodoListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\TodoList.Designer.cs">
-      <DependentUpon>TodoList.cs</DependentUpon>
+    <Compile Include="Components\TodoListItem.Designer.cs">
+      <DependentUpon>TodoListItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Headers\TodoListHeader.cs">
       <SubType>UserControl</SubType>
@@ -177,8 +177,8 @@
     <EmbeddedResource Include="Components\Sidebar.resx">
       <DependentUpon>Sidebar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\TodoLists.resx">
-      <DependentUpon>TodoLists.cs</DependentUpon>
+    <EmbeddedResource Include="Components\TodoListItems.resx">
+      <DependentUpon>TodoListItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -191,8 +191,8 @@
     <EmbeddedResource Include="Components\Headers\HeaderControl.resx">
       <DependentUpon>HeaderControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\TodoList.resx">
-      <DependentUpon>TodoList.cs</DependentUpon>
+    <EmbeddedResource Include="Components\TodoListItem.resx">
+      <DependentUpon>TodoListItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Headers\TodoListHeader.resx">
       <DependentUpon>TodoListHeader.cs</DependentUpon>

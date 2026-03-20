@@ -29,10 +29,10 @@ namespace Todoist.WinForms.Components
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flowListNames = new System.Windows.Forms.FlowLayoutPanel();
             this.picAddTodoList = new System.Windows.Forms.PictureBox();
             this.divider = new System.Windows.Forms.Panel();
             this.txtAddTodoList = new System.Windows.Forms.TextBox();
-            this.flowListNames = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNotes = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnPlanned = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnAchieved = new Todoist.WinForms.Views.Components.CustomButton();
@@ -58,6 +58,17 @@ namespace Todoist.WinForms.Components
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 601);
             this.panel1.TabIndex = 1;
+            // 
+            // flowListNames
+            // 
+            this.flowListNames.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.flowListNames.AutoScroll = true;
+            this.flowListNames.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowListNames.Location = new System.Drawing.Point(10, 333);
+            this.flowListNames.Name = "flowListNames";
+            this.flowListNames.Size = new System.Drawing.Size(180, 265);
+            this.flowListNames.TabIndex = 8;
+            this.flowListNames.WrapContents = false;
             // 
             // picAddTodoList
             // 
@@ -87,16 +98,6 @@ namespace Todoist.WinForms.Components
             this.txtAddTodoList.Size = new System.Drawing.Size(150, 29);
             this.txtAddTodoList.TabIndex = 4;
             this.txtAddTodoList.Text = "New todolist";
-            // 
-            // flowListNames
-            // 
-            this.flowListNames.AutoScroll = true;
-            this.flowListNames.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowListNames.Location = new System.Drawing.Point(10, 321);
-            this.flowListNames.Name = "flowListNames";
-            this.flowListNames.Size = new System.Drawing.Size(180, 277);
-            this.flowListNames.TabIndex = 8;
-            this.flowListNames.WrapContents = false;
             // 
             // btnNotes
             // 
