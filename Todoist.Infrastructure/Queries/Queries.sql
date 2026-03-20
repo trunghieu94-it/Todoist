@@ -37,6 +37,11 @@ CREATE TABLE TodoLists
 )
 GO
 
+UPDATE TodoLists
+SET Deadline = '2026-06-30 10:00:00'
+WHERE Id = 1
+GO
+
 CREATE TABLE TodoItems
 (
     Id INT IDENTITY(1,1) PRIMARY KEY,

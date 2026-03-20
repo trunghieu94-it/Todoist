@@ -69,7 +69,7 @@ namespace Todoist.WinForms.Views.Components
             // 
             this.dtpTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTime.Location = new System.Drawing.Point(328, 38);
+            this.dtpTime.Location = new System.Drawing.Point(188, 38);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowCheckBox = true;
             this.dtpTime.ShowUpDown = true;
@@ -78,12 +78,14 @@ namespace Todoist.WinForms.Views.Components
             // 
             // dtpDate
             // 
+            this.dtpDate.CustomFormat = "dd/MM/yyyy";
             this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDate.Location = new System.Drawing.Point(31, 38);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpDate.ShowCheckBox = true;
-            this.dtpDate.Size = new System.Drawing.Size(291, 29);
+            this.dtpDate.Size = new System.Drawing.Size(151, 29);
             this.dtpDate.TabIndex = 12;
             // 
             // btnDetail
