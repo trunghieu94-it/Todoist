@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -14,6 +13,7 @@ namespace Todoist.WinForms.Components
         {
             InitializeComponent();
 
+            // Subcribe events
             TodoListsService.Instance.OnListsChanged += RenderTodoLists;
         }
 

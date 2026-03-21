@@ -15,12 +15,6 @@ namespace Todoist.WinForms.Views
         }
 
         #region Methods
-        protected override async void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            await TodoListsService.Instance.GetTodoListsAsync();
-        }
 
         public void LoadView(UserControl view)
         {
@@ -31,6 +25,14 @@ namespace Todoist.WinForms.Views
         #endregion
 
         #region Events
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            // Call Services
+            await TodoListsService.Instance.GetTodoListsAsync();
+        }
+
         private void Sidebar_OnMenuClick(string menu)
         {
             switch (menu)

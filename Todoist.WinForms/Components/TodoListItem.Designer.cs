@@ -140,6 +140,10 @@ namespace Todoist.WinForms.Views.Components
             this.cboPriority.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboPriority.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPriority.FormattingEnabled = true;
+            this.cboPriority.Items.AddRange(new object[] {
+            "Low",
+            "Medium",
+            "High"});
             this.cboPriority.Location = new System.Drawing.Point(512, 3);
             this.cboPriority.Name = "cboPriority";
             this.cboPriority.Size = new System.Drawing.Size(88, 29);

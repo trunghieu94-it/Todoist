@@ -29,8 +29,7 @@ namespace Todoist.WinForms.Views.Components
         private void InitializeComponent()
         {
             this.borderPanel1 = new BorderPanel();
-            this.task1 = new Todoist.WinForms.Views.Components.TodoListItem();
-            this.columnHeader1 = new Todoist.WinForms.Views.Components.TodoListHeader();
+            this.todoItems1 = new Todoist.WinForms.Components.TodoItems();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.customButton2 = new Todoist.WinForms.Views.Components.CustomButton();
@@ -49,8 +48,7 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.BackColor = System.Drawing.Color.White;
             this.borderPanel1.BorderColor = System.Drawing.Color.Black;
             this.borderPanel1.BorderThickness = 0;
-            this.borderPanel1.Controls.Add(this.task1);
-            this.borderPanel1.Controls.Add(this.columnHeader1);
+            this.borderPanel1.Controls.Add(this.todoItems1);
             this.borderPanel1.Controls.Add(this.label2);
             this.borderPanel1.Controls.Add(this.label1);
             this.borderPanel1.Controls.Add(this.customButton2);
@@ -67,23 +65,15 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.Size = new System.Drawing.Size(700, 490);
             this.borderPanel1.TabIndex = 0;
             // 
-            // task1
+            // todoItems1
             // 
-            this.task1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.todoItems1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.task1.Location = new System.Drawing.Point(22, 282);
-            this.task1.Name = "task1";
-            this.task1.Size = new System.Drawing.Size(655, 35);
-            this.task1.TabIndex = 8;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.columnHeader1.Location = new System.Drawing.Point(22, 241);
-            this.columnHeader1.Name = "columnHeader1";
-            this.columnHeader1.Size = new System.Drawing.Size(655, 35);
-            this.columnHeader1.TabIndex = 7;
+            this.todoItems1.Location = new System.Drawing.Point(22, 241);
+            this.todoItems1.Name = "todoItems1";
+            this.todoItems1.Size = new System.Drawing.Size(655, 249);
+            this.todoItems1.TabIndex = 7;
             // 
             // label2
             // 
@@ -205,9 +195,9 @@ namespace Todoist.WinForms.Views.Components
             this.lblBreadcrumbs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBreadcrumbs.Location = new System.Drawing.Point(19, 14);
             this.lblBreadcrumbs.Name = "lblBreadcrumbs";
-            this.lblBreadcrumbs.Size = new System.Drawing.Size(148, 17);
+            this.lblBreadcrumbs.Size = new System.Drawing.Size(85, 17);
             this.lblBreadcrumbs.TabIndex = 0;
-            this.lblBreadcrumbs.Text = "Learn English -> Work 1";
+            this.lblBreadcrumbs.Text = "Learn English";
             // 
             // TodoListDetails
             // 
@@ -235,7 +225,6 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private TodoListHeader columnHeader1;
-        private TodoListItem task1;
+        private WinForms.Components.TodoItems todoItems1;
     }
 }
