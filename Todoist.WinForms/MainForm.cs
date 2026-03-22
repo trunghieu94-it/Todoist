@@ -1,4 +1,7 @@
+using System;
 using System.Windows.Forms;
+
+using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views
 {
@@ -8,10 +11,17 @@ namespace Todoist.WinForms.Views
         {
             InitializeComponent();
 
-            sidebar1.OnMenuClick += Sidebar_OnMenuClick;
+            sidebar.OnMenuClick += Sidebar_OnMenuClick;
         }
 
         #region Methods
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            await TodoListsService.Instance.GetTodoListsAsync();
+        }
+
         public void LoadView(UserControl view)
         {
             contentPanel.Controls.Clear();

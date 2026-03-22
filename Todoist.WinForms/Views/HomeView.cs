@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.Windows.Forms;
+
+using Todoist.WinForms.Models;
 
 namespace Todoist.WinForms.Views
 {
