@@ -29,7 +29,7 @@ namespace Todoist.WinForms.Views.Components
         private void InitializeComponent()
         {
             this.borderPanel1 = new BorderPanel();
-            this.todoItems1 = new Todoist.WinForms.Components.TodoItems();
+            this.todoItems1 = new Todoist.WinForms.Components.TodoItemsView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.customButton2 = new Todoist.WinForms.Views.Components.CustomButton();
@@ -225,6 +225,6 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private WinForms.Components.TodoItems todoItems1;
+        private WinForms.Components.TodoItemsView todoItems1;
     }
 }

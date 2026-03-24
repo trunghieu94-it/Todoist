@@ -1,6 +1,6 @@
 namespace Todoist.WinForms.Views.Components
 {
-    partial class TodoListItem
+    partial class TodoListView
     {
         /// <summary> 
         /// Required designer variable.
@@ -112,6 +112,7 @@ namespace Todoist.WinForms.Views.Components
             this.btnDetail.Text = "Detail";
             this.btnDetail.TextColor = System.Drawing.Color.Black;
             this.btnDetail.UseVisualStyleBackColor = false;
+            this.btnDetail.Click += new System.EventHandler(this.BtnDetail_Click);
             // 
             // iconDelete
             // 

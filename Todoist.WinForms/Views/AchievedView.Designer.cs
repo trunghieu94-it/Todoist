@@ -33,7 +33,7 @@ namespace Todoist.WinForms.Views
             this.addTodoList1 = new Todoist.WinForms.Views.Components.AddTodoList();
             this.btnDelete = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnSelect = new Todoist.WinForms.Views.Components.CustomButton();
-            this.todoLists1 = new Todoist.WinForms.Components.TodoListItems();
+            this.todoLists1 = new Todoist.WinForms.Components.TodoListsView();
             this.SuspendLayout();
             // 
             // header
@@ -140,6 +140,6 @@ namespace Todoist.WinForms.Views
         private Components.AddTodoList addTodoList1;
         private Components.CustomButton btnDelete;
         private Components.CustomButton btnSelect;
-        private WinForms.Components.TodoListItems todoLists1;
+        private WinForms.Components.TodoListsView todoLists1;
     }
 }

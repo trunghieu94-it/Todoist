@@ -1,6 +1,6 @@
 namespace Todoist.WinForms.Components
 {
-    partial class TodoListItems
+    partial class TodoListsView
     {
         /// <summary> 
         /// Required designer variable.

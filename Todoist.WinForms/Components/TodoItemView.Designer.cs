@@ -1,6 +1,6 @@
 namespace Todoist.WinForms.Components
 {
-    partial class TodoItem
+    partial class TodoItemView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,31 +28,31 @@ namespace Todoist.WinForms.Components
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtListName = new System.Windows.Forms.TextBox();
-            this.cboPriority = new System.Windows.Forms.ComboBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.iconDelete = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconDelete)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtListName
+            // txtTitle
             // 
-            this.txtListName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtListName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtListName.Location = new System.Drawing.Point(0, 0);
-            this.txtListName.Name = "txtListName";
-            this.txtListName.Size = new System.Drawing.Size(457, 29);
-            this.txtListName.TabIndex = 9;
+            this.txtTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Location = new System.Drawing.Point(0, 0);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(457, 29);
+            this.txtTitle.TabIndex = 9;
             // 
-            // cboPriority
+            // cboStatus
             // 
-            this.cboPriority.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboPriority.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboPriority.FormattingEnabled = true;
-            this.cboPriority.Location = new System.Drawing.Point(463, 0);
-            this.cboPriority.Name = "cboPriority";
-            this.cboPriority.Size = new System.Drawing.Size(88, 29);
-            this.cboPriority.TabIndex = 10;
+            this.cboStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(463, 0);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(88, 29);
+            this.cboStatus.TabIndex = 10;
             // 
             // iconDelete
             // 
@@ -66,14 +66,14 @@ namespace Todoist.WinForms.Components
             this.iconDelete.TabIndex = 11;
             this.iconDelete.TabStop = false;
             // 
-            // TodoItem
+            // TodoItemView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.iconDelete);
-            this.Controls.Add(this.txtListName);
-            this.Controls.Add(this.cboPriority);
-            this.Name = "TodoItem";
+            this.Controls.Add(this.txtTitle);
+            this.Controls.Add(this.cboStatus);
+            this.Name = "TodoItemView";
             this.Size = new System.Drawing.Size(581, 29);
             ((System.ComponentModel.ISupportInitialize)(this.iconDelete)).EndInit();
             this.ResumeLayout(false);
@@ -84,7 +84,7 @@ namespace Todoist.WinForms.Components
         #endregion
 
         private System.Windows.Forms.PictureBox iconDelete;
-        private System.Windows.Forms.TextBox txtListName;
-        private System.Windows.Forms.ComboBox cboPriority;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.ComboBox cboStatus;
     }
 }

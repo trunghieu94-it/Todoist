@@ -10,18 +10,18 @@ namespace Todoist.WinForms.Services
     {
         private readonly ApiClient _apiClient;
 
+        private TodoListsService()
+        {
+            _apiClient = new ApiClient();
+        }
+
         public static TodoListsService Instance { get; } = new TodoListsService();
 
         private List<TodoList> _lists = new List<TodoList>();
 
         public event Action<List<TodoList>> OnListsChanged;
         public event Action<TodoList> OnListSelected;
-
-        private TodoListsService()
-        {
-            _apiClient = new ApiClient();
-        }
-
+        
         #region Events
         public async Task GetTodoListsAsync()
         {

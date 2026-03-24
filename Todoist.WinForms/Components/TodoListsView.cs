@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -7,9 +8,11 @@ using Todoist.WinForms.Views.Components;
 
 namespace Todoist.WinForms.Components
 {
-    public partial class TodoListItems : UserControl
+    public partial class TodoListsView : UserControl
     {
-        public TodoListItems()
+        public event Action<int> OnTodoListDetailRequested;
+
+        public TodoListsView()
         {
             InitializeComponent();
 
@@ -29,6 +32,13 @@ namespace Todoist.WinForms.Components
             {
                 var item = ListItem(list);
 
+                item.SetData(list);
+
+                item.OnDetailClicked += (listId) =>
+                {
+                    OnTodoListDetailRequested?.Invoke(listId);
+                };
+
                 item.Dock = DockStyle.Fill;
                 item.Margin = new Padding(0, 10, 0, 10);
 
@@ -43,9 +53,9 @@ namespace Todoist.WinForms.Components
             tableListItems.ResumeLayout();
         }
 
-        private TodoListItem ListItem(TodoList list)
+        private TodoListView ListItem(TodoList list)
         {
-            TodoListItem item = new TodoListItem();
+            TodoListView item = new TodoListView();
 
             item.ListName = list.ListName;
             item.Priority = list.ListPriority.ToString();

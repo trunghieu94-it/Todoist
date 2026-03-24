@@ -1,21 +1,19 @@
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
-using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views.Components
 {
-    public partial class TodoListItem : UserControl
+    public partial class TodoListView : UserControl
     {
-        public TodoListItem()
-        {
-            InitializeComponent();
-        }
-
         #region Fields
+        public int ListId { get; private set; }
+
+        public event Action<int> OnDetailClicked;
+        #endregion
+
+        #region Properties
         public string ListName
         {
             get => txtListName.Text;
@@ -29,7 +27,17 @@ namespace Todoist.WinForms.Views.Components
         }
         #endregion
 
+        public TodoListView()
+        {
+            InitializeComponent();
+        }
+
         #region Methods
+        public void SetData(TodoList list)
+        {
+            ListId = list.Id;
+        }
+
         public void DisplayDeadline(TodoList list)
         {
 
@@ -48,6 +56,13 @@ namespace Todoist.WinForms.Views.Components
                 dtpDate.Checked = false;
                 dtpTime.Checked = false;
             }
+        }
+        #endregion
+
+        #region Events
+        private void BtnDetail_Click(object sender, EventArgs e)
+        {
+            OnDetailClicked?.Invoke(ListId);
         }
         #endregion
     }

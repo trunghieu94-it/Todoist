@@ -31,7 +31,7 @@ namespace Todoist.WinForms.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotesView));
             this.btnDelete = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnSelect = new Todoist.WinForms.Views.Components.CustomButton();
-            this.todoLists1 = new Todoist.WinForms.Components.TodoListItems();
+            this.todoLists1 = new Todoist.WinForms.Components.TodoListsView();
             this.addTodoList1 = new Todoist.WinForms.Views.Components.AddTodoList();
             this.header = new Todoist.WinForms.Views.Components.HeaderControl();
             this.SuspendLayout();
@@ -137,7 +137,7 @@ namespace Todoist.WinForms.Views
 
         private Components.CustomButton btnDelete;
         private Components.CustomButton btnSelect;
-        private WinForms.Components.TodoListItems todoLists1;
+        private WinForms.Components.TodoListsView todoLists1;
         private Components.AddTodoList addTodoList1;
         private Components.HeaderControl header;
     }
