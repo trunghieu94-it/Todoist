@@ -82,16 +82,29 @@
     <Compile Include="Components\Sidebar.Designer.cs">
       <DependentUpon>Sidebar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\TodoListItems.cs">
+    <Compile Include="Components\TodoItemView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\TodoListItems.Designer.cs">
-      <DependentUpon>TodoListItems.cs</DependentUpon>
+    <Compile Include="Components\TodoItemView.Designer.cs">
+      <DependentUpon>TodoItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TodoItemsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\TodoItemsView.Designer.cs">
+      <DependentUpon>TodoItemsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TodoListsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\TodoListsView.Designer.cs">
+      <DependentUpon>TodoListsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Enums\TodoItemStatus.cs" />
     <Compile Include="Models\Enums\TodoListPriority.cs" />
     <Compile Include="Models\Enums\TodoListStatus.cs" />
     <Compile Include="Models\Enums\UserTodoListRole.cs" />
+    <Compile Include="Models\TodoItem.cs" />
     <Compile Include="Models\TodoList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,17 +134,11 @@
     <Compile Include="Components\IconLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\TodoListItem.cs">
+    <Compile Include="Components\TodoListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\TodoListItem.Designer.cs">
-      <DependentUpon>TodoListItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Components\Headers\TodoListHeader.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Components\Headers\TodoListHeader.Designer.cs">
-      <DependentUpon>TodoListHeader.cs</DependentUpon>
+    <Compile Include="Components\TodoListView.Designer.cs">
+      <DependentUpon>TodoListView.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Buttons\ToggleButton.cs">
       <SubType>Component</SubType>
@@ -143,6 +150,7 @@
       <DependentUpon>TodoListDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\ApiClient.cs" />
+    <Compile Include="Services\TodoItemsService.cs" />
     <Compile Include="Services\TodoListsService.cs" />
     <Compile Include="Views\HomeView.cs">
       <SubType>UserControl</SubType>
@@ -177,8 +185,14 @@
     <EmbeddedResource Include="Components\Sidebar.resx">
       <DependentUpon>Sidebar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\TodoListItems.resx">
-      <DependentUpon>TodoListItems.cs</DependentUpon>
+    <EmbeddedResource Include="Components\TodoItemView.resx">
+      <DependentUpon>TodoItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TodoItemsView.resx">
+      <DependentUpon>TodoItemsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TodoListsView.resx">
+      <DependentUpon>TodoListsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -191,11 +205,8 @@
     <EmbeddedResource Include="Components\Headers\HeaderControl.resx">
       <DependentUpon>HeaderControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\TodoListItem.resx">
-      <DependentUpon>TodoListItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Components\Headers\TodoListHeader.resx">
-      <DependentUpon>TodoListHeader.cs</DependentUpon>
+    <EmbeddedResource Include="Components\TodoListView.resx">
+      <DependentUpon>TodoListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\TodoListDetails.resx">
       <DependentUpon>TodoListDetails.cs</DependentUpon>

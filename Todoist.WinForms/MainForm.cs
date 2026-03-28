@@ -1,10 +1,19 @@
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Todoist.WinForms.Components;
+using Todoist.WinForms.Models;
 using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views
 {
+    /* ARCHITECTURE NOTE:
+        - TodoLists = global state → managed by service events
+        - TodoItems = contextual (by listId) → loaded via explicit calls here
+        - This form acts as the orchestrator between UI and services.
+    */
     public partial class MainForm : Form
     {
         public MainForm()
@@ -31,6 +40,14 @@ namespace Todoist.WinForms.Views
         #endregion
 
         #region Events
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            // Call Services
+            await TodoListsService.Instance.GetTodoListsAsync();
+        }
+
         private void Sidebar_OnMenuClick(string menu)
         {
             switch (menu)

@@ -30,7 +30,22 @@ namespace Todoist.Infrastructure.Repositories
             return await _connection.QueryAsync<TodoItem>(sql);
         }
 
-        public async Task<TodoItem?> GetByIdAsync(int id)
+        //public async Task<TodoItem?> GetByIdAsync(int id)
+        //{
+        //    var sql = $@"
+        //    SELECT 
+        //        Id,
+        //        TodoListId, 
+        //        Title,
+        //        ItemStatus,
+        //        CreatedAt
+        //    FROM {DbTables.TodoItems} 
+        //    WHERE Id = @Id
+        //    ";
+        //    return await _connection.QueryFirstOrDefaultAsync<TodoItem>(sql, new { Id = id });
+        //}
+
+        public async Task<IEnumerable<TodoItem>> GetByListIdAsync(int listId)
         {
             var sql = $@"
             SELECT 
@@ -40,9 +55,9 @@ namespace Todoist.Infrastructure.Repositories
                 ItemStatus,
                 CreatedAt
             FROM {DbTables.TodoItems} 
-            WHERE Id = @Id
+            WHERE TodoListId = @TodoListId
             ";
-            return await _connection.QueryFirstOrDefaultAsync<TodoItem>(sql, new { Id = id });
+            return await _connection.QueryAsync<TodoItem>(sql, new { TodoListId = listId });
         }
 
         public async Task<int> CreateAsync(TodoItem task)
