@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Todoist.WinForms.Components;
-using Todoist.WinForms.Models;
+
 using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views
@@ -24,12 +23,12 @@ namespace Todoist.WinForms.Views
         }
 
         #region Methods
-        protected override async void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
+        //protected override async void OnLoad(EventArgs e)
+        //{
+        //    base.OnLoad(e);
 
-            await TodoListsService.Instance.GetTodoListsAsync();
-        }
+        //    await TodoListsService.Instance.GetTodoListsAsync();
+        //}
 
         public void LoadView(UserControl view)
         {

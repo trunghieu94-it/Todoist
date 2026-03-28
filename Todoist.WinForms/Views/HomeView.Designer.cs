@@ -135,17 +135,6 @@ namespace Todoist.WinForms.Views
             this.header.TabIndex = 3;
             this.header.TitleIcon = ((System.Drawing.Image)(resources.GetObject("header.TitleIcon")));
             // 
-            // ListItems
-            // 
-            this.ListItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListItems.Location = new System.Drawing.Point(30, 226);
-            this.ListItems.Margin = new System.Windows.Forms.Padding(0);
-            this.ListItems.Name = "ListItems";
-            this.ListItems.Size = new System.Drawing.Size(900, 401);
-            this.ListItems.TabIndex = 8;
-            // 
             // HomeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
