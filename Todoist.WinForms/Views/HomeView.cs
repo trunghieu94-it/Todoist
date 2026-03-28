@@ -1,11 +1,14 @@
 using System;
 using System.Windows.Forms;
 
+using Todoist.WinForms.Views.Components;
+
 namespace Todoist.WinForms.Views
 {
     public partial class HomeView : UserControl
     {
         public event Action<int> OnTodoListDetailRequested;
+        public event Action<TodoListDetails> OnCloseClicked;
 
         public HomeView()
         {
@@ -15,10 +18,41 @@ namespace Todoist.WinForms.Views
             header.LblTitle = "Home";
             header.TitleIcon = Properties.Resources.home_2;
 
-            listItems.OnTodoListDetailRequested += (listId) =>
-            {
-                OnTodoListDetailRequested?.Invoke(listId);
-            };
+            listItems.OnTodoListDetailRequested += HandleDetailRequested;
         }
+
+        #region Methods
+        private void ShowTodoListDetails(int listId)
+        {
+            try
+            {
+                TodoListDetails detailsView = new TodoListDetails();
+                detailsView.SetListId(listId);
+
+                detailsView.OnCloseClicked += HandleCloseDetails;
+
+                detailsView.Dock = DockStyle.Fill;
+                contentPanel.Controls.Add(detailsView);
+                detailsView.BringToFront();
+            }
+            catch
+            {
+                MessageBox.Show("Don't show TodoListDetails");
+            }
+        }
+
+        private void HandleDetailRequested(int listId)
+        {
+            ShowTodoListDetails(listId);
+        }
+
+        private void HandleCloseDetails(TodoListDetails detailsView)
+        {
+            detailsView.OnCloseClicked -= HandleCloseDetails;
+
+            contentPanel.Controls.Remove(detailsView);
+            detailsView.Dispose();
+        }
+        #endregion
     }
 }

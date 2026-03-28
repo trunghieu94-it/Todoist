@@ -29,12 +29,40 @@ namespace Todoist.WinForms.Views
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeView));
+            this.contentPanel = new System.Windows.Forms.Panel();
+            this.listItems = new Todoist.WinForms.Components.TodoListsView();
             this.btnDelete = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnSelect = new Todoist.WinForms.Views.Components.CustomButton();
             this.addTodoItemPanel1 = new Todoist.WinForms.Views.Components.AddTodoList();
             this.header = new Todoist.WinForms.Views.Components.HeaderControl();
-            this.listItems = new Todoist.WinForms.Components.TodoListsView();
+            this.contentPanel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contentPanel.Controls.Add(this.listItems);
+            this.contentPanel.Controls.Add(this.btnDelete);
+            this.contentPanel.Controls.Add(this.btnSelect);
+            this.contentPanel.Controls.Add(this.addTodoItemPanel1);
+            this.contentPanel.Location = new System.Drawing.Point(30, 81);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(900, 559);
+            this.contentPanel.TabIndex = 9;
+            // 
+            // listItems
+            // 
+            this.listItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listItems.AutoScroll = true;
+            this.listItems.Location = new System.Drawing.Point(0, 103);
+            this.listItems.Margin = new System.Windows.Forms.Padding(0);
+            this.listItems.Name = "listItems";
+            this.listItems.Size = new System.Drawing.Size(900, 440);
+            this.listItems.TabIndex = 8;
             // 
             // btnDelete
             // 
@@ -92,7 +120,7 @@ namespace Todoist.WinForms.Views
             // 
             this.addTodoItemPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.addTodoItemPanel1.Location = new System.Drawing.Point(30, 81);
+            this.addTodoItemPanel1.Location = new System.Drawing.Point(0, 0);
             this.addTodoItemPanel1.Name = "addTodoItemPanel1";
             this.addTodoItemPanel1.Size = new System.Drawing.Size(900, 100);
             this.addTodoItemPanel1.TabIndex = 4;
@@ -107,30 +135,16 @@ namespace Todoist.WinForms.Views
             this.header.TabIndex = 3;
             this.header.TitleIcon = ((System.Drawing.Image)(resources.GetObject("header.TitleIcon")));
             // 
-            // listItems
-            // 
-            this.listItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listItems.AutoScroll = true;
-            this.listItems.Location = new System.Drawing.Point(30, 226);
-            this.listItems.Margin = new System.Windows.Forms.Padding(0);
-            this.listItems.Name = "listItems";
-            this.listItems.Size = new System.Drawing.Size(900, 401);
-            this.listItems.TabIndex = 8;
-            // 
             // HomeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listItems);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnSelect);
-            this.Controls.Add(this.addTodoItemPanel1);
+            this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.header);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "HomeView";
             this.Size = new System.Drawing.Size(960, 640);
+            this.contentPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -141,5 +155,6 @@ namespace Todoist.WinForms.Views
         private Components.CustomButton btnSelect;
         private Components.CustomButton btnDelete;
         private WinForms.Components.TodoListsView listItems;
+        private System.Windows.Forms.Panel contentPanel;
     }
 }

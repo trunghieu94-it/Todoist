@@ -119,7 +119,7 @@ namespace Todoist.WinForms.Views.Components
             this.iconDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconDelete.Image = global::Todoist.WinForms.Properties.Resources.close;
-            this.iconDelete.Location = new System.Drawing.Point(670, 11);
+            this.iconDelete.Location = new System.Drawing.Point(669, 11);
             this.iconDelete.Name = "iconDelete";
             this.iconDelete.Size = new System.Drawing.Size(14, 14);
             this.iconDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -160,12 +160,12 @@ namespace Todoist.WinForms.Views.Components
             this.chkTodoList.TabIndex = 0;
             this.chkTodoList.UseVisualStyleBackColor = true;
             // 
-            // TodoListItem
+            // TodoListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.borderPanel1);
-            this.Name = "TodoListItem";
+            this.Name = "TodoListView";
             this.Size = new System.Drawing.Size(687, 70);
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();

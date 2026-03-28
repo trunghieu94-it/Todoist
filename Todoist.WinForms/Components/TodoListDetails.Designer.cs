@@ -29,7 +29,8 @@ namespace Todoist.WinForms.Views.Components
         private void InitializeComponent()
         {
             this.borderPanel1 = new BorderPanel();
-            this.todoItems1 = new Todoist.WinForms.Components.TodoItemsView();
+            this.todoItemsPanel = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.customButton2 = new Todoist.WinForms.Views.Components.CustomButton();
@@ -38,8 +39,9 @@ namespace Todoist.WinForms.Views.Components
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblComplete = new System.Windows.Forms.Label();
-            this.lblBreadcrumbs = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.borderPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,8 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.BackColor = System.Drawing.Color.White;
             this.borderPanel1.BorderColor = System.Drawing.Color.Black;
             this.borderPanel1.BorderThickness = 0;
-            this.borderPanel1.Controls.Add(this.todoItems1);
+            this.borderPanel1.Controls.Add(this.todoItemsPanel);
+            this.borderPanel1.Controls.Add(this.btnClose);
             this.borderPanel1.Controls.Add(this.label2);
             this.borderPanel1.Controls.Add(this.label1);
             this.borderPanel1.Controls.Add(this.customButton2);
@@ -57,7 +60,7 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.Controls.Add(this.textBox1);
             this.borderPanel1.Controls.Add(this.pictureBox1);
             this.borderPanel1.Controls.Add(this.lblComplete);
-            this.borderPanel1.Controls.Add(this.lblBreadcrumbs);
+            this.borderPanel1.Controls.Add(this.lblName);
             this.borderPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.borderPanel1.Location = new System.Drawing.Point(0, 0);
             this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -65,15 +68,28 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.Size = new System.Drawing.Size(700, 490);
             this.borderPanel1.TabIndex = 0;
             // 
-            // todoItems1
+            // todoItemsPanel
             // 
-            this.todoItems1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.todoItemsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.todoItems1.Location = new System.Drawing.Point(22, 241);
-            this.todoItems1.Name = "todoItems1";
-            this.todoItems1.Size = new System.Drawing.Size(655, 249);
-            this.todoItems1.TabIndex = 7;
+            this.todoItemsPanel.Location = new System.Drawing.Point(22, 241);
+            this.todoItemsPanel.Name = "todoItemsPanel";
+            this.todoItemsPanel.Size = new System.Drawing.Size(655, 249);
+            this.todoItemsPanel.TabIndex = 9;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Image = global::Todoist.WinForms.Properties.Resources.close;
+            this.btnClose.Location = new System.Drawing.Point(659, 17);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(18, 18);
+            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnClose.TabIndex = 8;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // label2
             // 
@@ -170,7 +186,7 @@ namespace Todoist.WinForms.Views.Components
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Todoist.WinForms.Properties.Resources.archieve;
-            this.pictureBox1.Location = new System.Drawing.Point(653, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(619, 14);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -182,22 +198,22 @@ namespace Todoist.WinForms.Views.Components
             this.lblComplete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblComplete.AutoSize = true;
             this.lblComplete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComplete.Location = new System.Drawing.Point(532, 17);
+            this.lblComplete.Location = new System.Drawing.Point(498, 17);
             this.lblComplete.Name = "lblComplete";
             this.lblComplete.Size = new System.Drawing.Size(113, 17);
             this.lblComplete.TabIndex = 1;
             this.lblComplete.Text = "Mark as complete";
             // 
-            // lblBreadcrumbs
+            // lblName
             // 
-            this.lblBreadcrumbs.AutoSize = true;
-            this.lblBreadcrumbs.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lblBreadcrumbs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreadcrumbs.Location = new System.Drawing.Point(19, 14);
-            this.lblBreadcrumbs.Name = "lblBreadcrumbs";
-            this.lblBreadcrumbs.Size = new System.Drawing.Size(85, 17);
-            this.lblBreadcrumbs.TabIndex = 0;
-            this.lblBreadcrumbs.Text = "Learn English";
+            this.lblName.AutoSize = true;
+            this.lblName.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(19, 14);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(85, 17);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Learn English";
             // 
             // TodoListDetails
             // 
@@ -208,6 +224,7 @@ namespace Todoist.WinForms.Views.Components
             this.Size = new System.Drawing.Size(700, 490);
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -216,7 +233,7 @@ namespace Todoist.WinForms.Views.Components
         #endregion
 
         private BorderPanel borderPanel1;
-        private System.Windows.Forms.Label lblBreadcrumbs;
+        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblComplete;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
@@ -225,6 +242,7 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private WinForms.Components.TodoItemsView todoItems1;
+        private System.Windows.Forms.PictureBox btnClose;
+        private System.Windows.Forms.Panel todoItemsPanel;
     }
 }

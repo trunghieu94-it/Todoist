@@ -41,7 +41,7 @@ namespace Todoist.WinForms.Components
             this.txtTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(0, 0);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(457, 29);
+            this.txtTitle.Size = new System.Drawing.Size(435, 29);
             this.txtTitle.TabIndex = 9;
             // 
             // cboStatus
@@ -49,9 +49,12 @@ namespace Todoist.WinForms.Components
             this.cboStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(463, 0);
+            this.cboStatus.Items.AddRange(new object[] {
+            "Pending",
+            "Completed"});
+            this.cboStatus.Location = new System.Drawing.Point(441, 0);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(88, 29);
+            this.cboStatus.Size = new System.Drawing.Size(110, 29);
             this.cboStatus.TabIndex = 10;
             // 
             // iconDelete

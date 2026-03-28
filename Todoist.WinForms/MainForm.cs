@@ -16,19 +16,11 @@ namespace Todoist.WinForms.Views
     */
     public partial class MainForm : Form
     {
-        public event Action<int, List<TodoItem>> OnTodoItemsLoaded;
-
-        private TodoItemsView _todoItemsView;
-
         public MainForm()
         {
             InitializeComponent();
 
             sidebar.OnMenuClick += Sidebar_OnMenuClick;
-            homeView.OnTodoListDetailRequested += async (listId) =>
-            {
-                await LoadTodoItemsAsync(listId);
-            };
         }
 
         #region Methods
@@ -38,32 +30,6 @@ namespace Todoist.WinForms.Views
             view.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(view);
         }
-
-        private async Task LoadTodoItemsAsync(int listId)
-        {
-            try
-            {
-                var items = await TodoItemsService.Instance.GetTodoItemsAsync(listId);
-
-                if (_todoItemsView == null)
-                {
-                    _todoItemsView = new TodoItemsView();
-                    _todoItemsView.Dock = DockStyle.Fill;
-
-                    contentPanel.Controls.Add(_todoItemsView);
-                }
-
-                _todoItemsView.SetListId(listId);
-                _todoItemsView.SetData(listId, items);
-
-                _todoItemsView.BringToFront();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load todo items");
-            }
-        }
-
         #endregion
 
         #region Events

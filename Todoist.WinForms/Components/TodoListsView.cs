@@ -34,7 +34,7 @@ namespace Todoist.WinForms.Components
 
                 item.SetData(list);
 
-                item.OnDetailClicked += (listId) =>
+                item.OnDetailClicked += (listId) => // subcribe
                 {
                     OnTodoListDetailRequested?.Invoke(listId);
                 };
