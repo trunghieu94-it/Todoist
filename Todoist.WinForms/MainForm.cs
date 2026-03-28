@@ -24,6 +24,13 @@ namespace Todoist.WinForms.Views
         }
 
         #region Methods
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            await TodoListsService.Instance.GetTodoListsAsync();
+        }
+
         public void LoadView(UserControl view)
         {
             contentPanel.Controls.Clear();
