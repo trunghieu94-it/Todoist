@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -15,26 +13,27 @@ namespace Todoist.WinForms.Views
     */
     public partial class MainForm : Form
     {
+        public event Action<int> OnTodoListDetailRequested;
+
         public MainForm()
         {
             InitializeComponent();
 
             sidebar.OnMenuClick += Sidebar_OnMenuClick;
+            sidebar.OnListLabelClicked += HandleLabelClicked;
         }
 
         #region Methods
-        //protected override async void OnLoad(EventArgs e)
-        //{
-        //    base.OnLoad(e);
-
-        //    await TodoListsService.Instance.GetTodoListsAsync();
-        //}
-
         public void LoadView(UserControl view)
         {
             contentPanel.Controls.Clear();
             view.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(view);
+        }
+
+        private void HandleLabelClicked(int listId)
+        {
+            homeView.HandleDetailRequested(listId);
         }
         #endregion
 

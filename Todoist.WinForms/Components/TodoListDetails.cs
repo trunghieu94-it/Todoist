@@ -10,7 +10,7 @@ namespace Todoist.WinForms.Views.Components
     {
         private TodoItemsView _todoItemsView;
 
-        public event Action<TodoListDetails> OnCloseClicked;
+        public event Action OnCloseClicked;
 
         public string Title
         {
@@ -51,7 +51,7 @@ namespace Todoist.WinForms.Views.Components
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            OnCloseClicked?.Invoke(this);
+            OnCloseClicked?.Invoke();
         }
     }
 }
