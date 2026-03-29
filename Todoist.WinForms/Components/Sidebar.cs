@@ -12,6 +12,8 @@ namespace Todoist.WinForms.Components
     {
         // Fields
         public event Action<string> OnMenuClick;
+        // Delegate chứa model
+        public event Action<CreateTodoList> OnSubmitted;
 
         public Sidebar()
         {
@@ -45,6 +47,32 @@ namespace Todoist.WinForms.Components
             lbl.Cursor = Cursors.Hand;
             return lbl;
         }
+
+        private bool TryBuildModel(out CreateTodoList model)
+        {
+            model = null;
+            errorProvider.Clear(); // dùng ErrorProvider để highlight field
+
+            var name = txtAddTodoList.Text.Trim();
+            if (string.IsNullOrEmpty(name))
+            {
+                errorProvider.SetError(txtAddTodoList, "Tên danh sách không được để trống");
+                txtAddTodoList.Focus();
+                return false;
+            }
+            model = new CreateTodoList
+            {
+                ListName = name
+            };
+            ResetForm(); // reset form sau khi tạo model thành công
+            return true;
+        }
+
+        public void ResetForm()
+        {
+            txtAddTodoList.Clear();
+            errorProvider.Clear();
+        }
         #endregion
 
         #region Events
@@ -63,6 +91,25 @@ namespace Todoist.WinForms.Components
         private void BtnNotes_Click(object sender, EventArgs e)
         {
             OnMenuClick?.Invoke("Notes");
+        }
+        private void PicAddTodoList_Click(object sender, EventArgs e)
+        {
+            if (!TryBuildModel(out var model))
+                return; // lỗi đã hiển thị bên trong TryBuildModel
+
+            OnSubmitted?.Invoke(model);
+        }
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PicAddTodoList_Click(sender, EventArgs.Empty);
+                e.Handled = true; // ngăn chặn tiếng "ding" khi nhấn Enter
+            }
+        }
+        private void TextBox_Click(object sender, EventArgs e)
+        {
+            txtAddTodoList.Clear();
         }
         #endregion
     }
