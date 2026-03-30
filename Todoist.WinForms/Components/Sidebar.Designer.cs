@@ -28,6 +28,7 @@ namespace Todoist.WinForms.Components
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowListNames = new System.Windows.Forms.FlowLayoutPanel();
             this.picAddTodoList = new System.Windows.Forms.PictureBox();
@@ -37,8 +38,10 @@ namespace Todoist.WinForms.Components
             this.btnPlanned = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnAchieved = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnHome = new Todoist.WinForms.Views.Components.CustomButton();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,6 +84,7 @@ namespace Todoist.WinForms.Components
             this.picAddTodoList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picAddTodoList.TabIndex = 6;
             this.picAddTodoList.TabStop = false;
+            this.picAddTodoList.Click += new System.EventHandler(this.PicAddTodoList_Click);
             // 
             // divider
             // 
@@ -99,6 +103,7 @@ namespace Todoist.WinForms.Components
             this.txtAddTodoList.Size = new System.Drawing.Size(150, 29);
             this.txtAddTodoList.TabIndex = 4;
             this.txtAddTodoList.Text = "New todolist";
+            this.txtAddTodoList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             this.txtAddTodoList.Enter += new System.EventHandler(this.TxtTitle_Enter);
             this.txtAddTodoList.Leave += new System.EventHandler(this.TxtTitle_Leave);
             // 
@@ -210,6 +215,10 @@ namespace Todoist.WinForms.Components
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.BtnHome_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // Sidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +229,7 @@ namespace Todoist.WinForms.Components
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -235,5 +245,6 @@ namespace Todoist.WinForms.Components
         private Views.Components.CustomButton btnAchieved;
         private Views.Components.CustomButton btnHome;
         private System.Windows.Forms.FlowLayoutPanel flowListNames;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

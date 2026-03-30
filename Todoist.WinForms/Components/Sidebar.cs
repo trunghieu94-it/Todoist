@@ -10,7 +10,11 @@ namespace Todoist.WinForms.Components
 {
     public partial class Sidebar : UserControl
     {
+        private TodoListsService _service = TodoListsService.Instance;
+
+        // Delegates
         public event Action<string> OnMenuClick;
+        public event Action<CreateTodoList> OnSubmitted;
         public event Action<int> OnListLabelClicked;
 
         public Sidebar()
@@ -51,6 +55,38 @@ namespace Todoist.WinForms.Components
 
             return lbl;
         }
+
+        private bool TryCreateTodoList(out CreateTodoList modelList)
+        {
+            modelList = null;
+            errorProvider.Clear(); // dùng ErrorProvider để highlight field
+
+            var name = txtAddTodoList.Text.Trim();
+
+            var (isValidName, nameError) = _service.ValidateName(name);
+
+            if (!isValidName)
+            {
+                errorProvider.SetIconPadding(txtAddTodoList, -25);
+                errorProvider.SetError(txtAddTodoList, nameError);
+                txtAddTodoList.Focus();
+                return false;
+            }
+
+            modelList = new CreateTodoList
+            {
+                ListName = name
+            };
+
+            ResetForm(); // reset form sau khi tạo model thành công
+            return true;
+        }
+
+        public void ResetForm()
+        {
+            txtAddTodoList.Clear();
+            errorProvider.Clear();
+        }
         #endregion
 
         #region Events
@@ -70,7 +106,23 @@ namespace Todoist.WinForms.Components
         {
             OnMenuClick?.Invoke("Notes");
         }
+        
+        private void PicAddTodoList_Click(object sender, EventArgs e)
+        {
+            if (!TryCreateTodoList(out var model))
+                return; // lỗi đã hiển thị bên trong TryBuildModel
 
+            OnSubmitted?.Invoke(model);
+        }
+        
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PicAddTodoList_Click(sender, EventArgs.Empty);
+                e.Handled = true; // ngăn chặn tiếng "ding" khi nhấn Enter
+        }
+        
         private void LabelList_Click(object sender, EventArgs args)
         {
             var lbl = sender as Label;

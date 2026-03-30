@@ -1,6 +1,8 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
+using Todoist.WinForms.Models;
 using Todoist.WinForms.Views.Components;
 
 namespace Todoist.WinForms.Views
@@ -11,6 +13,9 @@ namespace Todoist.WinForms.Views
 
         public event Action<int> OnTodoListDetailRequested;
         public event Action OnCloseClicked;
+        public event Action<CreateTodoList> OnTodoListSubmitted;
+        
+
 
         public HomeView()
         {
@@ -20,7 +25,11 @@ namespace Todoist.WinForms.Views
             header.LblTitle = "Home";
             header.TitleIcon = Properties.Resources.home_2;
 
+
+            //Subscribe events
             listItems.OnTodoListDetailRequested += HandleDetailRequested;
+            addTodoListPanel.OnSubmitted += (model) => OnTodoListSubmitted?.Invoke(model);
+
         }
 
         #region Methods
@@ -61,6 +70,6 @@ namespace Todoist.WinForms.Views
                 _detailsView.Hide();
             }
         }
+        #endregion
     }
-    #endregion
 }

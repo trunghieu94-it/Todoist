@@ -28,7 +28,7 @@ CREATE TABLE TodoLists
         -- 1 = Low, 2 = Medium, 3 = High
     ListStatus INT NOT NULL
         CONSTRAINT CK_TodoLists_Status CHECK (ListStatus BETWEEN 1 AND 3),
-        -- 1 = Active, 2 = Completed, 3 = Archived
+        -- 1 = Active, 2 = Completed, 3 = Archieved
     CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
     UpdatedAt DATETIME2 NULL,
 

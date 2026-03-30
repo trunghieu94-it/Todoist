@@ -28,6 +28,8 @@ namespace Todoist.WinForms.Views.Components
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.errorTxtAddTodoList = new System.Windows.Forms.ErrorProvider(this.components);
             this.borderPanel1 = new BorderPanel();
             this.txtNewTodoList = new System.Windows.Forms.TextBox();
             this.picAddTodoList = new System.Windows.Forms.PictureBox();
@@ -35,11 +37,16 @@ namespace Todoist.WinForms.Views.Components
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.picDeadline = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.errorTxtAddTodoList)).BeginInit();
             this.borderPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).BeginInit();
             this.borderPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDeadline)).BeginInit();
             this.SuspendLayout();
+            // 
+            // errorTxtAddTodoList
+            // 
+            this.errorTxtAddTodoList.ContainerControl = this;
             // 
             // borderPanel1
             // 
@@ -66,6 +73,7 @@ namespace Todoist.WinForms.Views.Components
             this.txtNewTodoList.Size = new System.Drawing.Size(640, 29);
             this.txtNewTodoList.TabIndex = 8;
             this.txtNewTodoList.WordWrap = false;
+            this.txtNewTodoList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
             // picAddTodoList
             // 
@@ -78,6 +86,7 @@ namespace Todoist.WinForms.Views.Components
             this.picAddTodoList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picAddTodoList.TabIndex = 7;
             this.picAddTodoList.TabStop = false;
+            this.picAddTodoList.Click += new System.EventHandler(this.PicAddTodoList_Click);
             // 
             // borderPanel2
             // 
@@ -100,7 +109,7 @@ namespace Todoist.WinForms.Views.Components
             this.dtpTime.Checked = false;
             this.dtpTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTime.Location = new System.Drawing.Point(202, 10);
+            this.dtpTime.Location = new System.Drawing.Point(221, 10);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowCheckBox = true;
             this.dtpTime.ShowUpDown = true;
@@ -140,6 +149,7 @@ namespace Todoist.WinForms.Views.Components
             this.Controls.Add(this.borderPanel2);
             this.Name = "AddTodoList";
             this.Size = new System.Drawing.Size(700, 100);
+            ((System.ComponentModel.ISupportInitialize)(this.errorTxtAddTodoList)).EndInit();
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).EndInit();
@@ -158,5 +168,6 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.PictureBox picDeadline;
         private System.Windows.Forms.DateTimePicker dtpTime;
         private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.ErrorProvider errorTxtAddTodoList;
     }
 }
