@@ -97,12 +97,15 @@ namespace Todoist.WinForms.Components
             // txtAddTodoList
             // 
             this.txtAddTodoList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddTodoList.ForeColor = System.Drawing.Color.Gray;
             this.txtAddTodoList.Location = new System.Drawing.Point(10, 286);
             this.txtAddTodoList.Name = "txtAddTodoList";
             this.txtAddTodoList.Size = new System.Drawing.Size(150, 29);
             this.txtAddTodoList.TabIndex = 4;
             this.txtAddTodoList.Text = "New todolist";
             this.txtAddTodoList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
+            this.txtAddTodoList.Enter += new System.EventHandler(this.TxtTitle_Enter);
+            this.txtAddTodoList.Leave += new System.EventHandler(this.TxtTitle_Leave);
             // 
             // btnNotes
             // 

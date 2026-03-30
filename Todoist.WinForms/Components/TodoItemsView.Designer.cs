@@ -31,8 +31,8 @@ namespace Todoist.WinForms.Components
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tableTodoItems = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +53,7 @@ namespace Todoist.WinForms.Components
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(597, 0);
+            this.label2.Location = new System.Drawing.Point(652, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 21);
             this.label2.TabIndex = 2;
@@ -70,16 +70,6 @@ namespace Todoist.WinForms.Components
             this.panel1.Size = new System.Drawing.Size(797, 228);
             this.panel1.TabIndex = 3;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(797, 21);
-            this.panel2.TabIndex = 4;
-            // 
             // tableTodoItems
             // 
             this.tableTodoItems.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -95,13 +85,23 @@ namespace Todoist.WinForms.Components
             this.tableTodoItems.Size = new System.Drawing.Size(797, 228);
             this.tableTodoItems.TabIndex = 2;
             // 
-            // TodoItems
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(797, 21);
+            this.panel2.TabIndex = 4;
+            // 
+            // TodoItemsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "TodoItems";
+            this.Name = "TodoItemsView";
             this.Size = new System.Drawing.Size(797, 252);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

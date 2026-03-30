@@ -15,6 +15,7 @@ namespace Todoist.WinForms.Components
         // Delegates
         public event Action<string> OnMenuClick;
         public event Action<CreateTodoList> OnSubmitted;
+        public event Action<int> OnListLabelClicked;
 
         public Sidebar()
         {
@@ -37,6 +38,9 @@ namespace Todoist.WinForms.Components
         private Label LblListName(TodoList list)
         {
             Label lbl = new Label();
+
+            lbl.Tag = list.Id;
+
             lbl.Text = list.ListName;
             lbl.TextAlign = ContentAlignment.MiddleLeft;
 
@@ -46,6 +50,9 @@ namespace Todoist.WinForms.Components
 
             lbl.Font = new Font("Segoe UI", 12);
             lbl.Cursor = Cursors.Hand;
+
+            lbl.Click += LabelList_Click;
+
             return lbl;
         }
 
@@ -99,6 +106,7 @@ namespace Todoist.WinForms.Components
         {
             OnMenuClick?.Invoke("Notes");
         }
+        
         private void PicAddTodoList_Click(object sender, EventArgs e)
         {
             if (!TryCreateTodoList(out var model))
@@ -106,12 +114,40 @@ namespace Todoist.WinForms.Components
 
             OnSubmitted?.Invoke(model);
         }
+        
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 PicAddTodoList_Click(sender, EventArgs.Empty);
                 e.Handled = true; // ngăn chặn tiếng "ding" khi nhấn Enter
+        }
+        
+        private void LabelList_Click(object sender, EventArgs args)
+        {
+            var lbl = sender as Label;
+
+            if (lbl?.Tag is int listId)
+            {
+                OnListLabelClicked?.Invoke(listId);
+            }
+        }
+
+        private void TxtTitle_Enter(object sender, EventArgs e)
+        {
+            if (txtAddTodoList.Text == "New todolist")
+            {
+                txtAddTodoList.Text = "";
+                txtAddTodoList.ForeColor = Color.Black;
+            }
+        }
+
+        private void TxtTitle_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtAddTodoList.Text))
+            {
+                txtAddTodoList.Text = "New todolist";
+                txtAddTodoList.ForeColor = Color.Gray;
             }
         }
         #endregion

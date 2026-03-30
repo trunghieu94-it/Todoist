@@ -9,9 +9,13 @@ namespace Todoist.WinForms.Views
 {
     public partial class HomeView : UserControl
     {
+        private TodoListDetails _detailsView;
+
         public event Action<int> OnTodoListDetailRequested;
-        public event Action<TodoListDetails> OnCloseClicked;
+        public event Action OnCloseClicked;
         public event Action<CreateTodoList> OnTodoListSubmitted;
+        
+
 
         public HomeView()
         {
@@ -33,14 +37,20 @@ namespace Todoist.WinForms.Views
         {
             try
             {
-                TodoListDetails detailsView = new TodoListDetails();
-                detailsView.SetListId(listId);
+                if (_detailsView == null)
+                {
+                    _detailsView = new TodoListDetails();
 
-                detailsView.OnCloseClicked += HandleCloseDetails;
+                    _detailsView.OnCloseClicked += HandleCloseDetails;
 
-                detailsView.Dock = DockStyle.Fill;
-                contentPanel.Controls.Add(detailsView);
-                detailsView.BringToFront();
+                    _detailsView.Dock = DockStyle.Fill;
+                    contentPanel.Controls.Add(_detailsView);
+                }
+
+                _detailsView.SetListId(listId);
+
+                _detailsView.Show();
+                _detailsView.BringToFront();
             }
             catch
             {
@@ -48,19 +58,18 @@ namespace Todoist.WinForms.Views
             }
         }
 
-        private void HandleDetailRequested(int listId)
+        public void HandleDetailRequested(int listId)
         {
             ShowTodoListDetails(listId);
         }
 
-        private void HandleCloseDetails(TodoListDetails detailsView)
+        private void HandleCloseDetails()
         {
-            detailsView.OnCloseClicked -= HandleCloseDetails;
-
-            contentPanel.Controls.Remove(detailsView);
-            detailsView.Dispose();
+            if (_detailsView != null)
+            {
+                _detailsView.Hide();
+            }
         }
-
         #endregion
     }
 }

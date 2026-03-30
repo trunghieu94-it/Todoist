@@ -13,11 +13,13 @@ namespace Todoist.WinForms.Views
     */
     public partial class MainForm : Form
     {
-        #region
+        #region Views
         private PlannedView _plannedView;
         private AchievedView _achievedView;
         private NotesView _notesView;
         #endregion
+
+        public event Action<int> OnTodoListDetailRequested;
 
         public MainForm()
         {
@@ -26,6 +28,7 @@ namespace Todoist.WinForms.Views
             homeView.OnTodoListSubmitted += HandleTodoListCreatedAsync;
             sidebar.OnMenuClick += Sidebar_OnMenuClick;
             sidebar.OnSubmitted += HandleTodoListCreatedAsync;
+            sidebar.OnListLabelClicked += HandleLabelClicked;
         }
 
         #region Methods
@@ -34,6 +37,11 @@ namespace Todoist.WinForms.Views
             contentPanel.Controls.Clear();
             view.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(view);
+        }
+
+        private void HandleLabelClicked(int listId)
+        {
+            homeView.HandleDetailRequested(listId);
         }
         #endregion
 
