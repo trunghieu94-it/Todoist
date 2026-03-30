@@ -121,6 +121,7 @@ namespace Todoist.WinForms.Components
             {
                 PicAddTodoList_Click(sender, EventArgs.Empty);
                 e.Handled = true; // ngăn chặn tiếng "ding" khi nhấn Enter
+            }
         }
         
         private void LabelList_Click(object sender, EventArgs args)
