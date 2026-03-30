@@ -102,7 +102,6 @@ namespace Todoist.WinForms.Components
             this.txtAddTodoList.Size = new System.Drawing.Size(150, 29);
             this.txtAddTodoList.TabIndex = 4;
             this.txtAddTodoList.Text = "New todolist";
-            this.txtAddTodoList.Click += new System.EventHandler(this.TextBox_Click);
             this.txtAddTodoList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
             // btnNotes

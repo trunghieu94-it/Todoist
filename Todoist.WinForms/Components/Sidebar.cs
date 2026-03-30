@@ -10,9 +10,10 @@ namespace Todoist.WinForms.Components
 {
     public partial class Sidebar : UserControl
     {
-        // Fields
+        private TodoListsService _service = TodoListsService.Instance;
+
+        // Delegates
         public event Action<string> OnMenuClick;
-        // Delegate chứa model
         public event Action<CreateTodoList> OnSubmitted;
 
         public Sidebar()
@@ -48,22 +49,28 @@ namespace Todoist.WinForms.Components
             return lbl;
         }
 
-        private bool TryBuildModel(out CreateTodoList model)
+        private bool TryCreateTodoList(out CreateTodoList modelList)
         {
-            model = null;
+            modelList = null;
             errorProvider.Clear(); // dùng ErrorProvider để highlight field
 
             var name = txtAddTodoList.Text.Trim();
-            if (string.IsNullOrEmpty(name))
+
+            var (isValidName, nameError) = _service.ValidateName(name);
+
+            if (!isValidName)
             {
-                errorProvider.SetError(txtAddTodoList, "Tên danh sách không được để trống");
+                errorProvider.SetIconPadding(txtAddTodoList, -25);
+                errorProvider.SetError(txtAddTodoList, nameError);
                 txtAddTodoList.Focus();
                 return false;
             }
-            model = new CreateTodoList
+
+            modelList = new CreateTodoList
             {
                 ListName = name
             };
+
             ResetForm(); // reset form sau khi tạo model thành công
             return true;
         }
@@ -94,7 +101,7 @@ namespace Todoist.WinForms.Components
         }
         private void PicAddTodoList_Click(object sender, EventArgs e)
         {
-            if (!TryBuildModel(out var model))
+            if (!TryCreateTodoList(out var model))
                 return; // lỗi đã hiển thị bên trong TryBuildModel
 
             OnSubmitted?.Invoke(model);
@@ -106,10 +113,6 @@ namespace Todoist.WinForms.Components
                 PicAddTodoList_Click(sender, EventArgs.Empty);
                 e.Handled = true; // ngăn chặn tiếng "ding" khi nhấn Enter
             }
-        }
-        private void TextBox_Click(object sender, EventArgs e)
-        {
-            txtAddTodoList.Clear();
         }
         #endregion
     }

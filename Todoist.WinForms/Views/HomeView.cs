@@ -21,10 +21,10 @@ namespace Todoist.WinForms.Views
             header.LblTitle = "Home";
             header.TitleIcon = Properties.Resources.home_2;
 
-            listItems.OnTodoListDetailRequested += HandleDetailRequested;
 
-            //subscribe
-            addTodoItemPanel.OnSubmitted += (model) => OnTodoListSubmitted?.Invoke(model);
+            //Subscribe events
+            listItems.OnTodoListDetailRequested += HandleDetailRequested;
+            addTodoListPanel.OnSubmitted += (model) => OnTodoListSubmitted?.Invoke(model);
 
         }
 

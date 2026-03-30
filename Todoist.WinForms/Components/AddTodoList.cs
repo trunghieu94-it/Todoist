@@ -2,12 +2,15 @@ using System;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
+using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views.Components
 {
     public partial class AddTodoList : UserControl
     {
         #region Fields
+        private TodoListsService _service = TodoListsService.Instance;
+
         // Delegate chứa model
         public event Action<CreateTodoList> OnSubmitted;
         #endregion
@@ -18,40 +21,38 @@ namespace Todoist.WinForms.Views.Components
         }
 
         #region Methods
-        private bool TryBuildModel(out CreateTodoList model)
+        private bool TryCreateTodoList(out CreateTodoList modelList)
         {
-            model = null;
-            errorProvider.Clear(); // dùng ErrorProvider để highlight field
+            modelList = null;
+
+            errorTxtAddTodoList.Clear(); // dùng ErrorProvider để highlight field
 
             var name = txtNewTodoList.Text.Trim();
-            if (string.IsNullOrEmpty(name))
+            var deadline = GetDeadline();
+
+            var (isValidName, nameError) = _service.ValidateName(name);
+            var (isValidDeadline, deadlineError) = _service.ValidateDeadline(deadline);
+
+            if (!isValidName)
             {
-                errorProvider.SetError(txtNewTodoList, "Tên danh sách không được để trống");
+                errorTxtAddTodoList.SetIconPadding(txtNewTodoList, -25);
+                errorTxtAddTodoList.SetError(txtNewTodoList, nameError);
                 txtNewTodoList.Focus();
                 return false;
             }
 
-            DateTime? deadline = null;
-            if (dtpDate.Checked)  // checkbox bật/tắt deadline
+            if (!isValidDeadline)
             {
-                deadline = dtpDate.Value.Date;
-                if (dtpTime.Checked)
-                {
-                    deadline = deadline.Value.Add(dtpTime.Value.TimeOfDay);
-                }
-
-                if (deadline < DateTime.Today)
-                {
-                    errorProvider.SetError(dtpDate, "Deadline không được ở trong quá khứ");
-                    return false;
-                }
+                errorTxtAddTodoList.SetError(dtpDate, deadlineError);
+                return false;
             }
 
-            model = new CreateTodoList
+            modelList = new CreateTodoList
             {
                 ListName = name,
                 Deadline = deadline
             };
+
             ResetForm(); // reset form sau khi tạo model thành công
             return true;
         }
@@ -63,14 +64,29 @@ namespace Todoist.WinForms.Views.Components
             dtpDate.Checked = false;
             dtpTime.Value = DateTime.Now;
             dtpTime.Checked = false;
-            errorProvider.Clear();
+            errorTxtAddTodoList.Clear();
+        }
+
+        private DateTime? GetDeadline()
+        {
+            if (!dtpDate.Checked)
+                return null;
+
+            var deadline = dtpDate.Value.Date;
+
+            if (dtpTime.Checked)
+            {
+                deadline = deadline.Add(dtpTime.Value.TimeOfDay);
+            }
+
+            return deadline;
         }
         #endregion
 
         #region Events
         private void PicAddTodoList_Click(object sender, EventArgs e)
         {
-            if (!TryBuildModel(out var model))
+            if (!TryCreateTodoList(out var model))
                 return; // lỗi đã hiển thị bên trong TryBuildModel
 
             OnSubmitted?.Invoke(model);

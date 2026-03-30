@@ -29,6 +29,7 @@ namespace Todoist.WinForms.Views.Components
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.errorTxtAddTodoList = new System.Windows.Forms.ErrorProvider(this.components);
             this.borderPanel1 = new BorderPanel();
             this.txtNewTodoList = new System.Windows.Forms.TextBox();
             this.picAddTodoList = new System.Windows.Forms.PictureBox();
@@ -36,15 +37,16 @@ namespace Todoist.WinForms.Views.Components
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.picDeadline = new System.Windows.Forms.PictureBox();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorTxtAddTodoList)).BeginInit();
             this.borderPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).BeginInit();
             this.borderPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDeadline)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // errorTxtAddTodoList
+            // 
+            this.errorTxtAddTodoList.ContainerControl = this;
             // 
             // borderPanel1
             // 
@@ -107,7 +109,7 @@ namespace Todoist.WinForms.Views.Components
             this.dtpTime.Checked = false;
             this.dtpTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTime.Location = new System.Drawing.Point(202, 10);
+            this.dtpTime.Location = new System.Drawing.Point(221, 10);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowCheckBox = true;
             this.dtpTime.ShowUpDown = true;
@@ -139,14 +141,6 @@ namespace Todoist.WinForms.Views.Components
             this.picDeadline.TabIndex = 10;
             this.picDeadline.TabStop = false;
             // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // AddTodoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,13 +149,12 @@ namespace Todoist.WinForms.Views.Components
             this.Controls.Add(this.borderPanel2);
             this.Name = "AddTodoList";
             this.Size = new System.Drawing.Size(700, 100);
+            ((System.ComponentModel.ISupportInitialize)(this.errorTxtAddTodoList)).EndInit();
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).EndInit();
             this.borderPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picDeadline)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,7 +168,6 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.PictureBox picDeadline;
         private System.Windows.Forms.DateTimePicker dtpTime;
         private System.Windows.Forms.DateTimePicker dtpDate;
-        private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorTxtAddTodoList;
     }
 }

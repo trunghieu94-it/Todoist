@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Todoist.Domain.Dtos.Work;
-using Todoist.Domain.Enums;
-
 using Todoist.WinForms.Models;
 
 namespace Todoist.WinForms.Services
@@ -35,15 +32,8 @@ namespace Todoist.WinForms.Services
 
         public async Task PostTodoListAsync(CreateTodoList list)
         {
-            var dto = new CreateTodoListDto
-            {
-                ListName = list.ListName,
-                Deadline = list.Deadline,
-                ListPriority = (TodoListPriority)list.ListPriority,
-                ListStatus = (TodoListStatus)list.ListStatus,
-                UserId = list.UserId
-            };
-            var success = await _apiClient.PostAsync<TodoList>("todolists", dto);
+            var success = await _apiClient.PostAsync<TodoList>("todolists", list);
+
             if (success != null)
             {
                 await GetTodoListsAsync();
@@ -59,6 +49,25 @@ namespace Todoist.WinForms.Services
         public void SelectList(TodoList list)
         {
             OnListSelected?.Invoke(list);
+        }
+        #endregion
+
+        #region Validate Methods
+        public (bool IsValid, string Error) ValidateName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return (false, "Tên danh sách không được để trống!");
+            return (true, null);
+        }
+
+        public (bool IsValid, string Error) ValidateDeadline(DateTime? deadline)
+        {
+            if (deadline.HasValue && deadline < DateTime.Today)
+            {
+                return (false, "Deadline không được ở trong quá khứ!");
+            }
+
+            return (true, null);
         }
         #endregion
     }

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
@@ -24,19 +22,13 @@ namespace Todoist.WinForms.Views
         public MainForm()
         {
             InitializeComponent();
+
             homeView.OnTodoListSubmitted += HandleTodoListCreatedAsync;
-            sidebar.OnSubmitted += HandleTodoListCreatedAsync;
             sidebar.OnMenuClick += Sidebar_OnMenuClick;
+            sidebar.OnSubmitted += HandleTodoListCreatedAsync;
         }
 
         #region Methods
-        //protected override async void OnLoad(EventArgs e)
-        //{
-        //    base.OnLoad(e);
-
-        //    await TodoListsService.Instance.GetTodoListsAsync();
-        //}
-
         public void LoadView(UserControl view)
         {
             contentPanel.Controls.Clear();
