@@ -19,8 +19,8 @@ namespace Todoist.WinForms.Services
 
         private List<TodoItem> _items = new List<TodoItem>();
 
-        public event Action<List<TodoItem>> OnItemsChanged;
-        public event Action<TodoItem> OnItemSelected;
+        //public event Action<List<TodoItem>> OnItemsChanged;
+        //public event Action<TodoItem> OnItemSelected;
 
         #region Events
         public async Task<List<TodoItem>> GetTodoItemsAsync(int listId)

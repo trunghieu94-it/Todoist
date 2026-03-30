@@ -186,7 +186,7 @@ namespace Todoist.WinForms.Components
             this.btnAchieved.Text = "Achieved";
             this.btnAchieved.TextColor = System.Drawing.Color.Black;
             this.btnAchieved.UseVisualStyleBackColor = false;
-            this.btnAchieved.Click += new System.EventHandler(this.BtnPriority_Click);
+            this.btnAchieved.Click += new System.EventHandler(this.BtnAchieved_Click);
             // 
             // btnHome
             // 

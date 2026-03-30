@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
+using Todoist.WinForms.Models.Enums;
 using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views
@@ -13,64 +15,37 @@ namespace Todoist.WinForms.Views
     */
     public partial class MainForm : Form
     {
-        #region Views
-        private PlannedView _plannedView;
-        private AchievedView _achievedView;
-        private NotesView _notesView;
-        #endregion
-
-        public event Action<int> OnTodoListDetailRequested;
+        private Dictionary<AppScreen, ScreenConfig> _screens;
 
         public MainForm()
         {
             InitializeComponent();
-
-            homeView.OnTodoListSubmitted += HandleTodoListCreatedAsync;
-            sidebar.OnMenuClick += Sidebar_OnMenuClick;
-            sidebar.OnSubmitted += HandleTodoListCreatedAsync;
-            sidebar.OnListLabelClicked += HandleLabelClicked;
+            SubcribeEvents();
         }
 
         #region Methods
-        public void LoadView(UserControl view)
+        private void SubcribeEvents()
         {
-            contentPanel.Controls.Clear();
-            view.Dock = DockStyle.Fill;
-            contentPanel.Controls.Add(view);
+            homeView.OnTodoListSubmitted += HandleTodoListCreatedAsync;
+
+            sidebar.OnMenuClick += Navigate;
+            sidebar.OnSubmitted += HandleTodoListCreatedAsync;
+            sidebar.OnListLabelClicked += HandleLabelClicked;
         }
 
         private void HandleLabelClicked(int listId)
         {
             homeView.HandleDetailRequested(listId);
         }
-        #endregion
 
-        #region Events
-        protected override async void OnLoad(EventArgs e)
+        private void Navigate(AppScreen screen)
         {
-            base.OnLoad(e);
+            _screens = ScreenRegistry.Create();
 
-            // Call Services
-            await TodoListsService.Instance.GetTodoListsAsync();
-        }
+            var config = _screens[screen];
 
-        private void Sidebar_OnMenuClick(string menu)
-        {
-            switch (menu)
-            {
-                case "Home":
-                    LoadView(homeView ?? (homeView = new HomeView()));
-                    break;
-                case "Planned":
-                    LoadView(_plannedView ?? (_plannedView = new PlannedView()));
-                    break;
-                case "Achieved":
-                    LoadView(_achievedView ?? (_achievedView= new AchievedView()));
-                    break;
-                case "Notes":
-                    LoadView(_notesView ?? (_notesView = new NotesView()));
-                    break;
-            }
+            header.Title = config.Title;
+            header.TitleIcon = config.TitleIcon;
         }
 
         private async void HandleTodoListCreatedAsync(CreateTodoList model)
@@ -83,6 +58,16 @@ namespace Todoist.WinForms.Views
             {
                 MessageBox.Show($"Lỗi tạo danh sách: {ex.Message}");
             }
+        }
+        #endregion
+
+        #region Events
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            // Call Services
+            await TodoListsService.Instance.GetTodoListsAsync();
         }
         #endregion
     }
