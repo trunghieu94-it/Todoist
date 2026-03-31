@@ -28,7 +28,7 @@ namespace Todoist.WinForms.Views
         {
             homeView.OnTodoListSubmitted += HandleTodoListCreatedAsync;
 
-            sidebar.OnMenuClick += Navigate;
+            sidebar.OnMenuClick += NavigateAsync;
             sidebar.OnSubmitted += HandleTodoListCreatedAsync;
             sidebar.OnListLabelClicked += HandleLabelClicked;
         }
@@ -38,11 +38,13 @@ namespace Todoist.WinForms.Views
             homeView.HandleDetailRequested(listId);
         }
 
-        private void Navigate(AppScreen screen)
+        private async void NavigateAsync(AppScreen screen)
         {
             _screens = ScreenRegistry.Create();
 
             var config = _screens[screen];
+
+            await config.LoadDataAsync();
 
             header.Title = config.Title;
             header.TitleIcon = config.TitleIcon;

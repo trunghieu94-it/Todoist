@@ -1,4 +1,6 @@
+using System;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace Todoist.WinForms.Views
 {
@@ -6,6 +8,6 @@ namespace Todoist.WinForms.Views
     {
         public string Title { get; set; }
         public Image TitleIcon { get; set; }
-        //public Func<UserControl> CreateView { get; set; }
+        public Func<Task> LoadDataAsync { get; set; }
     }
 }

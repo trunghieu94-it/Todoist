@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
 using Todoist.WinForms.Models.Enums;
+using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views
 {
@@ -15,7 +16,8 @@ namespace Todoist.WinForms.Views
                 new ScreenConfig
                 {
                     Title = "Home",
-                    TitleIcon = Properties.Resources.home_2
+                    TitleIcon = Properties.Resources.home_2,
+                    LoadDataAsync = () => TodoListsService.Instance.GetTodoListsAsync()
                 }
             },
             {
@@ -23,7 +25,12 @@ namespace Todoist.WinForms.Views
                 new ScreenConfig
                 {
                     Title = "Achieved",
-                    TitleIcon = Properties.Resources.star
+                    TitleIcon = Properties.Resources.star,
+                    LoadDataAsync = () => TodoListsService.Instance.GetByFilterTodoListsAsync(new Models.TodoListFilter
+                    {
+                        Status = "Achieved",
+                        HasDeadline = null
+                    })
                 }
             },
             {
@@ -31,7 +38,12 @@ namespace Todoist.WinForms.Views
                 new ScreenConfig
                 {
                     Title = "Planned",
-                    TitleIcon = Properties.Resources.calendar
+                    TitleIcon = Properties.Resources.calendar,
+                    LoadDataAsync = () => TodoListsService.Instance.GetByFilterTodoListsAsync(new Models.TodoListFilter
+                    {
+                        Status = null,
+                        HasDeadline = true
+                    })
                 }
             },
             {
