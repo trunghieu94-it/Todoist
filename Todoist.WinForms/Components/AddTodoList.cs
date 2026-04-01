@@ -78,9 +78,14 @@ namespace Todoist.WinForms.Views.Components
             {
                 deadline = deadline.Add(dtpTime.Value.TimeOfDay);
             }
+            else
+            {
+                deadline = deadline.Add(new TimeSpan(23, 59, 0));
+            }
 
             return deadline;
         }
+
         #endregion
 
         #region Events

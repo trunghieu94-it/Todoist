@@ -28,8 +28,10 @@ namespace Todoist.WinForms.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.sidebar = new Todoist.WinForms.Components.Sidebar();
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.header = new Todoist.WinForms.Views.Components.HeaderControl();
             this.homeView = new Todoist.WinForms.Views.HomeView();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
@@ -45,20 +47,31 @@ namespace Todoist.WinForms.Views
             // contentPanel
             // 
             this.contentPanel.Controls.Add(this.homeView);
+            this.contentPanel.Controls.Add(this.header);
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentPanel.Location = new System.Drawing.Point(200, 0);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(784, 601);
             this.contentPanel.TabIndex = 1;
             // 
+            // header
+            // 
+            this.header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header.Title = "Home";
+            this.header.Location = new System.Drawing.Point(0, 0);
+            this.header.Name = "header";
+            this.header.Size = new System.Drawing.Size(784, 75);
+            this.header.TabIndex = 1;
+            this.header.TitleIcon = ((System.Drawing.Image)(resources.GetObject("header.TitleIcon")));
+            // 
             // homeView
             // 
             this.homeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homeView.Location = new System.Drawing.Point(0, 0);
+            this.homeView.Location = new System.Drawing.Point(0, 75);
             this.homeView.Margin = new System.Windows.Forms.Padding(0);
             this.homeView.Name = "homeView";
-            this.homeView.Size = new System.Drawing.Size(784, 601);
-            this.homeView.TabIndex = 0;
+            this.homeView.Size = new System.Drawing.Size(784, 526);
+            this.homeView.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -80,6 +93,7 @@ namespace Todoist.WinForms.Views
         #endregion
         private WinForms.Components.Sidebar sidebar;
         private System.Windows.Forms.Panel contentPanel;
+        private Components.HeaderControl header;
         private HomeView homeView;
     }
 }

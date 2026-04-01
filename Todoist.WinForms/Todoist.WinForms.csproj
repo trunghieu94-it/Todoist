@@ -100,6 +100,7 @@
     <Compile Include="Components\TodoListsView.Designer.cs">
       <DependentUpon>TodoListsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enums\AppScreen.cs" />
     <Compile Include="Models\Enums\TodoItemStatus.cs" />
     <Compile Include="Models\Enums\TodoListPriority.cs" />
     <Compile Include="Models\Enums\TodoListStatus.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Models\TodoItem.cs" />
     <Compile Include="Models\CreateTodoList.cs" />
     <Compile Include="Models\TodoList.cs" />
+    <Compile Include="Models\TodoListFilter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -151,6 +153,7 @@
       <DependentUpon>TodoListDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\ApiClient.cs" />
+    <Compile Include="Services\NotesService.cs" />
     <Compile Include="Services\TodoItemsService.cs" />
     <Compile Include="Services\TodoListsService.cs" />
     <Compile Include="Views\HomeView.cs">
@@ -165,24 +168,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\NotesView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\NotesView.Designer.cs">
-      <DependentUpon>NotesView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PlannedView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\PlannedView.Designer.cs">
-      <DependentUpon>PlannedView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AchievedView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\AchievedView.Designer.cs">
-      <DependentUpon>AchievedView.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Views\ScreenConfig.cs" />
+    <Compile Include="Views\ScreenRegistry.cs" />
     <EmbeddedResource Include="Components\Sidebar.resx">
       <DependentUpon>Sidebar.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,15 +204,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HomeView.resx">
       <DependentUpon>HomeView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\NotesView.resx">
-      <DependentUpon>NotesView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\PlannedView.resx">
-      <DependentUpon>PlannedView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\AchievedView.resx">
-      <DependentUpon>AchievedView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

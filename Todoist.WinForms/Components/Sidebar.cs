@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
+using Todoist.WinForms.Models.Enums;
 using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Components
@@ -13,9 +14,9 @@ namespace Todoist.WinForms.Components
         private TodoListsService _service = TodoListsService.Instance;
 
         // Delegates
-        public event Action<string> OnMenuClick;
+        public event Action<AppScreen> OnMenuClick;
         public event Action<CreateTodoList> OnSubmitted;
-        public event Action<int> OnListLabelClicked;
+        public event Action<int, string> OnListLabelClicked;
 
         public Sidebar()
         {
@@ -92,19 +93,19 @@ namespace Todoist.WinForms.Components
         #region Events
         private void BtnHome_Click(object sender, EventArgs e)
         {
-            OnMenuClick?.Invoke("Home");
+            OnMenuClick?.Invoke(AppScreen.Home);
         }
         private void BtnPlanned_Click(object sender, EventArgs e)
         {
-            OnMenuClick?.Invoke("Planned");
+            OnMenuClick?.Invoke(AppScreen.Planned);
         }
-        private void BtnPriority_Click(object sender, EventArgs e)
+        private void BtnAchieved_Click(object sender, EventArgs e)
         {
-            OnMenuClick?.Invoke("Achieved");
+            OnMenuClick?.Invoke(AppScreen.Achieved);
         }
         private void BtnNotes_Click(object sender, EventArgs e)
         {
-            OnMenuClick?.Invoke("Notes");
+            OnMenuClick?.Invoke(AppScreen.Notes);
         }
         
         private void PicAddTodoList_Click(object sender, EventArgs e)
@@ -130,7 +131,7 @@ namespace Todoist.WinForms.Components
 
             if (lbl?.Tag is int listId)
             {
-                OnListLabelClicked?.Invoke(listId);
+                OnListLabelClicked?.Invoke(listId, lbl.Text);
             }
         }
 

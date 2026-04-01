@@ -14,8 +14,8 @@ namespace Todoist.WinForms.Views.Components
 
         public string Title
         {
-            get => lblName.Text;
-            set => lblName.Text = value;
+            get => txtListName.Text;
+            set => txtListName.Text = value;
         }
 
         public TodoListDetails()

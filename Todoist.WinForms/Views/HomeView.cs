@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
@@ -11,20 +10,11 @@ namespace Todoist.WinForms.Views
     {
         private TodoListDetails _detailsView;
 
-        public event Action<int> OnTodoListDetailRequested;
-        public event Action OnCloseClicked;
         public event Action<CreateTodoList> OnTodoListSubmitted;
         
-
-
         public HomeView()
         {
             InitializeComponent();
-
-            // Initial values
-            header.LblTitle = "Home";
-            header.TitleIcon = Properties.Resources.home_2;
-
 
             //Subscribe events
             listItems.OnTodoListDetailRequested += HandleDetailRequested;
@@ -33,7 +23,7 @@ namespace Todoist.WinForms.Views
         }
 
         #region Methods
-        private void ShowTodoListDetails(int listId)
+        private void ShowTodoListDetails(int listId, string listName)
         {
             try
             {
@@ -47,6 +37,8 @@ namespace Todoist.WinForms.Views
                     contentPanel.Controls.Add(_detailsView);
                 }
 
+                _detailsView.Title = listName;
+
                 _detailsView.SetListId(listId);
 
                 _detailsView.Show();
@@ -58,9 +50,9 @@ namespace Todoist.WinForms.Views
             }
         }
 
-        public void HandleDetailRequested(int listId)
+        public void HandleDetailRequested(int listId, string listName)
         {
-            ShowTodoListDetails(listId);
+            ShowTodoListDetails(listId, listName);
         }
 
         private void HandleCloseDetails()

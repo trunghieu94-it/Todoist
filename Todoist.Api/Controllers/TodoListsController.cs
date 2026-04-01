@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using Todoist.Domain.Dtos.Work;
 using Todoist.Domain.Entities;
+using Todoist.Domain.Enums;
 using Todoist.Infrastructure.Repositories;
 
 [ApiController]
@@ -53,6 +54,28 @@ public class TodoListsController : ControllerBase
             CreatedAt = list.CreatedAt,
             UpdatedAt = list.UpdatedAt
         };
+
+        return Ok(result);
+    }
+
+    
+    [HttpGet("filter")]
+    public async Task<IActionResult> GetByFilterAsync(
+        [FromQuery] TodoListStatus? status,
+        [FromQuery] bool? hasDeadline)
+    {
+        var lists = await _todoListRepository.GetByFilterAsync(status, hasDeadline);
+
+        IEnumerable<TodoListDto> result = lists.Select(l => new TodoListDto
+        {
+            Id = l.Id,
+            ListName = l.ListName,
+            ListPriority = l.ListPriority,
+            ListStatus = l.ListStatus,
+            Deadline = l.Deadline,
+            CreatedAt = l.CreatedAt,
+            UpdatedAt = l.UpdatedAt
+        });
 
         return Ok(result);
     }

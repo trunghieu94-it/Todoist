@@ -28,13 +28,11 @@ namespace Todoist.WinForms.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeView));
             this.contentPanel = new System.Windows.Forms.Panel();
             this.listItems = new Todoist.WinForms.Components.TodoListsView();
             this.btnDelete = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnSelect = new Todoist.WinForms.Views.Components.CustomButton();
             this.addTodoListPanel = new Todoist.WinForms.Views.Components.AddTodoList();
-            this.header = new Todoist.WinForms.Views.Components.HeaderControl();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,9 +45,9 @@ namespace Todoist.WinForms.Views
             this.contentPanel.Controls.Add(this.btnDelete);
             this.contentPanel.Controls.Add(this.btnSelect);
             this.contentPanel.Controls.Add(this.addTodoListPanel);
-            this.contentPanel.Location = new System.Drawing.Point(30, 81);
+            this.contentPanel.Location = new System.Drawing.Point(30, 3);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(900, 559);
+            this.contentPanel.Size = new System.Drawing.Size(900, 442);
             this.contentPanel.TabIndex = 9;
             // 
             // listItems
@@ -61,7 +59,7 @@ namespace Todoist.WinForms.Views
             this.listItems.Location = new System.Drawing.Point(0, 103);
             this.listItems.Margin = new System.Windows.Forms.Padding(0);
             this.listItems.Name = "listItems";
-            this.listItems.Size = new System.Drawing.Size(900, 440);
+            this.listItems.Size = new System.Drawing.Size(900, 323);
             this.listItems.TabIndex = 8;
             // 
             // btnDelete
@@ -125,32 +123,20 @@ namespace Todoist.WinForms.Views
             this.addTodoListPanel.Size = new System.Drawing.Size(900, 100);
             this.addTodoListPanel.TabIndex = 4;
             // 
-            // header
-            // 
-            this.header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header.LblTitle = "Home";
-            this.header.Location = new System.Drawing.Point(0, 0);
-            this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(960, 75);
-            this.header.TabIndex = 3;
-            this.header.TitleIcon = ((System.Drawing.Image)(resources.GetObject("header.TitleIcon")));
-            // 
             // HomeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.contentPanel);
-            this.Controls.Add(this.header);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "HomeView";
-            this.Size = new System.Drawing.Size(960, 640);
+            this.Size = new System.Drawing.Size(960, 448);
             this.contentPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Components.HeaderControl header;
         private Components.AddTodoList addTodoListPanel;
         private Components.CustomButton btnSelect;
         private Components.CustomButton btnDelete;

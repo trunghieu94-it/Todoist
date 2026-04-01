@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Todoist.WinForms.Models;
@@ -21,12 +22,36 @@ namespace Todoist.WinForms.Services
 
         public event Action<List<TodoList>> OnListsChanged;
         public event Action<TodoList> OnListSelected;
-        
+
         #region Events
         public async Task GetTodoListsAsync()
         {
-            var todoLists = await _apiClient.GetAsync<List<TodoList>>("todolists")
+            var endpoint = "todolists";
+
+            var todoLists = await _apiClient.GetAsync<List<TodoList>>(endpoint)
                 ?? new List<TodoList>();
+
+            SetLists(todoLists);
+        }
+
+        public async Task GetByFilterTodoListsAsync(TodoListFilter filter)
+        {
+            var endpoint = "todolists/filter";
+
+            var queryParams = new List<string>();
+
+            if (!string.IsNullOrEmpty(filter.Status))
+                queryParams.Add($"status={filter.Status}");
+
+            if (filter.HasDeadline.HasValue)
+                queryParams.Add($"hasDeadline={filter.HasDeadline.Value.ToString().ToLower()}");
+
+            if (queryParams.Any())
+                endpoint += "?" + string.Join("&", queryParams);
+
+            var todoLists = await _apiClient.GetAsync<List<TodoList>>(endpoint)
+                ?? new List<TodoList>();
+
             SetLists(todoLists);
         }
 

@@ -14,7 +14,7 @@ namespace Todoist.WinForms.Views.Components
             SetTodayDate();
         }
 
-        public string LblTitle
+        public string Title
         {
             get { return lblTitle.Text; }
             set {

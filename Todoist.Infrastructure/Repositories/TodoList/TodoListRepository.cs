@@ -3,6 +3,7 @@ using System.Data;
 using Dapper;
 
 using Todoist.Domain.Entities;
+using Todoist.Domain.Enums;
 using Todoist.Infrastructure.Data.Constants;
 
 namespace Todoist.Infrastructure.Repositories
@@ -47,6 +48,35 @@ namespace Todoist.Infrastructure.Repositories
             FROM {DbTables.TodoLists} 
             WHERE Id = @Id";
             return await _connection.QueryFirstOrDefaultAsync<TodoList>(sql, new { Id = id });
+        }
+
+        public async Task<IEnumerable<TodoList>> GetByFilterAsync(TodoListStatus? status, bool? hasDeadline)
+        {
+            var sql = $@"
+            SELECT
+                Id,
+                UserId,
+                ListName, 
+                ListPriority, 
+                ListStatus,
+                Deadline,
+                CreatedAt,
+                UpdatedAt
+            FROM {DbTables.TodoLists}
+            WHERE 1=1";
+            if (status == TodoListStatus.Active)
+                sql += " AND ListStatus = 1";
+
+            if (status == TodoListStatus.Completed)
+                sql += " AND ListStatus = 2";
+
+            if (status == TodoListStatus.Achieved)
+                sql += " AND ListStatus = 3";
+
+            if (hasDeadline == true)
+                sql += " AND Deadline IS NOT NULL";
+
+            return await _connection.QueryAsync<TodoList>(sql);
         }
 
         public async Task<int> CreateAsync(TodoList list)
