@@ -43,13 +43,11 @@ namespace Todoist.WinForms.Components
                 itemView.Dock = DockStyle.Fill;
                 itemView.Margin = new Padding(0, 10, 0, 10);
 
-                tableTodoItems.RowCount++;
-
-                tableTodoItems.RowStyles.Add(
-                    new RowStyle(SizeType.AutoSize));
-
-                tableTodoItems.Controls.Add(itemView, 0, tableTodoItems.RowCount - 1);
+                AddRow(itemView);
             }
+
+            var btnAddNewSubtask = new AddTodoItemButton();
+            AddRow(btnAddNewSubtask);
 
             tableTodoItems.ResumeLayout();
         }
@@ -62,6 +60,16 @@ namespace Todoist.WinForms.Components
             item.Status = todoItem.ItemStatus.ToString();
 
             return item;
+        }
+
+        private void AddRow(Control control)
+        {
+            tableTodoItems.RowCount++;
+
+            tableTodoItems.RowStyles.Add(
+                new RowStyle(SizeType.AutoSize));
+
+            tableTodoItems.Controls.Add(control, 0, tableTodoItems.RowCount - 1);
         }
         #endregion
     }

@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AddTodoItemButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\AddTodoItemButton.Designer.cs">
+      <DependentUpon>AddTodoItemButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Sidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </Compile>
     <Compile Include="Views\ScreenConfig.cs" />
     <Compile Include="Views\ScreenRegistry.cs" />
+    <EmbeddedResource Include="Components\AddTodoItemButton.resx">
+      <DependentUpon>AddTodoItemButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\Sidebar.resx">
       <DependentUpon>Sidebar.cs</DependentUpon>
     </EmbeddedResource>
