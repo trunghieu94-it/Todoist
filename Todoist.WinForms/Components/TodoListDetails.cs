@@ -12,11 +12,11 @@ namespace Todoist.WinForms.Views.Components
 
         public event Action OnCloseClicked;
 
-        //public string Title
-        //{
-        //    get => lblName.Text;
-        //    set => lblName.Text = value;
-        //}
+        public string Title
+        {
+            get => txtListName.Text;
+            set => txtListName.Text = value;
+        }
 
         public TodoListDetails()
         {

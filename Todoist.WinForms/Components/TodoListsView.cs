@@ -10,7 +10,7 @@ namespace Todoist.WinForms.Components
 {
     public partial class TodoListsView : UserControl
     {
-        public event Action<int> OnTodoListDetailRequested;
+        public event Action<int, string> OnTodoListDetailRequested;
 
         public TodoListsView()
         {
@@ -34,9 +34,9 @@ namespace Todoist.WinForms.Components
 
                 item.SetData(list);
 
-                item.OnDetailClicked += (listId) => // subcribe
+                item.OnDetailClicked += (listId, listName) => // subcribe
                 {
-                    OnTodoListDetailRequested?.Invoke(listId);
+                    OnTodoListDetailRequested?.Invoke(listId, listName);
                 };
 
                 item.Dock = DockStyle.Fill;

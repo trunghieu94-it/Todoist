@@ -10,7 +10,7 @@ namespace Todoist.WinForms.Views.Components
         #region Fields
         public int ListId { get; private set; }
 
-        public event Action<int> OnDetailClicked;
+        public event Action<int, string> OnDetailClicked;
         #endregion
 
         #region Properties
@@ -62,7 +62,7 @@ namespace Todoist.WinForms.Views.Components
         #region Events
         private void BtnDetail_Click(object sender, EventArgs e)
         {
-            OnDetailClicked?.Invoke(ListId);
+            OnDetailClicked?.Invoke(ListId, ListName);
         }
         #endregion
     }

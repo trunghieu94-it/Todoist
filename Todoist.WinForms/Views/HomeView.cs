@@ -23,7 +23,7 @@ namespace Todoist.WinForms.Views
         }
 
         #region Methods
-        private void ShowTodoListDetails(int listId)
+        private void ShowTodoListDetails(int listId, string listName)
         {
             try
             {
@@ -37,6 +37,8 @@ namespace Todoist.WinForms.Views
                     contentPanel.Controls.Add(_detailsView);
                 }
 
+                _detailsView.Title = listName;
+
                 _detailsView.SetListId(listId);
 
                 _detailsView.Show();
@@ -48,9 +50,9 @@ namespace Todoist.WinForms.Views
             }
         }
 
-        public void HandleDetailRequested(int listId)
+        public void HandleDetailRequested(int listId, string listName)
         {
-            ShowTodoListDetails(listId);
+            ShowTodoListDetails(listId, listName);
         }
 
         private void HandleCloseDetails()

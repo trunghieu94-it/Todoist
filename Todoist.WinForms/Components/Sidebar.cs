@@ -16,7 +16,7 @@ namespace Todoist.WinForms.Components
         // Delegates
         public event Action<AppScreen> OnMenuClick;
         public event Action<CreateTodoList> OnSubmitted;
-        public event Action<int> OnListLabelClicked;
+        public event Action<int, string> OnListLabelClicked;
 
         public Sidebar()
         {
@@ -131,7 +131,7 @@ namespace Todoist.WinForms.Components
 
             if (lbl?.Tag is int listId)
             {
-                OnListLabelClicked?.Invoke(listId);
+                OnListLabelClicked?.Invoke(listId, lbl.Text);
             }
         }
 

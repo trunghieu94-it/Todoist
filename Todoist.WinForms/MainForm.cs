@@ -33,9 +33,9 @@ namespace Todoist.WinForms.Views
             sidebar.OnListLabelClicked += HandleLabelClicked;
         }
 
-        private void HandleLabelClicked(int listId)
+        private void HandleLabelClicked(int listId, string listName)
         {
-            homeView.HandleDetailRequested(listId);
+            homeView.HandleDetailRequested(listId, listName);
         }
 
         private async void NavigateAsync(AppScreen screen)

@@ -35,11 +35,10 @@ namespace Todoist.WinForms.Views.Components
             this.label1 = new System.Windows.Forms.Label();
             this.customButton2 = new Todoist.WinForms.Views.Components.CustomButton();
             this.customButton1 = new Todoist.WinForms.Views.Components.CustomButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNotes = new System.Windows.Forms.TextBox();
+            this.txtListName = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblComplete = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.borderPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,11 +55,10 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.Controls.Add(this.label1);
             this.borderPanel1.Controls.Add(this.customButton2);
             this.borderPanel1.Controls.Add(this.customButton1);
-            this.borderPanel1.Controls.Add(this.textBox2);
-            this.borderPanel1.Controls.Add(this.textBox1);
+            this.borderPanel1.Controls.Add(this.txtNotes);
+            this.borderPanel1.Controls.Add(this.txtListName);
             this.borderPanel1.Controls.Add(this.pictureBox1);
             this.borderPanel1.Controls.Add(this.lblComplete);
-            this.borderPanel1.Controls.Add(this.lblName);
             this.borderPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.borderPanel1.Location = new System.Drawing.Point(0, 0);
             this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -161,25 +159,25 @@ namespace Todoist.WinForms.Views.Components
             this.customButton1.TextColor = System.Drawing.Color.Black;
             this.customButton1.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // txtNotes
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(22, 170);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(655, 29);
-            this.textBox2.TabIndex = 3;
+            this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNotes.Location = new System.Drawing.Point(22, 170);
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(655, 29);
+            this.txtNotes.TabIndex = 3;
             // 
-            // textBox1
+            // txtListName
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtListName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(22, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(655, 35);
-            this.textBox1.TabIndex = 3;
+            this.txtListName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtListName.Location = new System.Drawing.Point(22, 53);
+            this.txtListName.Name = "txtListName";
+            this.txtListName.Size = new System.Drawing.Size(655, 29);
+            this.txtListName.TabIndex = 3;
             // 
             // pictureBox1
             // 
@@ -204,17 +202,6 @@ namespace Todoist.WinForms.Views.Components
             this.lblComplete.TabIndex = 1;
             this.lblComplete.Text = "Mark as complete";
             // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(19, 14);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(85, 17);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Learn English";
-            // 
             // TodoListDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,14 +220,13 @@ namespace Todoist.WinForms.Views.Components
         #endregion
 
         private BorderPanel borderPanel1;
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblComplete;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtListName;
         private CustomButton customButton1;
         private CustomButton customButton2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox btnClose;
         private System.Windows.Forms.Panel todoItemsPanel;

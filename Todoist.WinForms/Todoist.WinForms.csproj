@@ -153,6 +153,7 @@
       <DependentUpon>TodoListDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\ApiClient.cs" />
+    <Compile Include="Services\NotesService.cs" />
     <Compile Include="Services\TodoItemsService.cs" />
     <Compile Include="Services\TodoListsService.cs" />
     <Compile Include="Views\HomeView.cs">

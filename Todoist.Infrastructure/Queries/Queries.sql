@@ -165,7 +165,7 @@ VALUES
     (1, 1, N'Note 2', N'Nội dung cho Note 2', NULL),
     (2, NULL, N'Note 3', N'Nội dung cho Note 3', NULL),
     (2, 3, N'Note 4', N'Nội dung cho Note 4', NULL),
-    (2, 3, N'Note 5', N'Nội dung cho Note 5', NULL)
+    (2, 4, N'Note 5', N'Nội dung cho Note 5', NULL)
 GO
 
 INSERT INTO Tags(UserId, TagName)
