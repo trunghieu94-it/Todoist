@@ -64,6 +64,7 @@ namespace Todoist.WinForms.Components
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.tableTodoItems);
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
@@ -72,6 +73,7 @@ namespace Todoist.WinForms.Components
             // 
             // tableTodoItems
             // 
+            this.tableTodoItems.AutoSize = true;
             this.tableTodoItems.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableTodoItems.ColumnCount = 1;
             this.tableTodoItems.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -82,7 +84,7 @@ namespace Todoist.WinForms.Components
             this.tableTodoItems.RowCount = 2;
             this.tableTodoItems.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableTodoItems.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableTodoItems.Size = new System.Drawing.Size(797, 228);
+            this.tableTodoItems.Size = new System.Drawing.Size(797, 0);
             this.tableTodoItems.TabIndex = 2;
             // 
             // panel2
@@ -104,6 +106,7 @@ namespace Todoist.WinForms.Components
             this.Name = "TodoItemsView";
             this.Size = new System.Drawing.Size(797, 252);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

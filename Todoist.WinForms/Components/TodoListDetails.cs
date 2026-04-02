@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Components;
@@ -23,12 +24,8 @@ namespace Todoist.WinForms.Views.Components
             InitializeComponent();
         }
 
-        public async void SetListId(int listId)
+        public void ShowTodoItems(int listId)
         {
-            try
-            {
-                var items = await TodoItemsService.Instance.GetTodoItemsAsync(listId);
-
                 if (_todoItemsView == null)
                 {
                     _todoItemsView = new TodoItemsView();
@@ -39,14 +36,9 @@ namespace Todoist.WinForms.Views.Components
                 }
 
                 _todoItemsView.SetListId(listId);
-                _todoItemsView.SetData(listId, items);
 
-                _todoItemsView.BringToFront();
-            }
-            catch
-            {
-                MessageBox.Show("Failed to load todo items");
-            }
+            _todoItemsView.BringToFront();
+                        
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

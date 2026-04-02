@@ -39,7 +39,7 @@ namespace Todoist.WinForms.Views
 
                 _detailsView.Title = listName;
 
-                _detailsView.SetListId(listId);
+                _detailsView.ShowTodoItems(listId);
 
                 _detailsView.Show();
                 _detailsView.BringToFront();

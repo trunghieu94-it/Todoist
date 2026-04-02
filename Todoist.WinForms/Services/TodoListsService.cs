@@ -23,7 +23,7 @@ namespace Todoist.WinForms.Services
         public event Action<List<TodoList>> OnListsChanged;
         public event Action<TodoList> OnListSelected;
 
-        #region Events
+        #region Methods
         public async Task GetTodoListsAsync()
         {
             var endpoint = "todolists";

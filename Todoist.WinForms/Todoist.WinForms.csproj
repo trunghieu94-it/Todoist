@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="Models\Enums\AppScreen.cs" />
     <Compile Include="Models\Enums\TodoItemStatus.cs" />
+    <Compile Include="Models\Enums\TodoItemViewMode.cs" />
     <Compile Include="Models\Enums\TodoListPriority.cs" />
     <Compile Include="Models\Enums\TodoListStatus.cs" />
     <Compile Include="Models\Enums\UserTodoListRole.cs" />

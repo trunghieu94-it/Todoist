@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Todoist.WinForms.Components
@@ -15,6 +7,12 @@ namespace Todoist.WinForms.Components
         public AddTodoItemButton()
         {
             InitializeComponent();
+
+            foreach (Control ctl in this.Controls)
+            {
+                ctl.Click += (s, e) => this.OnClick(e);
+            }
+
         }
     }
 }
