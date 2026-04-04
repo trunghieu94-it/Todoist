@@ -1,7 +1,12 @@
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Todoist.WinForms.Enums;
 using Todoist.WinForms.Models;
+using Todoist.WinForms.Models.Enums;
+using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Components
 {
@@ -14,21 +19,12 @@ namespace Todoist.WinForms.Components
 
         #region Fields
         private int _currentListId;
+        private bool _isAdding = false;
+
+        private TodoItemsService _service = TodoItemsService.Instance;
         #endregion
 
         #region Methods
-        public void SetListId(int listId)
-        {
-            _currentListId = listId;
-        }
-
-        public void SetData(int listId, List<TodoItem> items)
-        {
-            if (listId != _currentListId) return;
-
-            RenderItems(items);
-        }
-
         private void RenderItems(List<TodoItem> items)
         {
             tableTodoItems.SuspendLayout();
@@ -38,30 +34,108 @@ namespace Todoist.WinForms.Components
 
             foreach (var item in items)
             {
-                var itemView = ItemView(item);
+                var itemView = new TodoItemView(item, TodoItemViewMode.Edit);
 
-                itemView.Dock = DockStyle.Fill;
-                itemView.Margin = new Padding(0, 10, 0, 10);
+                itemView.OnUpdate += async (updatedItem) =>
+                {
+                    //await service.UpdateAsync(updatedItem);
+                    await LoadDataAsync();
+                };
 
-                tableTodoItems.RowCount++;
+                AddRow(itemView);
+            }
 
-                tableTodoItems.RowStyles.Add(
-                    new RowStyle(SizeType.AutoSize));
+            if (_isAdding)
+            {
+                var addView = new TodoItemView(
+                    new TodoItem(),
+                    TodoItemViewMode.Create
+                );
 
-                tableTodoItems.Controls.Add(itemView, 0, tableTodoItems.RowCount - 1);
+                addView.OnCreate += async (item) =>
+                {
+                    await HandleCreateItemAsync(item);
+                };
+
+                addView.OnCancel += () =>
+                {
+                    _isAdding = false;
+                    RenderItems(items);
+                };
+
+                AddRow(addView);
+            }
+            else
+            {
+                var btnAdd = new AddTodoItemButton();
+
+                btnAdd.Click += (s, e) =>
+                {
+                    _isAdding = true;
+                    RenderItems(items);
+                };
+
+                AddRow(btnAdd);
             }
 
             tableTodoItems.ResumeLayout();
         }
 
-        private TodoItemView ItemView(TodoItem todoItem)
+        private async Task HandleCreateItemAsync(TodoItemView itemView)
         {
-            TodoItemView item = new TodoItemView();
+            TodoItem item = new TodoItem();
+            item.TodoListId = _currentListId;
+            item.Title = itemView.Title;
+            item.ItemStatus = TryParseEnum(itemView.Status, item.ItemStatus);
 
-            item.Title = todoItem.Title;
-            item.Status = todoItem.ItemStatus.ToString();
+            await _service.PostTodoItemAsync(item);
 
-            return item;
+            await LoadDataAsync();
+        }
+
+        private TodoItemStatus TryParseEnum(string statusView, TodoItemStatus status)
+        {
+            if (Enum.TryParse(statusView, out status))
+            {
+                return status;
+            }
+            else
+            {
+                MessageBox.Show($"Invalid status: {statusView}");
+            }
+            return status;
+        }
+
+        private void AddRow(Control control)
+        {
+            tableTodoItems.RowCount++;
+
+            tableTodoItems.RowStyles.Add(
+                new RowStyle(SizeType.AutoSize));
+
+            tableTodoItems.Controls.Add(control, 0, tableTodoItems.RowCount - 1);
+        }
+
+        public async Task LoadDataAsync()
+        {
+            try
+            {
+                var items = await _service.GetTodoItemsAsync(_currentListId);
+
+                RenderItems(items);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading todo items: {ex.Message}");
+            }
+        }
+
+
+        public void SetListId(int listId)
+        {
+            _currentListId = listId;
+
+            _ = LoadDataAsync();
         }
         #endregion
     }

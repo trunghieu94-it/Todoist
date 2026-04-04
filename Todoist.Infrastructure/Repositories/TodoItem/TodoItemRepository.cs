@@ -75,7 +75,7 @@ namespace Todoist.Infrastructure.Repositories
                 @TodoListId, 
                 @Title,
                 @ItemStatus,
-                @CreatedAt
+                SYSDATETIME()
             );
             SELECT 
                 CAST(SCOPE_IDENTITY() as int);

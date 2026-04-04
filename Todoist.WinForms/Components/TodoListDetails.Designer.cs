@@ -33,8 +33,8 @@ namespace Todoist.WinForms.Views.Components
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.customButton2 = new Todoist.WinForms.Views.Components.CustomButton();
-            this.customButton1 = new Todoist.WinForms.Views.Components.CustomButton();
+            this.btnAddTags = new Todoist.WinForms.Views.Components.CustomButton();
+            this.btnRemind = new Todoist.WinForms.Views.Components.CustomButton();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.txtListName = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -53,8 +53,8 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.Controls.Add(this.btnClose);
             this.borderPanel1.Controls.Add(this.label2);
             this.borderPanel1.Controls.Add(this.label1);
-            this.borderPanel1.Controls.Add(this.customButton2);
-            this.borderPanel1.Controls.Add(this.customButton1);
+            this.borderPanel1.Controls.Add(this.btnAddTags);
+            this.borderPanel1.Controls.Add(this.btnRemind);
             this.borderPanel1.Controls.Add(this.txtNotes);
             this.borderPanel1.Controls.Add(this.txtListName);
             this.borderPanel1.Controls.Add(this.pictureBox1);
@@ -109,55 +109,55 @@ namespace Todoist.WinForms.Views.Components
             this.label1.TabIndex = 6;
             this.label1.Text = "Notes";
             // 
-            // customButton2
+            // btnAddTags
             // 
-            this.customButton2.BackColor = System.Drawing.SystemColors.Control;
-            this.customButton2.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton2.BorderRadius = 30;
-            this.customButton2.BorderSize = 0;
-            this.customButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.customButton2.FlatAppearance.BorderSize = 0;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton2.ForeColor = System.Drawing.Color.Black;
-            this.customButton2.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.customButton2.Icon = global::Todoist.WinForms.Properties.Resources.tag;
-            this.customButton2.IconPadding = 10;
-            this.customButton2.IconSize = new System.Drawing.Size(20, 20);
-            this.customButton2.IconTextSpacing = 30;
-            this.customButton2.Location = new System.Drawing.Point(138, 94);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Size = new System.Drawing.Size(71, 36);
-            this.customButton2.TabIndex = 5;
-            this.customButton2.Text = "Tags";
-            this.customButton2.TextColor = System.Drawing.Color.Black;
-            this.customButton2.UseVisualStyleBackColor = false;
+            this.btnAddTags.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAddTags.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.btnAddTags.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAddTags.BorderRadius = 30;
+            this.btnAddTags.BorderSize = 0;
+            this.btnAddTags.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddTags.FlatAppearance.BorderSize = 0;
+            this.btnAddTags.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddTags.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTags.ForeColor = System.Drawing.Color.Black;
+            this.btnAddTags.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.btnAddTags.Icon = global::Todoist.WinForms.Properties.Resources.tag;
+            this.btnAddTags.IconPadding = 10;
+            this.btnAddTags.IconSize = new System.Drawing.Size(20, 20);
+            this.btnAddTags.IconTextSpacing = 30;
+            this.btnAddTags.Location = new System.Drawing.Point(138, 94);
+            this.btnAddTags.Name = "btnAddTags";
+            this.btnAddTags.Size = new System.Drawing.Size(71, 36);
+            this.btnAddTags.TabIndex = 5;
+            this.btnAddTags.Text = "Tags";
+            this.btnAddTags.TextColor = System.Drawing.Color.Black;
+            this.btnAddTags.UseVisualStyleBackColor = false;
             // 
-            // customButton1
+            // btnRemind
             // 
-            this.customButton1.BackColor = System.Drawing.SystemColors.Control;
-            this.customButton1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton1.BorderRadius = 30;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton1.ForeColor = System.Drawing.Color.Black;
-            this.customButton1.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.customButton1.Icon = global::Todoist.WinForms.Properties.Resources.bell;
-            this.customButton1.IconPadding = 10;
-            this.customButton1.IconSize = new System.Drawing.Size(20, 20);
-            this.customButton1.IconTextSpacing = 30;
-            this.customButton1.Location = new System.Drawing.Point(22, 94);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(110, 36);
-            this.customButton1.TabIndex = 5;
-            this.customButton1.Text = "Remind me";
-            this.customButton1.TextColor = System.Drawing.Color.Black;
-            this.customButton1.UseVisualStyleBackColor = false;
+            this.btnRemind.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemind.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.btnRemind.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnRemind.BorderRadius = 30;
+            this.btnRemind.BorderSize = 0;
+            this.btnRemind.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemind.FlatAppearance.BorderSize = 0;
+            this.btnRemind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemind.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemind.ForeColor = System.Drawing.Color.Black;
+            this.btnRemind.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.btnRemind.Icon = global::Todoist.WinForms.Properties.Resources.bell;
+            this.btnRemind.IconPadding = 10;
+            this.btnRemind.IconSize = new System.Drawing.Size(20, 20);
+            this.btnRemind.IconTextSpacing = 30;
+            this.btnRemind.Location = new System.Drawing.Point(22, 94);
+            this.btnRemind.Name = "btnRemind";
+            this.btnRemind.Size = new System.Drawing.Size(110, 36);
+            this.btnRemind.TabIndex = 5;
+            this.btnRemind.Text = "Remind me";
+            this.btnRemind.TextColor = System.Drawing.Color.Black;
+            this.btnRemind.UseVisualStyleBackColor = false;
             // 
             // txtNotes
             // 
@@ -223,8 +223,8 @@ namespace Todoist.WinForms.Views.Components
         private System.Windows.Forms.Label lblComplete;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtListName;
-        private CustomButton customButton1;
-        private CustomButton customButton2;
+        private CustomButton btnRemind;
+        private CustomButton btnAddTags;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label label2;
