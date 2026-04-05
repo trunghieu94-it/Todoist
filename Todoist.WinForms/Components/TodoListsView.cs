@@ -58,7 +58,7 @@ namespace Todoist.WinForms.Components
             TodoListView item = new TodoListView();
 
             item.ListName = list.ListName;
-            item.Priority = list.ListPriority.ToString();
+            item.ListPriority = list.ListPriority.ToString();
             item.DisplayDeadline(list);
 
             return item;
