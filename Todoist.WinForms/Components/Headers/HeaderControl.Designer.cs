@@ -69,18 +69,19 @@ namespace Todoist.WinForms.Views.Components
             this.cbSort.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSort.FormattingEnabled = true;
             this.cbSort.Items.AddRange(new object[] {
-            "Mặc định",
+            "Ngày tạo mới nhất",
+            "Ngày tạo cũ nhất",
             "Tên (A → Z)",
             "Tên (Z → A)",
             "Deadline gần nhất",
             "Deadline xa nhất",
-            "Ngày tạo cũ nhất",
-            "Ngày tạo mới nhất"});
+            "Ưu tiên thấp nhất",
+            "Ưu tiên cao nhất"});
             this.cbSort.Location = new System.Drawing.Point(387, 27);
             this.cbSort.Name = "cbSort";
             this.cbSort.Size = new System.Drawing.Size(165, 29);
             this.cbSort.TabIndex = 5;
-            this.cbSort.Text = "Chọn sắp xếp theo";
+            this.cbSort.Text = "Ngày tạo mới nhất";
             this.cbSort.SelectedIndexChanged += new System.EventHandler(this.CbSort_SelectedIndexChanged);
             // 
             // lblTitle

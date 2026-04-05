@@ -226,7 +226,7 @@ VALUES
     (5, 5)
 GO
 
-SELECT * FROM TodoLists
+SELECT * FROM TodoLists WHERE ListStatus = 3;
 
 -- Xóa dữ liệu bảng
 DELETE FROM TodoListTags
@@ -241,7 +241,8 @@ DELETE FROM Users
 DBCC CHECKIDENT ('Notes', RESEED, 0)
 DBCC CHECKIDENT ('Tags', RESEED, 0)
 DBCC CHECKIDENT ('TodoItems', RESEED, 8)
-DBCC CHECKIDENT ('TodoLists', RESEED, 6)
+DBCC CHECKIDENT ('TodoLists', RESEED, 18)
 DBCC CHECKIDENT ('Users', RESEED, 0)
 GO
+
 

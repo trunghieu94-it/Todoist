@@ -30,7 +30,7 @@ namespace Todoist.WinForms.Views
         {
             homeView.OnTodoListSubmitted += HandleTodoListCreatedAsync;
 
-            header.OnSortOptionChanged += HandleSortRequestAsync;
+            //header.OnSortOptionChanged += HandleSortRequestAsync;
 
             sidebar.OnMenuClick += NavigateAsync;
             sidebar.OnSubmitted += HandleTodoListCreatedAsync;
@@ -67,28 +67,6 @@ namespace Todoist.WinForms.Views
             }
         }
 
-        private async void HandleSortRequestAsync(TodoListFilter filter, string sortBy, string order)
-        {
-            try
-            {
-                if (filter == null)
-                {
-                    await TodoListsService.Instance.GetTodoListsAsync();
-                }
-                else
-                {
-                    await TodoListsService.Instance.GetByFilterTodoListsAsync(
-                                            filter,
-                                            sortBy,
-                                            order
-                                        );
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi sắp xếp: {ex.Message}");
-            }
-        }
         #endregion
 
         #region Events
@@ -97,7 +75,12 @@ namespace Todoist.WinForms.Views
             base.OnLoad(e);
 
             // Call Services
-            await TodoListsService.Instance.GetTodoListsAsync();
+            await TodoListsService.Instance.GetByFilterTodoListsAsync(
+                new TodoListFilter
+                {
+                    Status = null,
+                    HasDeadline = null
+                });
         }
         #endregion
     }

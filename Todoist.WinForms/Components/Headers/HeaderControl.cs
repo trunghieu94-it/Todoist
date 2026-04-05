@@ -67,6 +67,14 @@ namespace Todoist.WinForms.Views.Components
                     _currentSort = TodoListSortType.CreatedAtDesc;
                     break;
 
+                case "Ưu tiên thấp nhất":
+                    _currentSort = TodoListSortType.PriorityAsc;
+                    break;
+
+                case "Ưu tiên cao nhất":
+                    _currentSort = TodoListSortType.PriorityDesc;
+                    break;
+
                 default:
                     _currentSort = TodoListSortType.None;
                     break;

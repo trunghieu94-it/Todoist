@@ -12,30 +12,33 @@ namespace Todoist.WinForms.Services
     {
         private readonly ApiClient _apiClient;
 
-        private TodoListSortType _currentSort = TodoListSortType.None;
+        public static TodoListsService Instance { get; } = new TodoListsService();
+
+        private List<TodoList> _originalLists = new List<TodoList>();
+        private List<TodoList> _currentLists = new List<TodoList>();
+
+        private TodoListSortType _currentSort = TodoListSortType.CreatedAtDesc;
+
+        public event Action<List<TodoList>> OnListsChanged;
+        public event Action<TodoList> OnListSelected;
 
         private TodoListsService()
         {
             _apiClient = new ApiClient();
         }
 
-        public static TodoListsService Instance { get; } = new TodoListsService();
-
-        private List<TodoList> _lists = new List<TodoList>();
-
-        public event Action<List<TodoList>> OnListsChanged;
-        public event Action<TodoList> OnListSelected;
-
         #region Methods
-        public async Task GetTodoListsAsync()
-        {
-            var endpoint = "todolists";
+        //public async Task GetTodoListsAsync()
+        //{
+        //    var endpoint = "todolists";
 
-            var todoLists = await _apiClient.GetAsync<List<TodoList>>(endpoint)
-                ?? new List<TodoList>();
+        //    _originalLists = await _apiClient.GetAsync<List<TodoList>>(endpoint)
+        //        ?? new List<TodoList>();
 
-            SetLists(todoLists);
-        }
+        //    _currentLists = _originalLists;
+
+        //    SetLists();
+        //}
 
         public async Task GetByFilterTodoListsAsync(TodoListFilter filter)
         {
@@ -43,67 +46,26 @@ namespace Todoist.WinForms.Services
 
             var queryParams = new List<string>();
 
-            if (!string.IsNullOrEmpty(filter.Status))
-                queryParams.Add($"status={filter.Status}");
-
-            if (filter.HasDeadline.HasValue)
-                queryParams.Add($"hasDeadline={filter.HasDeadline.Value.ToString().ToLower()}");
-
-            if (queryParams.Any())
-                endpoint += "?" + string.Join("&", queryParams);
-
-            var todoLists = await _apiClient.GetAsync<List<TodoList>>(endpoint)
-                ?? new List<TodoList>();
-
-            SetLists(todoLists);
-        }
-
-        public async Task GetByFilterTodoListsAsync(
-            TodoListFilter filter,
-            string sortBy = null,
-            string order = "asc"
-        )
-        {
-            var endpoint = "todolists/filter";
-
-            var queryParams = new List<string>();
-
-            if (!string.IsNullOrEmpty(filter.Status))
-                queryParams.Add($"status={filter.Status}");
-
-            if (filter.HasDeadline.HasValue)
-                queryParams.Add($"hasDeadline={filter.HasDeadline.Value.ToString().ToLower()}");
-
-            if (queryParams.Any())
-                endpoint += "?" + string.Join("&", queryParams);
-
-            var todoLists = await _apiClient.GetAsync<List<TodoList>>(endpoint)
-                ?? new List<TodoList>();
-
-            if (!string.IsNullOrEmpty(sortBy))
+            if (string.IsNullOrEmpty(filter.Status) && !filter.HasDeadline.HasValue)
             {
-                switch (sortBy)
-                {
-                    case "name":
-                        todoLists = order == "asc"
-                            ? todoLists.OrderBy(x => x.ListName).ToList()
-                            : todoLists.OrderByDescending(x => x.ListName).ToList();
-                        break;
-                    case "deadline":
-                        todoLists = order == "asc"
-                            ? todoLists.OrderBy(x => x.Deadline).ToList()
-                            : todoLists.OrderByDescending(x => x.Deadline).ToList();
-                        break;
-                    case "createdat":
-                        todoLists = order == "asc"
-                            ? todoLists.OrderBy(x => x.CreatedAt).ToList()
-                            : todoLists.OrderByDescending(x => x.CreatedAt).ToList();
-                        break;
-                }
+                endpoint = "todolists";
             }
 
-            SetLists(todoLists);
+            if (!string.IsNullOrEmpty(filter.Status))
+                queryParams.Add($"status={filter.Status}");
+
+            if (filter.HasDeadline.HasValue)
+                queryParams.Add($"hasDeadline={filter.HasDeadline.Value.ToString().ToLower()}");
+
+            if (queryParams.Any())
+                endpoint += "?" + string.Join("&", queryParams);
+
+            _currentLists = await _apiClient.GetAsync<List<TodoList>>(endpoint)
+                ?? new List<TodoList>();
+
+            SetLists();
         }
+
 
         public async Task PostTodoListAsync(CreateTodoList list)
         {
@@ -111,52 +73,63 @@ namespace Todoist.WinForms.Services
 
             if (success != null)
             {
-                await GetTodoListsAsync();
+                await GetByFilterTodoListsAsync(
+                    new TodoListFilter
+                    {
+                        Status = null,
+                        HasDeadline = null
+                    });
             }
         }
 
-        private List<TodoList> ApplySort(List<TodoList> lists)
+        private List<TodoList> ApplySort()
         {
             switch (_currentSort)
             {
                 case TodoListSortType.NameAsc:
-                    return lists.OrderBy(x => x.ListName).ToList();
+                    return _currentLists.OrderBy(x => x.ListName).ToList();
 
                 case TodoListSortType.NameDesc:
-                    return lists.OrderByDescending(x => x.ListName).ToList();
+                    return _currentLists.OrderByDescending(x => x.ListName).ToList();
 
                 case TodoListSortType.DeadlineAsc:
-                    return lists.OrderBy(
+                    return _currentLists.OrderBy(
                         x => x.Deadline ?? DateTime.MaxValue
                     ).ToList();
 
                 case TodoListSortType.DeadlineDesc:
-                    return lists.OrderByDescending(
+                    return _currentLists.OrderByDescending(
                         x => x.Deadline ?? DateTime.MinValue
                     ).ToList();
 
                 case TodoListSortType.CreatedAtAsc:
-                    return lists.OrderBy(x => x.CreatedAt).ToList();
+                    return _currentLists.OrderBy(x => x.CreatedAt).ToList();
 
                 case TodoListSortType.CreatedAtDesc:
-                    return lists.OrderByDescending(x => x.CreatedAt).ToList();
+                    return _currentLists.OrderByDescending(x => x.CreatedAt).ToList();
+
+                case TodoListSortType.PriorityAsc:
+                    return _currentLists.OrderBy(x => x.ListPriority).ToList();
+
+                case TodoListSortType.PriorityDesc:
+                    return _currentLists.OrderByDescending(x => x.ListPriority).ToList();
 
                 default:
-                    return lists;
+                    return _currentLists;
             }
         }
 
-        public void SetLists(List<TodoList> lists)
+        public void SetLists()
         {
-            _lists = ApplySort(lists);
-            OnListsChanged?.Invoke(_lists);
+            _currentLists = ApplySort();
+            OnListsChanged?.Invoke(_currentLists);
         }
 
         public void SetSort(TodoListSortType sortType)
         {
             _currentSort = sortType;
 
-            SetLists(_lists);
+            SetLists();
         }
 
         public void SelectList(TodoList list)

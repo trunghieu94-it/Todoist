@@ -8,6 +8,8 @@ namespace Todoist.WinForms.Models.Enums
         DeadlineAsc,
         DeadlineDesc,
         CreatedAtAsc,
-        CreatedAtDesc
+        CreatedAtDesc,
+        PriorityAsc,
+        PriorityDesc
     }
 }
