@@ -56,10 +56,10 @@ namespace Todoist.WinForms.Views
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listItems.AutoScroll = true;
-            this.listItems.Location = new System.Drawing.Point(0, 103);
+            this.listItems.Location = new System.Drawing.Point(0, 145);
             this.listItems.Margin = new System.Windows.Forms.Padding(0);
             this.listItems.Name = "listItems";
-            this.listItems.Size = new System.Drawing.Size(900, 323);
+            this.listItems.Size = new System.Drawing.Size(900, 281);
             this.listItems.TabIndex = 8;
             // 
             // btnDelete
@@ -80,13 +80,14 @@ namespace Todoist.WinForms.Views
             this.btnDelete.IconPadding = 10;
             this.btnDelete.IconSize = new System.Drawing.Size(20, 20);
             this.btnDelete.IconTextSpacing = 30;
-            this.btnDelete.Location = new System.Drawing.Point(865, 187);
+            this.btnDelete.Location = new System.Drawing.Point(832, 106);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(65, 36);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextColor = System.Drawing.Color.Black;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += async (sender, e) => await this.BtnDelete_Click(sender, e);
             // 
             // btnSelect
             // 
@@ -106,13 +107,14 @@ namespace Todoist.WinForms.Views
             this.btnSelect.IconPadding = 10;
             this.btnSelect.IconSize = new System.Drawing.Size(20, 20);
             this.btnSelect.IconTextSpacing = 30;
-            this.btnSelect.Location = new System.Drawing.Point(719, 187);
+            this.btnSelect.Location = new System.Drawing.Point(686, 106);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(140, 36);
             this.btnSelect.TabIndex = 6;
             this.btnSelect.Text = "Select/Deselect All";
             this.btnSelect.TextColor = System.Drawing.Color.Black;
             this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Visible = false;
             // 
             // addTodoListPanel
             // 

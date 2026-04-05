@@ -50,5 +50,11 @@ namespace Todoist.WinForms.Services
                 PropertyNameCaseInsensitive = true
             });
         }
+
+        public async Task<bool> DeleteAsync(string endpoint)
+        {
+            var response = await _httpClient.DeleteAsync(endpoint);
+            return response.IsSuccessStatusCode;
+        }
     }
 }

@@ -6,6 +6,8 @@ using Todoist.WinForms.Models;
 using Todoist.WinForms.Models.Enums;
 using Todoist.WinForms.Services;
 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 namespace Todoist.WinForms.Views
 {
     /* ARCHITECTURE NOTE:
@@ -75,7 +77,7 @@ namespace Todoist.WinForms.Views
             base.OnLoad(e);
 
             // Call Services
-            await TodoListsService.Instance.GetByFilterTodoListsAsync(
+            await TodoListsService.Instance.LoadTodoListsAsync(
                 new TodoListFilter
                 {
                     Status = null,
