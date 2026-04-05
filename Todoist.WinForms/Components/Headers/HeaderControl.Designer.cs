@@ -29,8 +29,9 @@ namespace Todoist.WinForms.Views.Components
         private void InitializeComponent()
         {
             this.pnlHeader = new BorderPanel();
+            this.lblSort = new System.Windows.Forms.Label();
+            this.cbSort = new System.Windows.Forms.ComboBox();
             this.lblTitle = new Todoist.WinForms.Views.Components.IconLabel();
-            this.btnSort = new Todoist.WinForms.Views.Components.CustomButton();
             this.lblDate = new Todoist.WinForms.Views.Components.IconLabel();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -42,8 +43,9 @@ namespace Todoist.WinForms.Views.Components
             this.pnlHeader.BorderThickness = 0;
             this.pnlHeader.BottomLeftRadius = 0;
             this.pnlHeader.BottomRightRadius = 0;
+            this.pnlHeader.Controls.Add(this.lblSort);
+            this.pnlHeader.Controls.Add(this.cbSort);
             this.pnlHeader.Controls.Add(this.lblTitle);
-            this.pnlHeader.Controls.Add(this.btnSort);
             this.pnlHeader.Controls.Add(this.lblDate);
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
@@ -51,6 +53,35 @@ namespace Todoist.WinForms.Views.Components
             this.pnlHeader.TabIndex = 9;
             this.pnlHeader.TopLeftRadius = 0;
             this.pnlHeader.TopRightRadius = 0;
+            // 
+            // lblSort
+            // 
+            this.lblSort.AutoSize = true;
+            this.lblSort.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSort.Location = new System.Drawing.Point(314, 30);
+            this.lblSort.Name = "lblSort";
+            this.lblSort.Size = new System.Drawing.Size(67, 21);
+            this.lblSort.TabIndex = 6;
+            this.lblSort.Text = "Sắp xếp:";
+            // 
+            // cbSort
+            // 
+            this.cbSort.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSort.FormattingEnabled = true;
+            this.cbSort.Items.AddRange(new object[] {
+            "Mặc định",
+            "Tên (A → Z)",
+            "Tên (Z → A)",
+            "Deadline gần nhất",
+            "Deadline xa nhất",
+            "Ngày tạo cũ nhất",
+            "Ngày tạo mới nhất"});
+            this.cbSort.Location = new System.Drawing.Point(387, 27);
+            this.cbSort.Name = "cbSort";
+            this.cbSort.Size = new System.Drawing.Size(165, 29);
+            this.cbSort.TabIndex = 5;
+            this.cbSort.Text = "Chọn sắp xếp theo";
+            this.cbSort.SelectedIndexChanged += new System.EventHandler(this.CbSort_SelectedIndexChanged);
             // 
             // lblTitle
             // 
@@ -65,31 +96,6 @@ namespace Todoist.WinForms.Views.Components
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Home";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnSort
-            // 
-            this.btnSort.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSort.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.btnSort.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnSort.BorderRadius = 10;
-            this.btnSort.BorderSize = 0;
-            this.btnSort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSort.FlatAppearance.BorderSize = 0;
-            this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSort.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSort.ForeColor = System.Drawing.Color.Black;
-            this.btnSort.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSort.Icon = global::Todoist.WinForms.Properties.Resources.swap;
-            this.btnSort.IconPadding = 10;
-            this.btnSort.IconSize = new System.Drawing.Size(24, 24);
-            this.btnSort.IconTextSpacing = 30;
-            this.btnSort.Location = new System.Drawing.Point(316, 20);
-            this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(85, 40);
-            this.btnSort.TabIndex = 5;
-            this.btnSort.Text = "Sort";
-            this.btnSort.TextColor = System.Drawing.Color.Black;
-            this.btnSort.UseVisualStyleBackColor = false;
             // 
             // lblDate
             // 
@@ -120,10 +126,10 @@ namespace Todoist.WinForms.Views.Components
         }
 
         #endregion
-
-        private CustomButton btnSort;
         private IconLabel lblDate;
         private IconLabel lblTitle;
         private BorderPanel pnlHeader;
+        private System.Windows.Forms.ComboBox cbSort;
+        private System.Windows.Forms.Label lblSort;
     }
 }

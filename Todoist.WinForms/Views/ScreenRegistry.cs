@@ -17,7 +17,8 @@ namespace Todoist.WinForms.Views
                 {
                     Title = "Home",
                     TitleIcon = Properties.Resources.home_2,
-                    LoadDataAsync = () => TodoListsService.Instance.GetTodoListsAsync()
+                    LoadDataAsync = () =>
+                    TodoListsService.Instance.GetTodoListsAsync()
                 }
             },
             {
@@ -26,7 +27,9 @@ namespace Todoist.WinForms.Views
                 {
                     Title = "Achieved",
                     TitleIcon = Properties.Resources.star,
-                    LoadDataAsync = () => TodoListsService.Instance.GetByFilterTodoListsAsync(new Models.TodoListFilter
+                    LoadDataAsync = () =>
+                    TodoListsService.Instance.GetByFilterTodoListsAsync(
+                        new Models.TodoListFilter
                     {
                         Status = "Achieved",
                         HasDeadline = null
@@ -39,7 +42,9 @@ namespace Todoist.WinForms.Views
                 {
                     Title = "Planned",
                     TitleIcon = Properties.Resources.calendar,
-                    LoadDataAsync = () => TodoListsService.Instance.GetByFilterTodoListsAsync(new Models.TodoListFilter
+                    LoadDataAsync = () =>
+                    TodoListsService.Instance.GetByFilterTodoListsAsync(
+                        new Models.TodoListFilter
                     {
                         Status = null,
                         HasDeadline = true

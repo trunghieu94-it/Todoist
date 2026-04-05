@@ -15,6 +15,8 @@ namespace Todoist.WinForms.Views
     */
     public partial class MainForm : Form
     {
+        private TodoListsService _service = TodoListsService.Instance;
+
         private Dictionary<AppScreen, ScreenConfig> _screens;
 
         public MainForm()
@@ -28,9 +30,12 @@ namespace Todoist.WinForms.Views
         {
             homeView.OnTodoListSubmitted += HandleTodoListCreatedAsync;
 
+            header.OnSortOptionChanged += HandleSortRequestAsync;
+
             sidebar.OnMenuClick += NavigateAsync;
             sidebar.OnSubmitted += HandleTodoListCreatedAsync;
             sidebar.OnListLabelClicked += HandleLabelClicked;
+
         }
 
         private void HandleLabelClicked(int listId, string listName)
@@ -59,6 +64,29 @@ namespace Todoist.WinForms.Views
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi tạo danh sách: {ex.Message}");
+            }
+        }
+
+        private async void HandleSortRequestAsync(TodoListFilter filter, string sortBy, string order)
+        {
+            try
+            {
+                if (filter == null)
+                {
+                    await TodoListsService.Instance.GetTodoListsAsync();
+                }
+                else
+                {
+                    await TodoListsService.Instance.GetByFilterTodoListsAsync(
+                                            filter,
+                                            sortBy,
+                                            order
+                                        );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi sắp xếp: {ex.Message}");
             }
         }
         #endregion

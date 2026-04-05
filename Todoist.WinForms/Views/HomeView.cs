@@ -11,7 +11,7 @@ namespace Todoist.WinForms.Views
         private TodoListDetails _detailsView;
 
         public event Action<CreateTodoList> OnTodoListSubmitted;
-        
+
         public HomeView()
         {
             InitializeComponent();
