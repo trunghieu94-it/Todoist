@@ -64,6 +64,7 @@ namespace Todoist.Infrastructure.Repositories
                 UpdatedAt
             FROM {DbTables.TodoLists}
             WHERE 1=1";
+
             if (status == TodoListStatus.Active)
                 sql += " AND ListStatus = 1";
 

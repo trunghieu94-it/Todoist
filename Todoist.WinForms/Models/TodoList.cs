@@ -10,7 +10,9 @@ namespace Todoist.WinForms.Models
         public int UserId { get; set; }
 
         public string ListName { get; set; } = string.Empty;
+
         public DateTime? Deadline { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public TodoListPriority ListPriority { get; set; }
         public TodoListStatus ListStatus { get; set; }
