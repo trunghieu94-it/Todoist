@@ -16,5 +16,7 @@ namespace Todoist.WinForms.Models
 
         public TodoListPriority ListPriority { get; set; }
         public TodoListStatus ListStatus { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

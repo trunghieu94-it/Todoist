@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
@@ -11,6 +12,8 @@ namespace Todoist.WinForms.Components
     public partial class TodoListsView : UserControl
     {
         public event Action<int, string> OnTodoListDetailRequested;
+
+        public List<TodoList> _selectedLists = new List<TodoList>();
 
         public TodoListsView()
         {
@@ -34,10 +37,7 @@ namespace Todoist.WinForms.Components
 
                 item.SetData(list);
 
-                item.OnDetailClicked += (listId, listName) => // subcribe
-                {
-                    OnTodoListDetailRequested?.Invoke(listId, listName);
-                };
+                SubcribeEvents(item, list);
 
                 item.Dock = DockStyle.Fill;
                 item.Margin = new Padding(0, 10, 0, 10);
@@ -62,6 +62,48 @@ namespace Todoist.WinForms.Components
             item.DisplayDeadline(list);
 
             return item;
+        }
+
+        private void SubcribeEvents(TodoListView item, TodoList list)
+        {
+            item.OnDetailClicked += (listId, listName) => // subcribe
+            {
+                OnTodoListDetailRequested?.Invoke(listId, listName);
+            };
+
+            item.OnChecked += (isChecked) =>
+            {
+                if (isChecked)
+                {
+                    _selectedLists.Add(list);
+                }
+                else
+                {
+                    _selectedLists.RemoveAll(l => l.Id == list.Id);
+                }
+            };
+
+            item.OnDeleteClicked += async (listId) =>
+            {
+                var confirmResult = MessageBox.Show(
+                    "Bạn chắc chắn muốn xóa list này?",
+                    "Xác nhận!",
+                    MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    var result = await TodoListsService.Instance.DeleteTodoListAsync(list);
+
+                    if (result)
+                    {
+                        await TodoListsService.Instance.LoadTodoListsAsync(
+                    new TodoListFilter
+                    {
+                        Status = null,
+                        HasDeadline = null
+                    });
+                    }
+                }
+            };
         }
     }
 }

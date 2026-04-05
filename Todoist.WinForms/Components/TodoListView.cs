@@ -11,6 +11,8 @@ namespace Todoist.WinForms.Views.Components
         public int ListId { get; private set; }
 
         public event Action<int, string> OnDetailClicked;
+        public event Action<bool> OnChecked;
+        public event Action<int> OnDeleteClicked;
         #endregion
 
         #region Properties
@@ -65,5 +67,15 @@ namespace Todoist.WinForms.Views.Components
             OnDetailClicked?.Invoke(ListId, ListName);
         }
         #endregion
+
+        private void ChkTodoList_CheckedChanged(object sender, EventArgs e)
+        {
+            OnChecked?.Invoke(chkTodoList.Checked);
+        }
+
+        private void IconDelete_Click(object sender, EventArgs e)
+        {
+            OnDeleteClicked?.Invoke(ListId);
+        }
     }
 }

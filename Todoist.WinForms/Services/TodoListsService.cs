@@ -14,7 +14,6 @@ namespace Todoist.WinForms.Services
 
         public static TodoListsService Instance { get; } = new TodoListsService();
 
-        private List<TodoList> _originalLists = new List<TodoList>();
         private List<TodoList> _currentLists = new List<TodoList>();
 
         private TodoListSortType _currentSort = TodoListSortType.CreatedAtDesc;
@@ -27,26 +26,16 @@ namespace Todoist.WinForms.Services
             _apiClient = new ApiClient();
         }
 
-        #region Methods
-        //public async Task GetTodoListsAsync()
-        //{
-        //    var endpoint = "todolists";
-
-        //    _originalLists = await _apiClient.GetAsync<List<TodoList>>(endpoint)
-        //        ?? new List<TodoList>();
-
-        //    _currentLists = _originalLists;
-
-        //    SetLists();
-        //}
-
-        public async Task GetByFilterTodoListsAsync(TodoListFilter filter)
+        #region API Methods
+        public async Task LoadTodoListsAsync(TodoListFilter filter)
         {
             var endpoint = "todolists/filter";
 
             var queryParams = new List<string>();
 
-            if (string.IsNullOrEmpty(filter.Status) && !filter.HasDeadline.HasValue)
+            if (string.IsNullOrEmpty(filter.Status)
+                &&
+                !filter.HasDeadline.HasValue)
             {
                 endpoint = "todolists";
             }
@@ -73,7 +62,7 @@ namespace Todoist.WinForms.Services
 
             if (success != null)
             {
-                await GetByFilterTodoListsAsync(
+                await LoadTodoListsAsync(
                     new TodoListFilter
                     {
                         Status = null,
@@ -82,6 +71,16 @@ namespace Todoist.WinForms.Services
             }
         }
 
+        public async Task<bool> DeleteTodoListAsync(TodoList item)
+        {
+            if (item == null)
+                return false;
+
+            return await _apiClient.DeleteAsync($"todolists/{item.Id}");
+        }
+        #endregion
+
+        #region Methods
         private List<TodoList> ApplySort()
         {
             switch (_currentSort)

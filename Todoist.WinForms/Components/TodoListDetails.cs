@@ -1,9 +1,7 @@
 using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Components;
-using Todoist.WinForms.Services;
 
 namespace Todoist.WinForms.Views.Components
 {

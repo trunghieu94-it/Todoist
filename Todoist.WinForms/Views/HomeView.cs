@@ -1,7 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
+using Todoist.WinForms.Services;
 using Todoist.WinForms.Views.Components;
 
 namespace Todoist.WinForms.Views
@@ -63,5 +67,40 @@ namespace Todoist.WinForms.Views
             }
         }
         #endregion
+
+        private async Task BtnDelete_Click(object sender, EventArgs e)
+        {
+            var selectedItems = listItems._selectedLists;
+
+            if (selectedItems == null || !selectedItems.Any())
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất 1 TodoList để xóa!");
+                return;
+            }
+
+            var confirm = MessageBox.Show(
+                $"Bạn có chắc muốn xóa {selectedItems.Count} TodoList?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo
+            );
+
+            if (confirm != DialogResult.Yes) return;
+
+            var tasks = selectedItems
+                .Select(item => TodoListsService.Instance.DeleteTodoListAsync(item));
+
+            var results = await Task.WhenAll(tasks);
+
+            if (results.All(x => x))
+            {
+                MessageBox.Show("Xóa thành công!");
+                listItems._selectedLists = new List<TodoList>();
+                await TodoListsService.Instance.LoadTodoListsAsync(new TodoListFilter());
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi xóa!");
+            }
+        }
     }
 }

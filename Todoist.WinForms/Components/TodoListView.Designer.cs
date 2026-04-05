@@ -125,6 +125,7 @@ namespace Todoist.WinForms.Views.Components
             this.iconDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.iconDelete.TabIndex = 8;
             this.iconDelete.TabStop = false;
+            this.iconDelete.Click += new System.EventHandler(this.IconDelete_Click);
             // 
             // txtListName
             // 
@@ -159,6 +160,7 @@ namespace Todoist.WinForms.Views.Components
             this.chkTodoList.Size = new System.Drawing.Size(15, 14);
             this.chkTodoList.TabIndex = 0;
             this.chkTodoList.UseVisualStyleBackColor = true;
+            this.chkTodoList.CheckedChanged += new System.EventHandler(this.ChkTodoList_CheckedChanged);
             // 
             // TodoListView
             // 
