@@ -71,12 +71,19 @@ namespace Todoist.WinForms.Services
             }
         }
 
-        public async Task<bool> DeleteTodoListAsync(TodoList item)
+        public async Task UpdateAsync(TodoList list)
         {
-            if (item == null)
+            var endpoint = $"todolists/{list.Id}";
+
+            await _apiClient.UpdateAsync(endpoint, list);
+        }
+
+        public async Task<bool> DeleteTodoListAsync(TodoList list)
+        {
+            if (list == null)
                 return false;
 
-            return await _apiClient.DeleteAsync($"todolists/{item.Id}");
+            return await _apiClient.DeleteAsync($"todolists/{list.Id}");
         }
         #endregion
 
