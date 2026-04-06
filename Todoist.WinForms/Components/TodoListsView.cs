@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Models;
@@ -11,9 +10,12 @@ namespace Todoist.WinForms.Components
 {
     public partial class TodoListsView : UserControl
     {
-        public event Action<int, string> OnTodoListDetailRequested;
-
+        #region Fields
+        private readonly TodoListsService _service = TodoListsService.Instance;
         public List<TodoList> _selectedLists = new List<TodoList>();
+        #endregion
+
+        public event Action<int, string> OnTodoListDetailRequested;
 
         public TodoListsView()
         {
@@ -91,11 +93,11 @@ namespace Todoist.WinForms.Components
                     MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    var result = await TodoListsService.Instance.DeleteTodoListAsync(list);
+                    var result = await _service.DeleteTodoListAsync(list);
 
                     if (result)
                     {
-                        await TodoListsService.Instance.LoadTodoListsAsync(
+                        await _service.LoadTodoListsAsync(
                     new TodoListFilter
                     {
                         Status = null,

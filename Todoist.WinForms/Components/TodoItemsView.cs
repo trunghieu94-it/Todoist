@@ -18,10 +18,10 @@ namespace Todoist.WinForms.Components
         }
 
         #region Fields
+        private readonly TodoItemsService _service = TodoItemsService.Instance;
+
         private int _currentListId;
         private bool _isAdding = false;
-
-        private TodoItemsService _service = TodoItemsService.Instance;
         #endregion
 
         #region Methods
@@ -36,15 +36,43 @@ namespace Todoist.WinForms.Components
             {
                 var itemView = new TodoItemView(item, TodoItemViewMode.Edit);
 
-                itemView.OnUpdate += async (updatedItem) =>
-                {
-                    //await service.UpdateAsync(updatedItem);
-                    await LoadDataAsync();
-                };
+                SubcribeEvents(itemView);
 
                 AddRow(itemView);
             }
 
+            HandleAddItem(items);
+
+            tableTodoItems.ResumeLayout();
+        }
+
+        private void SubcribeEvents(TodoItemView itemView)
+        {
+            itemView.OnUpdate += async (updatedItem) =>
+            {
+                await _service.UpdateTodoItemAsync(updatedItem);
+                await LoadDataAsync();
+            };
+
+            itemView.OnDelete += async (todoItem) =>
+            {
+                var confirmResult = MessageBox.Show(
+                    "Bạn chắc chắn muốn xóa task này?",
+                    "Xác nhận!",
+                    MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    var result =
+                    await _service.DeleteTodoItemAsync(todoItem);
+
+                    if (result)
+                        await LoadDataAsync();
+                }
+            };
+        }
+
+        private void HandleAddItem(List<TodoItem> items)
+        {
             if (_isAdding)
             {
                 var addView = new TodoItemView(
@@ -77,8 +105,6 @@ namespace Todoist.WinForms.Components
 
                 AddRow(btnAdd);
             }
-
-            tableTodoItems.ResumeLayout();
         }
 
         private async Task HandleCreateItemAsync(TodoItemView itemView)
@@ -129,7 +155,6 @@ namespace Todoist.WinForms.Components
                 MessageBox.Show($"Error loading todo items: {ex.Message}");
             }
         }
-
 
         public void SetListId(int listId)
         {

@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 
+using Todoist.WinForms.Enums;
 using Todoist.WinForms.Models;
 using Todoist.WinForms.Models.Enums;
 
@@ -8,6 +9,33 @@ namespace Todoist.WinForms.Components
 {
     public partial class TodoItemView : UserControl
     {
+        #region Fields
+        private TodoItemViewMode _mode;
+        private TodoItem _item;
+        #endregion
+
+        #region Events
+        public event Action<TodoItem> OnUpdate;
+        public event Action<TodoItemView> OnCreate;
+        public event Action OnCancel;
+        public event Action<TodoItem> OnDelete;
+        #endregion
+
+        #region Properties
+        public string Title
+        {
+            get => txtTitle.Text;
+            set => txtTitle.Text = value;
+        }
+
+        public string Status
+        {
+            get => cboStatus.Text;
+            set => cboStatus.Text = value;
+        }
+        #endregion
+
+
         public TodoItemView(TodoItem item, TodoItemViewMode mode)
         {
             this._item = item;
@@ -17,26 +45,26 @@ namespace Todoist.WinForms.Components
 
             this.Dock = DockStyle.Fill;
             this.Margin = new Padding(0, 10, 0, 10);
-            cboStatus.SelectedIndex = 0;
 
             BindData();
             BindEvents();
         }
 
-        private TodoItemViewMode _mode;
-        private TodoItem _item;
-
-        public event Action<TodoItem> OnUpdate;
-        public event Action<TodoItemView> OnCreate;
-        public event Action OnCancel;
-
+        #region Methods
         private void BindData()
         {
             if (_mode == TodoItemViewMode.Edit && _item != null)
             {
                 txtTitle.Text = _item.Title;
-                cboStatus.SelectedItem = _item.ItemStatus.ToString();
+                cboStatus.DataSource = Enum.GetValues(typeof(TodoItemStatus));
+                cboStatus.SelectedItem = _item.ItemStatus;
             }
+
+            if (_mode == TodoItemViewMode.Create && _item != null)
+            {
+                cboStatus.DataSource = Enum.GetValues(typeof(TodoItemStatus));
+                cboStatus.SelectedIndex = 0;
+            }    
         }
 
         private void BindEvents()
@@ -69,8 +97,8 @@ namespace Todoist.WinForms.Components
             {
                 if (_mode == TodoItemViewMode.Edit)
                 {
-                    txtTitle.Text = _item.Title;
-                    cboStatus.SelectedItem = _item.ItemStatus.ToString();
+                    _item.Title = txtTitle.Text;
+                    _item.ItemStatus = (TodoItemStatus)cboStatus.SelectedItem;
 
                     OnUpdate?.Invoke(_item);
                 }
@@ -93,18 +121,10 @@ namespace Todoist.WinForms.Components
                 }
             }));
         }
-
-        #region Properties
-        public string Title
+        
+        private void IconDelete_Click(object sender, EventArgs e)
         {
-            get => txtTitle.Text;
-            set => txtTitle.Text = value;
-        }
-
-        public string Status
-        {
-            get => cboStatus.Text;
-            set => cboStatus.Text = value;
+            OnDelete.Invoke(_item);
         }
         #endregion
     }
