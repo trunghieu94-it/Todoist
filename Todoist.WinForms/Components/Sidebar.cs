@@ -16,7 +16,7 @@ namespace Todoist.WinForms.Components
         // Delegates
         public event Action<AppScreen> OnMenuClick;
         public event Action<CreateTodoList> OnSubmitted;
-        public event Action<int, string> OnListLabelClicked;
+        public event Action<TodoList> OnListLabelClicked;
 
         public Sidebar()
         {
@@ -52,7 +52,10 @@ namespace Todoist.WinForms.Components
             lbl.Font = new Font("Segoe UI", 12);
             lbl.Cursor = Cursors.Hand;
 
-            lbl.Click += LabelList_Click;
+            lbl.Click += (sender, e) =>
+            {
+                LabelList_Click(list);
+            };
 
             return lbl;
         }
@@ -99,9 +102,9 @@ namespace Todoist.WinForms.Components
         {
             OnMenuClick?.Invoke(AppScreen.Planned);
         }
-        private void BtnAchieved_Click(object sender, EventArgs e)
+        private void BtnArchived_Click(object sender, EventArgs e)
         {
-            OnMenuClick?.Invoke(AppScreen.Achieved);
+            OnMenuClick?.Invoke(AppScreen.Archived);
         }
         private void BtnNotes_Click(object sender, EventArgs e)
         {
@@ -125,13 +128,11 @@ namespace Todoist.WinForms.Components
             }
         }
         
-        private void LabelList_Click(object sender, EventArgs args)
+        private void LabelList_Click(TodoList list)
         {
-            var lbl = sender as Label;
-
-            if (lbl?.Tag is int listId)
+            if (list != null)
             {
-                OnListLabelClicked?.Invoke(listId, lbl.Text);
+                OnListLabelClicked?.Invoke(list);
             }
         }
 

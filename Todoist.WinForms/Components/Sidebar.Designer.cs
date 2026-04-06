@@ -36,7 +36,7 @@ namespace Todoist.WinForms.Components
             this.txtAddTodoList = new System.Windows.Forms.TextBox();
             this.btnNotes = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnPlanned = new Todoist.WinForms.Views.Components.CustomButton();
-            this.btnAchieved = new Todoist.WinForms.Views.Components.CustomButton();
+            this.btnArchived = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnHome = new Todoist.WinForms.Views.Components.CustomButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
@@ -53,7 +53,7 @@ namespace Todoist.WinForms.Components
             this.panel1.Controls.Add(this.txtAddTodoList);
             this.panel1.Controls.Add(this.btnNotes);
             this.panel1.Controls.Add(this.btnPlanned);
-            this.panel1.Controls.Add(this.btnAchieved);
+            this.panel1.Controls.Add(this.btnArchived);
             this.panel1.Controls.Add(this.btnHome);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -103,8 +103,8 @@ namespace Todoist.WinForms.Components
             this.txtAddTodoList.Size = new System.Drawing.Size(150, 29);
             this.txtAddTodoList.TabIndex = 4;
             this.txtAddTodoList.Text = "New todolist";
-            this.txtAddTodoList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             this.txtAddTodoList.Enter += new System.EventHandler(this.TxtTitle_Enter);
+            this.txtAddTodoList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             this.txtAddTodoList.Leave += new System.EventHandler(this.TxtTitle_Leave);
             // 
             // btnNotes
@@ -161,32 +161,32 @@ namespace Todoist.WinForms.Components
             this.btnPlanned.UseVisualStyleBackColor = false;
             this.btnPlanned.Click += new System.EventHandler(this.BtnPlanned_Click);
             // 
-            // btnAchieved
+            // btnArchived
             // 
-            this.btnAchieved.BackColor = System.Drawing.Color.White;
-            this.btnAchieved.BackgroundColor = System.Drawing.Color.White;
-            this.btnAchieved.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnAchieved.BorderRadius = 0;
-            this.btnAchieved.BorderSize = 0;
-            this.btnAchieved.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAchieved.FlatAppearance.BorderSize = 0;
-            this.btnAchieved.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAchieved.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAchieved.ForeColor = System.Drawing.Color.Black;
-            this.btnAchieved.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.btnAchieved.Icon = global::Todoist.WinForms.Properties.Resources.star;
-            this.btnAchieved.IconPadding = 25;
-            this.btnAchieved.IconSize = new System.Drawing.Size(24, 24);
-            this.btnAchieved.IconTextSpacing = 0;
-            this.btnAchieved.Location = new System.Drawing.Point(0, 135);
-            this.btnAchieved.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAchieved.Name = "btnAchieved";
-            this.btnAchieved.Size = new System.Drawing.Size(200, 40);
-            this.btnAchieved.TabIndex = 0;
-            this.btnAchieved.Text = "Achieved";
-            this.btnAchieved.TextColor = System.Drawing.Color.Black;
-            this.btnAchieved.UseVisualStyleBackColor = false;
-            this.btnAchieved.Click += new System.EventHandler(this.BtnAchieved_Click);
+            this.btnArchived.BackColor = System.Drawing.Color.White;
+            this.btnArchived.BackgroundColor = System.Drawing.Color.White;
+            this.btnArchived.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnArchived.BorderRadius = 0;
+            this.btnArchived.BorderSize = 0;
+            this.btnArchived.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArchived.FlatAppearance.BorderSize = 0;
+            this.btnArchived.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArchived.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArchived.ForeColor = System.Drawing.Color.Black;
+            this.btnArchived.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.btnArchived.Icon = global::Todoist.WinForms.Properties.Resources.star;
+            this.btnArchived.IconPadding = 25;
+            this.btnArchived.IconSize = new System.Drawing.Size(24, 24);
+            this.btnArchived.IconTextSpacing = 0;
+            this.btnArchived.Location = new System.Drawing.Point(0, 135);
+            this.btnArchived.Margin = new System.Windows.Forms.Padding(0);
+            this.btnArchived.Name = "btnArchived";
+            this.btnArchived.Size = new System.Drawing.Size(200, 40);
+            this.btnArchived.TabIndex = 0;
+            this.btnArchived.Text = "Archived";
+            this.btnArchived.TextColor = System.Drawing.Color.Black;
+            this.btnArchived.UseVisualStyleBackColor = false;
+            this.btnArchived.Click += new System.EventHandler(this.BtnArchived_Click);
             // 
             // btnHome
             // 
@@ -242,7 +242,7 @@ namespace Todoist.WinForms.Components
         private System.Windows.Forms.TextBox txtAddTodoList;
         private Views.Components.CustomButton btnNotes;
         private Views.Components.CustomButton btnPlanned;
-        private Views.Components.CustomButton btnAchieved;
+        private Views.Components.CustomButton btnArchived;
         private Views.Components.CustomButton btnHome;
         private System.Windows.Forms.FlowLayoutPanel flowListNames;
         private System.Windows.Forms.ErrorProvider errorProvider;

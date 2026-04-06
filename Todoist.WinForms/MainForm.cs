@@ -24,6 +24,7 @@ namespace Todoist.WinForms.Views
         public MainForm()
         {
             InitializeComponent();
+
             SubcribeEvents();
         }
 
@@ -40,9 +41,9 @@ namespace Todoist.WinForms.Views
 
         }
 
-        private void HandleLabelClicked(int listId, string listName)
+        private void HandleLabelClicked(TodoList list)
         {
-            homeView.HandleDetailRequested(listId, listName);
+            homeView.HandleDetailRequested(list);
         }
 
         private async void NavigateAsync(AppScreen screen)

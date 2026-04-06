@@ -37,11 +37,11 @@ namespace Todoist.WinForms.Views.Components
             this.btnRemind = new Todoist.WinForms.Views.Components.CustomButton();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.txtListName = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnArchieve = new System.Windows.Forms.PictureBox();
             this.lblComplete = new System.Windows.Forms.Label();
             this.borderPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnArchieve)).BeginInit();
             this.SuspendLayout();
             // 
             // borderPanel1
@@ -57,7 +57,7 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.Controls.Add(this.btnRemind);
             this.borderPanel1.Controls.Add(this.txtNotes);
             this.borderPanel1.Controls.Add(this.txtListName);
-            this.borderPanel1.Controls.Add(this.pictureBox1);
+            this.borderPanel1.Controls.Add(this.btnArchieve);
             this.borderPanel1.Controls.Add(this.lblComplete);
             this.borderPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.borderPanel1.Location = new System.Drawing.Point(0, 0);
@@ -173,34 +173,35 @@ namespace Todoist.WinForms.Views.Components
             // 
             this.txtListName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtListName.Enabled = false;
             this.txtListName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtListName.Location = new System.Drawing.Point(22, 53);
             this.txtListName.Name = "txtListName";
             this.txtListName.Size = new System.Drawing.Size(655, 29);
             this.txtListName.TabIndex = 3;
             // 
-            // pictureBox1
+            // btnArchieve
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::Todoist.WinForms.Properties.Resources.archieve;
-            this.pictureBox1.Location = new System.Drawing.Point(619, 14);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.btnArchieve.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArchieve.Image = global::Todoist.WinForms.Properties.Resources.archieve;
+            this.btnArchieve.Location = new System.Drawing.Point(22, 17);
+            this.btnArchieve.Name = "btnArchieve";
+            this.btnArchieve.Size = new System.Drawing.Size(24, 24);
+            this.btnArchieve.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnArchieve.TabIndex = 2;
+            this.btnArchieve.TabStop = false;
+            this.btnArchieve.Click += new System.EventHandler(this.BtnArchive_Click);
             // 
             // lblComplete
             // 
-            this.lblComplete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblComplete.AutoSize = true;
             this.lblComplete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComplete.Location = new System.Drawing.Point(498, 17);
+            this.lblComplete.Location = new System.Drawing.Point(52, 21);
             this.lblComplete.Name = "lblComplete";
             this.lblComplete.Size = new System.Drawing.Size(113, 17);
             this.lblComplete.TabIndex = 1;
             this.lblComplete.Text = "Mark as complete";
+            this.lblComplete.Click += new System.EventHandler(this.LblComplete_Click);
             // 
             // TodoListDetails
             // 
@@ -212,7 +213,7 @@ namespace Todoist.WinForms.Views.Components
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnArchieve)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,7 +222,7 @@ namespace Todoist.WinForms.Views.Components
 
         private BorderPanel borderPanel1;
         private System.Windows.Forms.Label lblComplete;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnArchieve;
         private System.Windows.Forms.TextBox txtListName;
         private CustomButton btnRemind;
         private CustomButton btnAddTags;

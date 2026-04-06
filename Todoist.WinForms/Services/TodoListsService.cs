@@ -71,7 +71,7 @@ namespace Todoist.WinForms.Services
             }
         }
 
-        public async Task UpdateAsync(TodoList list)
+        public async Task UpdateTodoListAsync(TodoList list)
         {
             var endpoint = $"todolists/{list.Id}";
 

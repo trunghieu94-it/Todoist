@@ -71,7 +71,7 @@ namespace Todoist.Infrastructure.Repositories
             if (status == TodoListStatus.Completed)
                 sql += " AND ListStatus = 2";
 
-            if (status == TodoListStatus.Achieved)
+            if (status == TodoListStatus.Archived)
                 sql += " AND ListStatus = 3";
 
             if (hasDeadline == true)

@@ -16,7 +16,7 @@ namespace Todoist.WinForms.Views.Components
         #endregion
 
         #region Events
-        public event Action<int, string> OnDetailClicked;
+        public event Action<TodoList> OnDetailClicked;
         public event Action<bool> OnChecked;
         public event Action<int> OnDeleteClicked;
         #endregion
@@ -152,7 +152,7 @@ namespace Todoist.WinForms.Views.Components
             {
                 SetLoading(true);
 
-                await TodoListsService.Instance.UpdateAsync(updated);
+                await TodoListsService.Instance.UpdateTodoListAsync(updated);
 
                 _todo = updated;
             }
@@ -178,7 +178,7 @@ namespace Todoist.WinForms.Views.Components
         #region Events
         private void BtnDetail_Click(object sender, EventArgs e)
         {
-            OnDetailClicked?.Invoke(ListId, ListName);
+            OnDetailClicked?.Invoke(_todo);
         }
         #endregion
 

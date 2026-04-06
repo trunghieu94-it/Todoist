@@ -15,7 +15,7 @@ namespace Todoist.WinForms.Components
         public List<TodoList> _selectedLists = new List<TodoList>();
         #endregion
 
-        public event Action<int, string> OnTodoListDetailRequested;
+        public event Action<TodoList> OnTodoListDetailRequested;
 
         public TodoListsView()
         {
@@ -68,9 +68,9 @@ namespace Todoist.WinForms.Components
 
         private void SubcribeEvents(TodoListView item, TodoList list)
         {
-            item.OnDetailClicked += (listId, listName) => // subcribe
+            item.OnDetailClicked += (todoList) => // subcribe
             {
-                OnTodoListDetailRequested?.Invoke(listId, listName);
+                OnTodoListDetailRequested?.Invoke(todoList);
             };
 
             item.OnChecked += (isChecked) =>

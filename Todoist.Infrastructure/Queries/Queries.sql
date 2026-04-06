@@ -37,11 +37,6 @@ CREATE TABLE TodoLists
 )
 GO
 
-UPDATE TodoLists
-SET Deadline = '2026-06-30 10:00:00'
-WHERE Id = 1
-GO
-
 CREATE TABLE TodoItems
 (
     Id INT IDENTITY(1,1) PRIMARY KEY,
@@ -144,7 +139,7 @@ VALUES
     (1, N'Phần mềm quản lý công việc cá nhân', 3, 3, '2026-04-09 15:30:00', '2026-02-10 16:41:42', NULL),
     (2, N'Chuẩn bị CV phỏng vấn', 1, 2, NULL, '2026-02-10 16:45:41', NULL),
     (2, N'Kiến thức thuật toán', 2, 1, NULL, '2026-02-10 16:40:42', NULL),
-    (31, N'Tên dài để kiểm tra hiển thị UI', 3, 2, NULL, '2026-02-10 16:43:44', NULL)
+    (3, N'Tên dài để kiểm tra hiển thị UI', 3, 2, NULL, '2026-02-10 16:43:44', NULL)
 GO
 
 -- Extra data
