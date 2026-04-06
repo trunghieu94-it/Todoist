@@ -4,6 +4,6 @@ namespace Todoist.Domain.Enums
     {
         Active = 1,
         Completed = 2,
-        Achieved = 3
+        Archived = 3
     }
 }

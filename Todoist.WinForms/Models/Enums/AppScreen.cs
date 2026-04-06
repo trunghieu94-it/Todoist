@@ -3,7 +3,7 @@ namespace Todoist.WinForms.Models.Enums
     public enum AppScreen
     {
         Home,
-        Achieved,
+        Archived,
         Planned,
         Notes
     }

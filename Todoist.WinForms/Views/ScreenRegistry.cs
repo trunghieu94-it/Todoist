@@ -27,16 +27,16 @@ namespace Todoist.WinForms.Views
                 }
             },
             {
-                AppScreen.Achieved,
+                AppScreen.Archived,
                 new ScreenConfig
                 {
-                    Title = "Achieved",
+                    Title = "Archived",
                     TitleIcon = Properties.Resources.star,
                     LoadDataAsync = () =>
                     TodoListsService.Instance.LoadTodoListsAsync(
                         new Models.TodoListFilter
                         {
-                            Status = "Achieved",
+                            Status = "Archived",
                             HasDeadline = null
                         })
                 }
