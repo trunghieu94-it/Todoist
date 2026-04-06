@@ -68,6 +68,7 @@ namespace Todoist.WinForms.Components
             this.iconDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.iconDelete.TabIndex = 11;
             this.iconDelete.TabStop = false;
+            this.iconDelete.Click += new System.EventHandler(this.IconDelete_Click);
             // 
             // TodoItemView
             // 

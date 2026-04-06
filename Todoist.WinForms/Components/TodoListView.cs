@@ -13,7 +13,9 @@ namespace Todoist.WinForms.Views.Components
         #region Fields
         public int ListId { get; private set; }
         private TodoList _todo;
+        #endregion
 
+        #region Events
         public event Action<int, string> OnDetailClicked;
         public event Action<bool> OnChecked;
         public event Action<int> OnDeleteClicked;
@@ -50,7 +52,6 @@ namespace Todoist.WinForms.Views.Components
         public void SetData(TodoList list)
         {
             ListId = list.Id;
-            InitPriority();
             BindData(list);
         }
 
@@ -80,6 +81,8 @@ namespace Todoist.WinForms.Views.Components
 
             ListName = list.ListName ?? string.Empty;
 
+            cboPriority.DataSource = Enum.GetValues(typeof(TodoListPriority));
+
             if (cboPriority.DataSource != null)
             {
                 cboPriority.SelectedItem = list.ListPriority;
@@ -102,10 +105,6 @@ namespace Todoist.WinForms.Views.Components
             ListStatus = list.ListStatus;
         }
 
-        private void InitPriority()
-        {
-            cboPriority.DataSource = Enum.GetValues(typeof(TodoListPriority));
-        }
         private void SubcribeEvents()
         {
             txtListName.KeyDown += HandleEnterKey;
