@@ -39,6 +39,7 @@ namespace Todoist.WinForms.Components
             this.btnCompleted = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnPlanned = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnArchived = new Todoist.WinForms.Views.Components.CustomButton();
+            this.btnArchived = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnHome = new Todoist.WinForms.Views.Components.CustomButton();
             this.lblLogo = new System.Windows.Forms.Label();
             this.picLogo = new System.Windows.Forms.PictureBox();
@@ -199,6 +200,7 @@ namespace Todoist.WinForms.Components
             this.btnPlanned.UseVisualStyleBackColor = false;
             this.btnPlanned.Click += new System.EventHandler(this.BtnPlanned_Click);
             // 
+            // btnArchived
             // btnArchived
             // 
             this.btnArchived.BackColor = System.Drawing.Color.White;

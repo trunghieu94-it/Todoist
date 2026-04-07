@@ -29,10 +29,10 @@ namespace Todoist.WinForms.Views
         private void InitializeComponent()
         {
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.addTodoListPanel = new Todoist.WinForms.Views.Components.AddTodoList();
             this.listItems = new Todoist.WinForms.Components.TodoListsView();
             this.btnDelete = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnSelect = new Todoist.WinForms.Views.Components.CustomButton();
-            this.addTodoListPanel = new Todoist.WinForms.Views.Components.AddTodoList();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,15 @@ namespace Todoist.WinForms.Views
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(900, 442);
             this.contentPanel.TabIndex = 9;
+            // 
+            // addTodoListPanel
+            // 
+            this.addTodoListPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addTodoListPanel.Location = new System.Drawing.Point(0, 0);
+            this.addTodoListPanel.Name = "addTodoListPanel";
+            this.addTodoListPanel.Size = new System.Drawing.Size(900, 100);
+            this.addTodoListPanel.TabIndex = 4;
             // 
             // listItems
             // 
@@ -116,15 +125,6 @@ namespace Todoist.WinForms.Views
             this.btnSelect.UseVisualStyleBackColor = false;
             this.btnSelect.Visible = false;
             // 
-            // addTodoListPanel
-            // 
-            this.addTodoListPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addTodoListPanel.Location = new System.Drawing.Point(0, 0);
-            this.addTodoListPanel.Name = "addTodoListPanel";
-            this.addTodoListPanel.Size = new System.Drawing.Size(900, 100);
-            this.addTodoListPanel.TabIndex = 4;
-            // 
             // HomeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +143,7 @@ namespace Todoist.WinForms.Views
         private Components.CustomButton btnDelete;
         private WinForms.Components.TodoListsView listItems;
         private System.Windows.Forms.Panel contentPanel;
+        private Components.CustomButton btnSelect;
         private Components.CustomButton btnSelect;
     }
 }

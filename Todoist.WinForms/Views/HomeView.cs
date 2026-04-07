@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Enums;
+using Todoist.WinForms.Enums;
 using Todoist.WinForms.Models;
 using Todoist.WinForms.Services;
 using Todoist.WinForms.Views.Components;
@@ -13,6 +14,7 @@ namespace Todoist.WinForms.Views
 {
     public partial class HomeView : UserControl
     {
+        private readonly TodoListsService _service = TodoListsService.Instance;
         private readonly TodoListsService _service = TodoListsService.Instance;
         private TodoListDetails _detailsView;
 
@@ -29,6 +31,7 @@ namespace Todoist.WinForms.Views
         }
 
         #region Methods
+        private void ShowTodoListDetails(TodoList list)
         private void ShowTodoListDetails(TodoList list)
         {
             try
@@ -47,7 +50,13 @@ namespace Todoist.WinForms.Views
                 _detailsView.Dock = DockStyle.Fill;
 
                 _detailsView.Title = list.ListName;
+                _detailsView.BindData(list);
 
+                _detailsView.Dock = DockStyle.Fill;
+
+                _detailsView.Title = list.ListName;
+
+                _detailsView.ShowTodoItems(list);
                 _detailsView.ShowTodoItems(list);
 
                 _detailsView.Show();
@@ -77,8 +86,10 @@ namespace Todoist.WinForms.Views
         public void HandleDetailRequested(TodoList list)
         {
             ShowTodoListDetails(list);
+            ShowTodoListDetails(list);
         }
 
+        private void HandleCloseDetails(TodoListDetails detailView)
         private void HandleCloseDetails(TodoListDetails detailView)
         {
             if (_detailsView != null)
@@ -158,6 +169,7 @@ namespace Todoist.WinForms.Views
 
             var tasks = selectedItems
                 .Select(item => _service.DeleteTodoListAsync(item));
+                .Select(item => _service.DeleteTodoListAsync(item));
 
             var results = await Task.WhenAll(tasks);
 
@@ -165,6 +177,7 @@ namespace Todoist.WinForms.Views
             {
                 MessageBox.Show("Xóa thành công!");
                 listItems._selectedLists = new List<TodoList>();
+                await _service.LoadTodoListsAsync(new TodoListFilter());
                 await _service.LoadTodoListsAsync(new TodoListFilter());
             }
             else
