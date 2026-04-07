@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
-using Todoist.WinForms.Models;
 using Todoist.WinForms.Models.Enums;
 using Todoist.WinForms.Services;
 
@@ -11,8 +10,6 @@ namespace Todoist.WinForms.Views.Components
 {
     public partial class HeaderControl : UserControl
     {
-        public event Action<TodoListFilter, string, string> OnSortOptionChanged;
-
         private TodoListSortType _currentSort = TodoListSortType.None;
 
         public HeaderControl()
