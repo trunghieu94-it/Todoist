@@ -144,6 +144,5 @@ namespace Todoist.WinForms.Views
         private WinForms.Components.TodoListsView listItems;
         private System.Windows.Forms.Panel contentPanel;
         private Components.CustomButton btnSelect;
-        private Components.CustomButton btnSelect;
     }
 }
