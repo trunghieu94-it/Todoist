@@ -31,27 +31,34 @@ namespace Todoist.WinForms.Components
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowListNames = new System.Windows.Forms.FlowLayoutPanel();
-            this.picAddTodoList = new System.Windows.Forms.PictureBox();
             this.divider = new System.Windows.Forms.Panel();
             this.txtAddTodoList = new System.Windows.Forms.TextBox();
-            this.btnNotes = new Todoist.WinForms.Views.Components.CustomButton();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnActive = new Todoist.WinForms.Views.Components.CustomButton();
+            this.picAddTodoList = new System.Windows.Forms.PictureBox();
+            this.btnCompleted = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnPlanned = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnArchived = new Todoist.WinForms.Views.Components.CustomButton();
             this.btnHome = new Todoist.WinForms.Views.Components.CustomButton();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblLogo = new System.Windows.Forms.Label();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.picLogo);
+            this.panel1.Controls.Add(this.lblLogo);
+            this.panel1.Controls.Add(this.btnActive);
             this.panel1.Controls.Add(this.flowListNames);
             this.panel1.Controls.Add(this.picAddTodoList);
             this.panel1.Controls.Add(this.divider);
             this.panel1.Controls.Add(this.txtAddTodoList);
-            this.panel1.Controls.Add(this.btnNotes);
+            this.panel1.Controls.Add(this.btnCompleted);
             this.panel1.Controls.Add(this.btnPlanned);
             this.panel1.Controls.Add(this.btnArchived);
             this.panel1.Controls.Add(this.btnHome);
@@ -72,19 +79,6 @@ namespace Todoist.WinForms.Components
             this.flowListNames.Size = new System.Drawing.Size(180, 265);
             this.flowListNames.TabIndex = 8;
             this.flowListNames.WrapContents = false;
-            // 
-            // picAddTodoList
-            // 
-            this.picAddTodoList.BackColor = System.Drawing.Color.White;
-            this.picAddTodoList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAddTodoList.Image = global::Todoist.WinForms.Properties.Resources.add_file;
-            this.picAddTodoList.Location = new System.Drawing.Point(166, 289);
-            this.picAddTodoList.Name = "picAddTodoList";
-            this.picAddTodoList.Size = new System.Drawing.Size(24, 24);
-            this.picAddTodoList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAddTodoList.TabIndex = 6;
-            this.picAddTodoList.TabStop = false;
-            this.picAddTodoList.Click += new System.EventHandler(this.PicAddTodoList_Click);
             // 
             // divider
             // 
@@ -107,32 +101,76 @@ namespace Todoist.WinForms.Components
             this.txtAddTodoList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             this.txtAddTodoList.Leave += new System.EventHandler(this.TxtTitle_Leave);
             // 
-            // btnNotes
+            // errorProvider
             // 
-            this.btnNotes.BackColor = System.Drawing.Color.White;
-            this.btnNotes.BackgroundColor = System.Drawing.Color.White;
-            this.btnNotes.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnNotes.BorderRadius = 0;
-            this.btnNotes.BorderSize = 0;
-            this.btnNotes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNotes.FlatAppearance.BorderSize = 0;
-            this.btnNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNotes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNotes.ForeColor = System.Drawing.Color.Black;
-            this.btnNotes.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.btnNotes.Icon = global::Todoist.WinForms.Properties.Resources.note;
-            this.btnNotes.IconPadding = 25;
-            this.btnNotes.IconSize = new System.Drawing.Size(24, 24);
-            this.btnNotes.IconTextSpacing = 0;
-            this.btnNotes.Location = new System.Drawing.Point(0, 215);
-            this.btnNotes.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNotes.Name = "btnNotes";
-            this.btnNotes.Size = new System.Drawing.Size(200, 40);
-            this.btnNotes.TabIndex = 0;
-            this.btnNotes.Text = "Notes";
-            this.btnNotes.TextColor = System.Drawing.Color.Black;
-            this.btnNotes.UseVisualStyleBackColor = false;
-            this.btnNotes.Click += new System.EventHandler(this.BtnNotes_Click);
+            this.errorProvider.ContainerControl = this;
+            // 
+            // btnActive
+            // 
+            this.btnActive.BackColor = System.Drawing.Color.White;
+            this.btnActive.BackgroundColor = System.Drawing.Color.White;
+            this.btnActive.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnActive.BorderRadius = 0;
+            this.btnActive.BorderSize = 0;
+            this.btnActive.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActive.FlatAppearance.BorderSize = 0;
+            this.btnActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActive.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnActive.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.btnActive.Icon = global::Todoist.WinForms.Properties.Resources.note;
+            this.btnActive.IconPadding = 25;
+            this.btnActive.IconSize = new System.Drawing.Size(24, 24);
+            this.btnActive.IconTextSpacing = 0;
+            this.btnActive.Location = new System.Drawing.Point(0, 95);
+            this.btnActive.Margin = new System.Windows.Forms.Padding(0);
+            this.btnActive.Name = "btnActive";
+            this.btnActive.Size = new System.Drawing.Size(200, 40);
+            this.btnActive.TabIndex = 9;
+            this.btnActive.Text = "Active";
+            this.btnActive.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnActive.UseVisualStyleBackColor = false;
+            this.btnActive.Click += new System.EventHandler(this.BtnActive_Click);
+            // 
+            // picAddTodoList
+            // 
+            this.picAddTodoList.BackColor = System.Drawing.Color.White;
+            this.picAddTodoList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAddTodoList.Image = global::Todoist.WinForms.Properties.Resources.add_file;
+            this.picAddTodoList.Location = new System.Drawing.Point(166, 289);
+            this.picAddTodoList.Name = "picAddTodoList";
+            this.picAddTodoList.Size = new System.Drawing.Size(24, 24);
+            this.picAddTodoList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAddTodoList.TabIndex = 6;
+            this.picAddTodoList.TabStop = false;
+            this.picAddTodoList.Click += new System.EventHandler(this.PicAddTodoList_Click);
+            // 
+            // btnCompleted
+            // 
+            this.btnCompleted.BackColor = System.Drawing.Color.White;
+            this.btnCompleted.BackgroundColor = System.Drawing.Color.White;
+            this.btnCompleted.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCompleted.BorderRadius = 0;
+            this.btnCompleted.BorderSize = 0;
+            this.btnCompleted.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCompleted.FlatAppearance.BorderSize = 0;
+            this.btnCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompleted.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompleted.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnCompleted.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.btnCompleted.Icon = global::Todoist.WinForms.Properties.Resources.done;
+            this.btnCompleted.IconPadding = 25;
+            this.btnCompleted.IconSize = new System.Drawing.Size(24, 24);
+            this.btnCompleted.IconTextSpacing = 0;
+            this.btnCompleted.Location = new System.Drawing.Point(0, 215);
+            this.btnCompleted.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCompleted.Name = "btnCompleted";
+            this.btnCompleted.Size = new System.Drawing.Size(200, 40);
+            this.btnCompleted.TabIndex = 0;
+            this.btnCompleted.Text = "Completed";
+            this.btnCompleted.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnCompleted.UseVisualStyleBackColor = false;
+            this.btnCompleted.Click += new System.EventHandler(this.BtnCompleted_Click);
             // 
             // btnPlanned
             // 
@@ -145,7 +183,7 @@ namespace Todoist.WinForms.Components
             this.btnPlanned.FlatAppearance.BorderSize = 0;
             this.btnPlanned.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlanned.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlanned.ForeColor = System.Drawing.Color.Black;
+            this.btnPlanned.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnPlanned.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.btnPlanned.Icon = global::Todoist.WinForms.Properties.Resources.calendar;
             this.btnPlanned.IconPadding = 25;
@@ -157,7 +195,7 @@ namespace Todoist.WinForms.Components
             this.btnPlanned.Size = new System.Drawing.Size(200, 40);
             this.btnPlanned.TabIndex = 0;
             this.btnPlanned.Text = "Planned";
-            this.btnPlanned.TextColor = System.Drawing.Color.Black;
+            this.btnPlanned.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnPlanned.UseVisualStyleBackColor = false;
             this.btnPlanned.Click += new System.EventHandler(this.BtnPlanned_Click);
             // 
@@ -172,7 +210,7 @@ namespace Todoist.WinForms.Components
             this.btnArchived.FlatAppearance.BorderSize = 0;
             this.btnArchived.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArchived.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchived.ForeColor = System.Drawing.Color.Black;
+            this.btnArchived.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnArchived.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.btnArchived.Icon = global::Todoist.WinForms.Properties.Resources.star;
             this.btnArchived.IconPadding = 25;
@@ -184,7 +222,7 @@ namespace Todoist.WinForms.Components
             this.btnArchived.Size = new System.Drawing.Size(200, 40);
             this.btnArchived.TabIndex = 0;
             this.btnArchived.Text = "Archived";
-            this.btnArchived.TextColor = System.Drawing.Color.Black;
+            this.btnArchived.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnArchived.UseVisualStyleBackColor = false;
             this.btnArchived.Click += new System.EventHandler(this.BtnArchived_Click);
             // 
@@ -199,25 +237,42 @@ namespace Todoist.WinForms.Components
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.ForeColor = System.Drawing.Color.Black;
+            this.btnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnHome.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.btnHome.Icon = global::Todoist.WinForms.Properties.Resources.home_2;
             this.btnHome.IconPadding = 25;
             this.btnHome.IconSize = new System.Drawing.Size(24, 24);
             this.btnHome.IconTextSpacing = 0;
-            this.btnHome.Location = new System.Drawing.Point(0, 95);
+            this.btnHome.Location = new System.Drawing.Point(0, 55);
             this.btnHome.Margin = new System.Windows.Forms.Padding(0);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(200, 40);
             this.btnHome.TabIndex = 0;
             this.btnHome.Text = "Home";
-            this.btnHome.TextColor = System.Drawing.Color.Black;
+            this.btnHome.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.BtnHome_Click);
             // 
-            // errorProvider
+            // lblLogo
             // 
-            this.errorProvider.ContainerControl = this;
+            this.lblLogo.AutoSize = true;
+            this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblLogo.Location = new System.Drawing.Point(74, 14);
+            this.lblLogo.Name = "lblLogo";
+            this.lblLogo.Size = new System.Drawing.Size(103, 37);
+            this.lblLogo.TabIndex = 10;
+            this.lblLogo.Text = "Todoist";
+            // 
+            // picLogo
+            // 
+            this.picLogo.Image = global::Todoist.WinForms.Properties.Resources.to_do_list;
+            this.picLogo.Location = new System.Drawing.Point(28, 12);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(40, 40);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogo.TabIndex = 11;
+            this.picLogo.TabStop = false;
             // 
             // Sidebar
             // 
@@ -228,8 +283,9 @@ namespace Todoist.WinForms.Components
             this.Size = new System.Drawing.Size(200, 601);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddTodoList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -240,11 +296,14 @@ namespace Todoist.WinForms.Components
         private System.Windows.Forms.PictureBox picAddTodoList;
         private System.Windows.Forms.Panel divider;
         private System.Windows.Forms.TextBox txtAddTodoList;
-        private Views.Components.CustomButton btnNotes;
+        private Views.Components.CustomButton btnCompleted;
         private Views.Components.CustomButton btnPlanned;
         private Views.Components.CustomButton btnArchived;
         private Views.Components.CustomButton btnHome;
         private System.Windows.Forms.FlowLayoutPanel flowListNames;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private Views.Components.CustomButton btnActive;
+        private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.Label lblLogo;
     }
 }

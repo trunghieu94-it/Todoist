@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Components;
@@ -15,6 +15,7 @@ namespace Todoist.WinForms.Views.Components
 
         public event Action<TodoListDetails> OnCloseClicked;
         public event Action<Control, TodoList> OnArchiveClicked;
+        public event Action<Control, TodoList> OnCompleteClicked;
 
         public string Title
         {
@@ -68,6 +69,7 @@ namespace Todoist.WinForms.Views.Components
                 default:
                     Complete = "Đánh dấu đã hoàn thành";
                     lblComplete.Enabled = true;
+                    lblComplete.Cursor = Cursors.Hand;
                     break;
             }
         }
@@ -86,7 +88,7 @@ namespace Todoist.WinForms.Views.Components
 
         private void LblComplete_Click(object sender, EventArgs e)
         {
-
+            OnCompleteClicked?.Invoke(this, _list);
         }
         #endregion
     }

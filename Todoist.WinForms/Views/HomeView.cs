@@ -37,12 +37,7 @@ namespace Todoist.WinForms.Views
                 {
                     _detailsView = new TodoListDetails();
 
-                    _detailsView.OnCloseClicked += HandleCloseDetails;
-
-                    _detailsView.OnArchiveClicked += async (view, todoList) =>
-                    {
-                        await HandleArchiveListAsync(view, todoList);
-                    };
+                    SubcribeEvents();
 
                     contentPanel.Controls.Add(_detailsView);
                 }
@@ -64,6 +59,21 @@ namespace Todoist.WinForms.Views
             }
         }
 
+        private void SubcribeEvents()
+        {
+            _detailsView.OnCloseClicked += HandleCloseDetails;
+
+            _detailsView.OnArchiveClicked += async (view, todoList) =>
+            {
+                await HandleArchiveListAsync(view, todoList);
+            };
+
+            _detailsView.OnCompleteClicked += async (view, todoList) =>
+            {
+                await HandleCompleteListAsync(view, todoList);
+            };
+        }
+
         public void HandleDetailRequested(TodoList list)
         {
             ShowTodoListDetails(list);
@@ -81,8 +91,10 @@ namespace Todoist.WinForms.Views
         {
             var confirm = MessageBox.Show(
                 $"Bạn có chắc muốn lưu trữ TodoList này?",
-                "Xác nhận",
-                MessageBoxButtons.YesNo
+                "Xác nhận!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2
             );
 
             if (confirm != DialogResult.Yes) return;
@@ -92,6 +104,29 @@ namespace Todoist.WinForms.Views
 
             ShowTodoListDetails(list);
         }
+
+        private async Task HandleCompleteListAsync(Control sender, TodoList list)
+        {
+            var confirm = MessageBox.Show(
+                $"Bạn có chắc muốn đánh dấu hoàn thành TodoList này?",
+                "Xác nhận!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2
+            );
+
+            if (confirm != DialogResult.Yes) return;
+
+            list.ListStatus = TodoListStatus.Completed;
+            await _service.UpdateTodoListAsync(list);
+
+            ShowTodoListDetails(list);
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            await BtnDelete_Click(sender, e);
+        }
         #endregion
 
         private async Task BtnDelete_Click(object sender, EventArgs e)
@@ -100,14 +135,23 @@ namespace Todoist.WinForms.Views
 
             if (selectedItems == null || !selectedItems.Any())
             {
-                MessageBox.Show("Vui lòng chọn ít nhất 1 TodoList để xóa!");
+                MessageBox.Show(
+                    this,
+                    "Vui lòng chọn ít nhất 1 TodoList để xóa!",
+                    "Cảnh báo dữ liệu!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
                 return;
             }
 
             var confirm = MessageBox.Show(
+                this,
                 $"Bạn có chắc muốn xóa {selectedItems.Count} TodoList?",
-                "Xác nhận",
-                MessageBoxButtons.YesNo
+                "Xác nhận!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2
             );
 
             if (confirm != DialogResult.Yes) return;

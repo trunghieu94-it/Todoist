@@ -31,8 +31,8 @@ namespace Todoist.WinForms.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.contentPanel = new System.Windows.Forms.Panel();
             this.homeView = new Todoist.WinForms.Views.HomeView();
-            this.header = new Todoist.WinForms.Views.Components.HeaderControl();
             this.sidebar = new Todoist.WinForms.Components.Sidebar();
+            this.header = new Todoist.WinForms.Views.Components.HeaderControl();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,14 @@ namespace Todoist.WinForms.Views
             this.homeView.Size = new System.Drawing.Size(784, 526);
             this.homeView.TabIndex = 2;
             // 
+            // sidebar
+            // 
+            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidebar.Location = new System.Drawing.Point(0, 0);
+            this.sidebar.Name = "sidebar";
+            this.sidebar.Size = new System.Drawing.Size(200, 601);
+            this.sidebar.TabIndex = 0;
+            // 
             // header
             // 
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
@@ -64,14 +72,6 @@ namespace Todoist.WinForms.Views
             this.header.TabIndex = 1;
             this.header.Title = "Home";
             this.header.TitleIcon = ((System.Drawing.Image)(resources.GetObject("header.TitleIcon")));
-            // 
-            // sidebar
-            // 
-            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar.Location = new System.Drawing.Point(0, 0);
-            this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(200, 601);
-            this.sidebar.TabIndex = 0;
             // 
             // MainForm
             // 

@@ -106,11 +106,16 @@ namespace Todoist.WinForms.Components
         {
             OnMenuClick?.Invoke(AppScreen.Archived);
         }
-        private void BtnNotes_Click(object sender, EventArgs e)
+        private void BtnCompleted_Click(object sender, EventArgs e)
         {
-            OnMenuClick?.Invoke(AppScreen.Notes);
+            OnMenuClick?.Invoke(AppScreen.Completed);
         }
-        
+
+        private void BtnActive_Click(object sender, EventArgs e)
+        {
+            OnMenuClick?.Invoke(AppScreen.Active);
+        }
+
         private void PicAddTodoList_Click(object sender, EventArgs e)
         {
             if (!TryCreateTodoList(out var model))

@@ -59,7 +59,10 @@ namespace Todoist.WinForms.Components
                 var confirmResult = MessageBox.Show(
                     "Bạn chắc chắn muốn xóa task này?",
                     "Xác nhận!",
-                    MessageBoxButtons.YesNo);
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2
+                );
                 if (confirmResult == DialogResult.Yes)
                 {
                     var result =
