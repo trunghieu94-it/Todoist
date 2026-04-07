@@ -4,7 +4,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-
 namespace Todoist.WinForms.Services
 {
     public class ApiClient

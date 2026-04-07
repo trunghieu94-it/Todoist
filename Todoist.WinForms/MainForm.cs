@@ -6,8 +6,6 @@ using Todoist.WinForms.Models;
 using Todoist.WinForms.Models.Enums;
 using Todoist.WinForms.Services;
 
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
 namespace Todoist.WinForms.Views
 {
     /* ARCHITECTURE NOTE:
@@ -32,8 +30,6 @@ namespace Todoist.WinForms.Views
         private void SubcribeEvents()
         {
             homeView.OnTodoListSubmitted += HandleTodoListCreatedAsync;
-
-            //header.OnSortOptionChanged += HandleSortRequestAsync;
 
             sidebar.OnMenuClick += NavigateAsync;
             sidebar.OnSubmitted += HandleTodoListCreatedAsync;
