@@ -139,31 +139,27 @@ VALUES
     (1, N'Phần mềm quản lý công việc cá nhân', 3, 3, '2026-04-09 15:30:00', '2026-02-10 16:41:42', NULL),
     (2, N'Chuẩn bị CV phỏng vấn', 1, 2, NULL, '2026-02-10 16:45:41', NULL),
     (2, N'Kiến thức thuật toán', 2, 1, NULL, '2026-02-10 16:40:42', NULL),
-    (3, N'Tên dài để kiểm tra hiển thị UI', 3, 2, NULL, '2026-02-10 16:43:44', NULL)
-GO
+    (3, N'Tên dài để kiểm tra hiển thị UI', 3, 2, NULL, '2026-02-10 16:43:44', NULL),
 
--- Extra data
-INSERT INTO TodoLists(UserId, ListName, ListPriority, ListStatus, Deadline, CreatedAt, UpdatedAt)
-VALUES
--- Priority 1
-(1, N'Học LINQ nâng cao',                1, 1, '2026-04-10 09:00:00', '2026-02-01 08:00:00', NULL),
-(1, N'Đọc tài liệu ASP.NET Core',        1, 2, NULL,                  '2026-02-02 09:15:00', NULL),
-(1, N'Luyện code LeetCode',              1, 3, '2026-04-15 20:00:00', '2026-02-03 10:30:00', NULL),
+	-- Priority 1
+	(1, N'Học LINQ nâng cao',                1, 1, '2026-04-10 09:00:00', '2026-02-01 08:00:00', NULL),
+	(1, N'Đọc tài liệu ASP.NET Core',        1, 2, NULL,                  '2026-02-02 09:15:00', NULL),
+	(1, N'Luyện code LeetCode',              1, 3, '2026-04-15 20:00:00', '2026-02-03 10:30:00', NULL),
 
--- Priority 2
-(1, N'Xây dựng RESTful API',             2, 1, NULL,                  '2026-02-04 11:00:00', NULL),
-(1, N'Học Entity Framework Core',        2, 2, '2026-05-01 14:00:00', '2026-02-05 13:20:00', NULL),
-(1, N'Tối ưu query SQL',                 2, 3, NULL,                  '2026-02-06 15:45:00', NULL),
+	-- Priority 2
+	(1, N'Xây dựng RESTful API',             2, 1, NULL,                  '2026-02-04 11:00:00', NULL),
+	(1, N'Học Entity Framework Core',        2, 2, '2026-05-01 14:00:00', '2026-02-05 13:20:00', NULL),
+	(1, N'Tối ưu query SQL',                 2, 3, NULL,                  '2026-02-06 15:45:00', NULL),
 
--- Priority 3
-(1, N'Thiết kế UI cho app Todo',         3, 1, '2026-04-20 18:00:00', '2026-02-07 16:00:00', NULL),
-(1, N'Học design pattern',               3, 2, NULL,                  '2026-02-08 17:10:00', NULL),
-(1, N'Viết unit test cho project',       3, 3, '2026-04-25 21:30:00', '2026-02-09 18:25:00', NULL),
+	-- Priority 3
+	(1, N'Thiết kế UI cho app Todo',         3, 1, '2026-04-20 18:00:00', '2026-02-07 16:00:00', NULL),
+	(1, N'Học design pattern',               3, 2, NULL,                  '2026-02-08 17:10:00', NULL),
+	(1, N'Viết unit test cho project',       3, 3, '2026-04-25 21:30:00', '2026-02-09 18:25:00', NULL),
 
--- Extra để test nhiều hơn (mix đủ điều kiện)
-(1, N'Refactor code cũ',                 1, 2, NULL,                  '2026-02-10 08:45:00', NULL),
-(1, N'Tìm hiểu Clean Architecture',      2, 1, '2026-05-10 10:00:00', '2026-02-11 09:30:00', NULL),
-(1, N'Triển khai Redis cache',           3, 3, NULL,                  '2026-02-12 11:15:00', NULL);
+	-- Extra để test nhiều hơn (mix đủ điều kiện)
+	(1, N'Refactor code cũ',                 1, 2, NULL,                  '2026-02-10 08:45:00', NULL),
+	(1, N'Tìm hiểu Clean Architecture',      2, 1, '2026-05-10 10:00:00', '2026-02-11 09:30:00', NULL),
+	(1, N'Triển khai Redis cache',           3, 3, NULL,                  '2026-02-12 11:15:00', NULL);
 GO
 
 INSERT INTO TodoItems(TodoListId, Title, ItemStatus)
@@ -221,23 +217,19 @@ VALUES
     (5, 5)
 GO
 
-SELECT * FROM TodoLists WHERE ListStatus = 3;
-
 -- Xóa dữ liệu bảng
-DELETE FROM TodoListTags
-DELETE FROM UserTodoLists
-DELETE FROM Notes
-DELETE FROM Tags
-DELETE FROM TodoItems
-DELETE FROM TodoLists
-DELETE FROM Users
+--DELETE FROM TodoListTags
+--DELETE FROM UserTodoLists
+--DELETE FROM Notes
+--DELETE FROM Tags
+--DELETE FROM TodoItems
+--DELETE FROM TodoLists
+--DELETE FROM Users
 
 -- Reset Id nếu cần
-DBCC CHECKIDENT ('Notes', RESEED, 0)
-DBCC CHECKIDENT ('Tags', RESEED, 0)
-DBCC CHECKIDENT ('TodoItems', RESEED, 8)
-DBCC CHECKIDENT ('TodoLists', RESEED, 18)
-DBCC CHECKIDENT ('Users', RESEED, 0)
-GO
-
-
+--DBCC CHECKIDENT ('Notes', RESEED, 0)
+--DBCC CHECKIDENT ('Tags', RESEED, 0)
+--DBCC CHECKIDENT ('TodoItems', RESEED, 8)
+--DBCC CHECKIDENT ('TodoLists', RESEED, 18)
+--DBCC CHECKIDENT ('Users', RESEED, 0)
+--GO

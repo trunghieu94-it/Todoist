@@ -96,6 +96,7 @@ namespace Todoist.WinForms.Views
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextColor = System.Drawing.Color.Black;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSelect
             // 
@@ -142,6 +143,7 @@ namespace Todoist.WinForms.Views
         private Components.CustomButton btnDelete;
         private WinForms.Components.TodoListsView listItems;
         private System.Windows.Forms.Panel contentPanel;
+        private Components.CustomButton btnSelect;
         private Components.CustomButton btnSelect;
     }
 }

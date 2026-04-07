@@ -113,6 +113,16 @@ namespace Todoist.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap done {
+            get {
+                object obj = ResourceManager.GetObject("done", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap folder {
             get {
                 object obj = ResourceManager.GetObject("folder", resourceCulture);
@@ -226,6 +236,16 @@ namespace Todoist.WinForms.Properties {
         internal static System.Drawing.Bitmap tag {
             get {
                 object obj = ResourceManager.GetObject("tag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap to_do_list {
+            get {
+                object obj = ResourceManager.GetObject("to-do-list", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,8 +1,10 @@
 using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Components;
+using Todoist.WinForms.Enums;
+using Todoist.WinForms.Models;
 using Todoist.WinForms.Enums;
 using Todoist.WinForms.Models;
 
@@ -12,14 +14,22 @@ namespace Todoist.WinForms.Views.Components
     {
         private TodoItemsView _todoItemsView;
         private TodoList _list;
+        private TodoList _list;
 
         public event Action<TodoListDetails> OnCloseClicked;
         public event Action<Control, TodoList> OnArchiveClicked;
+        public event Action<Control, TodoList> OnCompleteClicked;
 
         public string Title
         {
             get => txtListName.Text;
             set => txtListName.Text = value;
+        }
+
+        public string Complete
+        {
+            get => lblComplete.Text;
+            set => lblComplete.Text = value;
         }
 
         public string Complete
@@ -35,19 +45,29 @@ namespace Todoist.WinForms.Views.Components
 
         #region Methods
         public void ShowTodoItems(TodoList list)
+        #region Methods
+        public void ShowTodoItems(TodoList list)
         {
+            if (_todoItemsView == null)
+            {
+                _todoItemsView = new TodoItemsView();
             if (_todoItemsView == null)
             {
                 _todoItemsView = new TodoItemsView();
 
                 _todoItemsView.Dock = DockStyle.Fill;
+                _todoItemsView.Dock = DockStyle.Fill;
 
+                todoItemsPanel.Controls.Add(_todoItemsView);
+            }
                 todoItemsPanel.Controls.Add(_todoItemsView);
             }
 
             _todoItemsView.SetListId(list.Id);
+            _todoItemsView.SetListId(list.Id);
 
             _todoItemsView.BringToFront();
+
 
         }
 
@@ -68,6 +88,7 @@ namespace Todoist.WinForms.Views.Components
                 default:
                     Complete = "Đánh dấu đã hoàn thành";
                     lblComplete.Enabled = true;
+                    lblComplete.Cursor = Cursors.Hand;
                     break;
             }
         }
@@ -86,7 +107,7 @@ namespace Todoist.WinForms.Views.Components
 
         private void LblComplete_Click(object sender, EventArgs e)
         {
-
+            OnCompleteClicked?.Invoke(this, _list);
         }
         #endregion
     }

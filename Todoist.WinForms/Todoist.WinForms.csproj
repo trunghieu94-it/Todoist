@@ -63,7 +63,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>to-do-list.ico</ApplicationIcon>
+    <ApplicationIcon>to-do-list_2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <Win32Resource>
@@ -271,7 +271,9 @@
     <Content Include="Assets\Icons\bell.png" />
     <Content Include="Assets\Icons\calendar.png" />
     <Content Include="Assets\Icons\clipboard.png" />
+    <None Include="Assets\Icons\to-do-list.png" />
     <Content Include="to-do-list.ico" />
+    <Content Include="to-do-list_2.ico" />
     <None Include="Assets\Icons\close.png" />
     <Content Include="Assets\Icons\folder.png" />
     <Content Include="Assets\Icons\grid.png" />

@@ -57,11 +57,33 @@ namespace Todoist.WinForms.Views
                 }
             },
             {
-                AppScreen.Notes,
+                AppScreen.Completed,
                 new ScreenConfig
                 {
-                    Title = "Notes",
-                    TitleIcon = Properties.Resources.note
+                    Title = "Completed",
+                    TitleIcon = Properties.Resources.done,
+                    LoadDataAsync = () =>
+                    TodoListsService.Instance.LoadTodoListsAsync(
+                        new Models.TodoListFilter
+                        {
+                            Status = "Completed",
+                            HasDeadline = null
+                        })
+                }
+            },
+            {
+                AppScreen.Active,
+                new ScreenConfig
+                {
+                    Title = "Active",
+                    TitleIcon = Properties.Resources.note,
+                    LoadDataAsync = () =>
+                    TodoListsService.Instance.LoadTodoListsAsync(
+                        new Models.TodoListFilter
+                        {
+                            Status = "Active",
+                            HasDeadline = null
+                        })
                 }
             }
         };
