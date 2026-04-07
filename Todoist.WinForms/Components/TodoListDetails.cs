@@ -1,10 +1,7 @@
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Components;
-using Todoist.WinForms.Enums;
-using Todoist.WinForms.Models;
 using Todoist.WinForms.Enums;
 using Todoist.WinForms.Models;
 
@@ -13,7 +10,6 @@ namespace Todoist.WinForms.Views.Components
     public partial class TodoListDetails : UserControl
     {
         private TodoItemsView _todoItemsView;
-        private TodoList _list;
         private TodoList _list;
 
         public event Action<TodoListDetails> OnCloseClicked;
@@ -32,12 +28,6 @@ namespace Todoist.WinForms.Views.Components
             set => lblComplete.Text = value;
         }
 
-        public string Complete
-        {
-            get => lblComplete.Text;
-            set => lblComplete.Text = value;
-        }
-
         public TodoListDetails()
         {
             InitializeComponent();
@@ -45,30 +35,19 @@ namespace Todoist.WinForms.Views.Components
 
         #region Methods
         public void ShowTodoItems(TodoList list)
-        #region Methods
-        public void ShowTodoItems(TodoList list)
         {
             if (_todoItemsView == null)
             {
                 _todoItemsView = new TodoItemsView();
-            if (_todoItemsView == null)
-            {
-                _todoItemsView = new TodoItemsView();
 
                 _todoItemsView.Dock = DockStyle.Fill;
-                _todoItemsView.Dock = DockStyle.Fill;
 
-                todoItemsPanel.Controls.Add(_todoItemsView);
             }
-                todoItemsPanel.Controls.Add(_todoItemsView);
-            }
+            todoItemsPanel.Controls.Add(_todoItemsView);
 
-            _todoItemsView.SetListId(list.Id);
             _todoItemsView.SetListId(list.Id);
 
             _todoItemsView.BringToFront();
-
-
         }
 
         public void BindData(TodoList list)

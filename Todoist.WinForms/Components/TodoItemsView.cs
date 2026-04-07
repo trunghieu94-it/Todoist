@@ -38,6 +38,9 @@ namespace Todoist.WinForms.Components
 
                 SubcribeEvents(itemView);
 
+                itemView.Dock = DockStyle.Fill;
+                itemView.Margin = new Padding(0, 10, 0, 10);
+
                 AddRow(itemView);
             }
 

@@ -15,7 +15,6 @@ namespace Todoist.WinForms.Views
     public partial class HomeView : UserControl
     {
         private readonly TodoListsService _service = TodoListsService.Instance;
-        private readonly TodoListsService _service = TodoListsService.Instance;
         private TodoListDetails _detailsView;
 
         public event Action<CreateTodoList> OnTodoListSubmitted;
@@ -31,7 +30,6 @@ namespace Todoist.WinForms.Views
         }
 
         #region Methods
-        private void ShowTodoListDetails(TodoList list)
         private void ShowTodoListDetails(TodoList list)
         {
             try
@@ -50,13 +48,7 @@ namespace Todoist.WinForms.Views
                 _detailsView.Dock = DockStyle.Fill;
 
                 _detailsView.Title = list.ListName;
-                _detailsView.BindData(list);
 
-                _detailsView.Dock = DockStyle.Fill;
-
-                _detailsView.Title = list.ListName;
-
-                _detailsView.ShowTodoItems(list);
                 _detailsView.ShowTodoItems(list);
 
                 _detailsView.Show();
@@ -86,10 +78,8 @@ namespace Todoist.WinForms.Views
         public void HandleDetailRequested(TodoList list)
         {
             ShowTodoListDetails(list);
-            ShowTodoListDetails(list);
         }
 
-        private void HandleCloseDetails(TodoListDetails detailView)
         private void HandleCloseDetails(TodoListDetails detailView)
         {
             if (_detailsView != null)
@@ -168,7 +158,6 @@ namespace Todoist.WinForms.Views
             if (confirm != DialogResult.Yes) return;
 
             var tasks = selectedItems
-                .Select(item => _service.DeleteTodoListAsync(item));
                 .Select(item => _service.DeleteTodoListAsync(item));
 
             var results = await Task.WhenAll(tasks);
