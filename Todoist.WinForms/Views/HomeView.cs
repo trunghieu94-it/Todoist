@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Todoist.WinForms.Enums;
-using Todoist.WinForms.Enums;
 using Todoist.WinForms.Models;
 using Todoist.WinForms.Services;
 using Todoist.WinForms.Views.Components;

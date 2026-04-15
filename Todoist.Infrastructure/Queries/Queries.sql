@@ -55,6 +55,7 @@ CREATE TABLE TodoItems
 
     CONSTRAINT FK_TodoItems_TodoLists
         FOREIGN KEY (TodoListId) REFERENCES TodoLists(Id)
+		ON DELETE CASCADE
 )
 GO
 
@@ -73,6 +74,7 @@ CREATE TABLE UserTodoLists
         FOREIGN KEY (UserId) REFERENCES Users(Id),
     CONSTRAINT FK_UserTodoLists_TodoLists
         FOREIGN KEY (TodoListId) REFERENCES TodoLists(Id)
+		ON DELETE CASCADE
 )
 GO
 
@@ -99,7 +101,8 @@ CREATE TABLE TodoListTags
     CONSTRAINT PK_TodoListTags PRIMARY KEY (TodoListId, TagId),
 
     CONSTRAINT FK_TodoListTags_TodoLists
-        FOREIGN KEY (TodoListId) REFERENCES TodoLists(Id),
+        FOREIGN KEY (TodoListId) REFERENCES TodoLists(Id)
+		ON DELETE CASCADE,
 
     CONSTRAINT FK_TodoListTags_Tags
         FOREIGN KEY (TagId) REFERENCES Tags(Id)
@@ -233,3 +236,5 @@ GO
 --DBCC CHECKIDENT ('TodoLists', RESEED, 18)
 --DBCC CHECKIDENT ('Users', RESEED, 0)
 --GO
+
+

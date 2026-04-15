@@ -58,7 +58,7 @@ namespace Todoist.WinForms.Views.Components
             // 
             this.lblSort.AutoSize = true;
             this.lblSort.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSort.Location = new System.Drawing.Point(314, 30);
+            this.lblSort.Location = new System.Drawing.Point(343, 30);
             this.lblSort.Name = "lblSort";
             this.lblSort.Size = new System.Drawing.Size(67, 21);
             this.lblSort.TabIndex = 6;
@@ -77,7 +77,7 @@ namespace Todoist.WinForms.Views.Components
             "Deadline xa nhất",
             "Ưu tiên thấp nhất",
             "Ưu tiên cao nhất"});
-            this.cbSort.Location = new System.Drawing.Point(387, 27);
+            this.cbSort.Location = new System.Drawing.Point(416, 27);
             this.cbSort.Name = "cbSort";
             this.cbSort.Size = new System.Drawing.Size(165, 29);
             this.cbSort.TabIndex = 5;
@@ -93,7 +93,7 @@ namespace Todoist.WinForms.Views.Components
             this.lblTitle.IconTextSpacing = 6;
             this.lblTitle.Location = new System.Drawing.Point(22, 10);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(150, 57);
+            this.lblTitle.Size = new System.Drawing.Size(179, 57);
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Home";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -106,7 +106,7 @@ namespace Todoist.WinForms.Views.Components
             this.lblDate.IconPadding = 4;
             this.lblDate.IconSize = new System.Drawing.Size(16, 16);
             this.lblDate.IconTextSpacing = 6;
-            this.lblDate.Location = new System.Drawing.Point(178, 33);
+            this.lblDate.Location = new System.Drawing.Point(207, 33);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(119, 17);
             this.lblDate.TabIndex = 4;
